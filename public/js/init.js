@@ -20,8 +20,7 @@ requirejs.config({
     }
 });
 
-define(['underscore', 'backbone', 'app'],
-function(_, Backbone, app) {
-    console.log(app);
+define(['app'],
+function(app) {
     app.start();
 });

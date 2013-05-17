@@ -1,11 +1,11 @@
-define(['underscore', 'backbone', 'view/root'],
-function(_, Backbone, RootView) {
+define(['logger', 'view/root'],
+function(logger, RootView) {
 
     'use strict';
 
     return {
         start: function() {
-            console.log('APP', 'start');
+            logger.log('APP:', 'start');
             var rootView = new RootView();
             rootView.setElement('body');
             rootView.render();

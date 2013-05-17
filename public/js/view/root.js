@@ -1,5 +1,5 @@
-define(['underscore', 'backbone'],
-function(_, Backbone) {
+define(['underscore', 'backbone', 'logger'],
+function(_, Backbone, logger) {
 
     'use strict';
 
@@ -7,7 +7,8 @@ function(_, Backbone) {
         tagName: 'div',
 
         render: function() {
-            this.$el.html("<h1>hello world from W-L-D");
+            logger.log('RENDER:', 'root');
+            this.$el.html("<h1>hello world from W-L-D</h1>");
         }
     });
 });
