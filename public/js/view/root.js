@@ -7,7 +7,6 @@ function(_, Backbone, logger, UserModel) {
         tagName: 'div',
 
         initialize: function(options) {
-            var self = this;
             var ids = [1,2,3,4];
             for (var id in ids) {
                 var user = new UserModel({id: ids[id], view: this});

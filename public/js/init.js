@@ -2,9 +2,10 @@ requirejs.config({
     enforceDefine: true,
     baseUrl: 'js',
     paths: {
-        jquery: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery',
-        underscore: 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
-        backbone: 'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone'
+        jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery',
+        underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
+        backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
+        bootstrap: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min'
     },
     shim: {
         backbone: {
@@ -16,6 +17,10 @@ requirejs.config({
         },
         jquery: {
             exports: '$'
+        },
+        bootstrap: {
+            deps: ['jquery'],
+            exports: '$.fn.popover'
         }
     }
 });
