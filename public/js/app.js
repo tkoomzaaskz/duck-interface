@@ -1,5 +1,5 @@
-define(['logger', 'view/root'],
-function(logger, RootView) {
+define(['logger', 'icanhaz', 'view/root'],
+function(logger, ich, RootView) {
 
     'use strict';
 
@@ -9,6 +9,16 @@ function(logger, RootView) {
             var rootView = new RootView();
             rootView.setElement('#main');
             rootView.render();
+
+            $.ajax({
+                type: 'GET',
+                dataType: 'text',
+                async: false,
+                url: 'templates.ich'
+            }).done(function(response) {
+                $('body').append(response);
+                ich.grabTemplates();
+            });
         }
     };
 });
