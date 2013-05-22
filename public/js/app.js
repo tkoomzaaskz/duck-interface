@@ -7,7 +7,7 @@ function(logger, RootView) {
         start: function() {
             logger.log('APP:', 'start');
             var rootView = new RootView();
-            rootView.setElement('body');
+            rootView.setElement('#main');
             rootView.render();
         }
     };
