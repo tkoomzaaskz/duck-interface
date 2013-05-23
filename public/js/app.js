@@ -1,5 +1,5 @@
-define(['logger', 'icanhaz', 'view/root'],
-function(logger, ich, RootView) {
+define(['logger', 'bootstrap', 'icanhaz', 'view/root'],
+function(logger, bootstrap, ich, RootView) {
 
     'use strict';
 
@@ -17,6 +17,8 @@ function(logger, ich, RootView) {
                 url: 'templates.ich'
             }).done(function(response) {
                 $('body').append(response);
+                console.log(bootstrap);
+                console.log(ich);
                 ich.grabTemplates();
             });
         }

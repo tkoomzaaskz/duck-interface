@@ -1,5 +1,5 @@
 requirejs.config({
-    enforceDefine: true,
+//    enforceDefine: true,
     baseUrl: 'js',
     paths: {
         jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery',
