@@ -1,12 +1,12 @@
 requirejs.config({
-//    enforceDefine: true,
+    enforceDefine: true,
     baseUrl: 'js',
     paths: {
         jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery',
         underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
         backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
         bootstrap: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min',
-        icanhaz: '//cdnjs.cloudflare.com/ajax/libs/ICanHaz.js/0.10/ICanHaz.min'
+        icanhaz: '../vendor/js/icanhaz'
     },
     shim: {
         backbone: {
@@ -19,13 +19,13 @@ requirejs.config({
         jquery: {
             exports: '$'
         },
+        icanhaz: {
+          deps: ['jquery'],
+          exports: 'ich'
+        },
         bootstrap: {
             deps: ['jquery'],
             exports: '$.fn.popover'
-        },
-        icanhaz: {
-            deps: ['jquery'],
-            exports: 'ich'
         }
     }
 });
