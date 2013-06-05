@@ -14,7 +14,7 @@ function(_, Backbone, config, logger) {
         },
 
         initialize: function(options) {
-            logger.log('USER:', 'created');
+            logger.model('user', 'created', this);
             this.view = options.view;
             this.on('reset', this.template, this);
             this.on('sync', this.template, this);

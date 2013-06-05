@@ -5,7 +5,7 @@ function(logger, bootstrap, ich, RootView) {
 
     return {
         start: function() {
-            logger.log('APP:', 'start');
+            logger.log('APPLICATION', 'start');
             var rootView = new RootView();
             rootView.setElement('#main');
             rootView.render();

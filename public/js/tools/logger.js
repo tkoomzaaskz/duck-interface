@@ -28,6 +28,12 @@ function(config) {
             var args = Array.prototype.slice.call(arguments);
             args.unshift("INIT");
             this.log.apply(this, args);
+        },
+
+        model: function() {
+            var args = Array.prototype.slice.call(arguments);
+            args.unshift("MODEL");
+            this.log.apply(this, args);
         }
     };
 });
