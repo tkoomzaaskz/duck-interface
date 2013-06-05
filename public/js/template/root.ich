@@ -1,0 +1,4 @@
+<script id="rootTemplate" type="text/html">
+    <div id="header"></div>
+    <div class="container" id="main"></div>
+</script>

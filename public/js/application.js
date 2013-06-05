@@ -1,12 +1,12 @@
-define(['marionette', 'tools/logger', 'bootstrap', 'icanhaz', 'view/root'],
-function(Marionette, logger, bootstrap, ich, RootView) {
+define(['marionette', 'tools/logger', 'bootstrap', 'view/root'],
+function(Marionette, logger, bootstrap, RootView) {
 
     'use strict';
 
     var Application = new Marionette.Application();
 
     Application.addRegions({
-      mainRegion: "#main"
+      bodyRegion: "body"
     });
     
     Application.addInitializer(function(options) {
@@ -18,7 +18,9 @@ function(Marionette, logger, bootstrap, ich, RootView) {
 
     Application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
-        Application.mainRegion.show(new RootView());
+        var rootView = new RootView();
+        rootView.setElement('body').render();
+//        Application.bodyRegion.show(new RootView());
     });
 
     return Application;

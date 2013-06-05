@@ -7,7 +7,8 @@ requirejs.config({
         backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
         marionette: '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette',
         bootstrap: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min',
-        icanhaz: '../vendor/js/icanhaz'
+        icanhaz: '../vendor/js/icanhaz',
+        text: '../vendor/js/text',
     },
     shim: {
         backbone: {
@@ -31,7 +32,9 @@ requirejs.config({
         bootstrap: {
             deps: ['jquery'],
             exports: '$.fn.popover'
-        }
+        },
+        text: {
+        },
     }
 });
 
