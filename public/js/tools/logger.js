@@ -1,5 +1,5 @@
-define(['config'],
-function(config) {
+define(['underscore', 'config'],
+function(_, config) {
 
     'use strict';
 
@@ -14,8 +14,10 @@ function(config) {
 
         event: function() {
             var args = Array.prototype.slice.call(arguments);
-            args.unshift("EVENT");
-            this.log.apply(this, args);
+            if (_.indexOf(config.logged_events, args[0][0]) > -1) {
+                args.unshift("EVENT");
+                this.log.apply(this, args);
+            }
         },
 
         render: function() {
