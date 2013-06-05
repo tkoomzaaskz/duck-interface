@@ -1,29 +1,25 @@
-define(['tools/logger', 'bootstrap', 'icanhaz', 'view/root'],
-function(logger, bootstrap, ich, RootView) {
+define(['marionette', 'tools/logger', 'bootstrap', 'icanhaz', 'view/root'],
+function(Marionette, logger, bootstrap, ich, RootView) {
 
     'use strict';
 
-    return {
-        start: function() {
-            logger.log('APPLICATION', 'start');
-            var rootView = new RootView();
-            rootView.setElement('#main');
-            rootView.render();
+    var Application = new Marionette.Application();
 
-            Backbone.Model.prototype.trigger = function() {
-                logger.event(arguments);
-                Backbone.Events.trigger.apply(this, arguments);
-            }
-
-            $.ajax({
-                type: 'GET',
-                dataType: 'text',
-                async: false,
-                url: 'templates.ich'
-            }).done(function(response) {
-                $('body').append(response);
-                ich.grabTemplates();
-            });
+    Application.addRegions({
+      mainRegion: "#main"
+    });
+    
+    Application.addInitializer(function(options) {
+        Backbone.Model.prototype.trigger = function() {
+            logger.event(arguments);
+            Backbone.Events.trigger.apply(this, arguments);
         }
-    };
+    });
+
+    Application.addInitializer(function(options) {
+        logger.log('APPLICATION', 'start');
+        Application.mainRegion.show(new RootView());
+    });
+
+    return Application;
 });

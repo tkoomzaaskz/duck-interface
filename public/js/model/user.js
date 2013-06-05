@@ -1,5 +1,5 @@
-define(['underscore', 'backbone', 'config', 'tools/logger'],
-function(_, Backbone, config, logger) {
+define(['backbone', 'config', 'tools/logger'],
+function(Backbone, config, logger) {
 
     'use strict';
 
