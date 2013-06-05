@@ -1,4 +1,4 @@
-define(['logger', 'bootstrap', 'icanhaz', 'view/root'],
+define(['tools/logger', 'bootstrap', 'icanhaz', 'view/root'],
 function(logger, bootstrap, ich, RootView) {
 
     'use strict';
@@ -9,6 +9,11 @@ function(logger, bootstrap, ich, RootView) {
             var rootView = new RootView();
             rootView.setElement('#main');
             rootView.render();
+
+            Backbone.Model.prototype.trigger = function() {
+                logger.event(arguments);
+                Backbone.Events.trigger.apply(this, arguments);
+            }
 
             $.ajax({
                 type: 'GET',

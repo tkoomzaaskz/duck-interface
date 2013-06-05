@@ -30,7 +30,7 @@ requirejs.config({
     }
 });
 
-define(['app'],
-function(app) {
-    app.start();
+define(['application'],
+function(Application) {
+    Application.start();
 });
