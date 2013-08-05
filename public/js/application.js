@@ -8,7 +8,7 @@ function(Marionette, logger, bootstrap, RootView) {
     Application.addRegions({
       bodyRegion: "body"
     });
-    
+
     Application.addInitializer(function(options) {
         Backbone.Model.prototype.trigger = function() {
             logger.event(arguments);

@@ -15,7 +15,7 @@ function(Backbone, logger, UserModel) {
             var ids = [1,2,3,4];
             for (var id in ids) {
                 var user = new UserModel({id: ids[id], view: this});
-                user.fetch();
+                user.fetch({ success: function(model, response){ model.template(); } });
             }
         },
 

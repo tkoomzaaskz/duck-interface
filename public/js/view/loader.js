@@ -9,6 +9,6 @@ define(
                         logger.log('LOADED', this.id);
                     }
                 });
-            }	
+            }
         };
     });

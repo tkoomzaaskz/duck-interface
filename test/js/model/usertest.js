@@ -1,13 +1,16 @@
 define(
-	['underscore', '../../../public/js/model/user'],
-	function(_, User) {
-		var userModel = new User();
-		userModel.fetch({ async: false });
+	['underscore', '../../../public/js/model/user', 'view/users'],
+	function(_, User, UsersView) {
 
-		QUnit.module('model/tree');
+		var run = function() {
+			QUnit.module('model/user');
 
-		QUnit.test('check nodes', function() {
-			QUnit.ok(! _.contains(ids, '1'));
-			QUnit.ok(_.contains(ids, something));
-		});
+			var userModel = new User({id: 1, view: new UsersView()});
+			userModel.fetch();
+
+			QUnit.test('check nodes', function() {
+				QUnit.ok(userModel.get('id') === 1);
+			});
+		}
+		return {run: run};
 	});

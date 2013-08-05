@@ -4,9 +4,9 @@ function(Backbone, config, logger) {
     'use strict';
 
     return Backbone.Model.extend({
-        urlRoot: config.urlRoot + '/user',
+        urlRoot: config.urlRoot + '/users',
         url: function() {
-            return this.urlRoot + '/' + this.id + '/?format=json';
+            return this.urlRoot + '/' + this.id;
         },
 
         getFullName: function() {
@@ -16,8 +16,8 @@ function(Backbone, config, logger) {
         initialize: function(options) {
             logger.model('user', 'created', this);
             this.view = options.view;
-            this.on('reset', this.template, this);
-            this.on('sync', this.template, this);
+//            this.on('reset', this.template, this);
+//            this.on('sync', this.template, this);
         },
 
         template: function() {
