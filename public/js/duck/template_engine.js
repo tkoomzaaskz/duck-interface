@@ -18,7 +18,7 @@ var TemplateEngine = {
         }
         ich.grabTemplates();
     },
-    concatenated_templates: 'templates.ich',
+    concatenated_templates: 'templates/all.ich',
     fetchConcatenatedTemplates: function() {
         this.fetchTemplate(this.concatenated_templates);
         ich.grabTemplates();
