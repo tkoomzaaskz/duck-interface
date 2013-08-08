@@ -4,7 +4,7 @@ function(Backbone, config, logger) {
     'use strict';
 
     return Backbone.Model.extend({
-        urlRoot: config.urlRoot + '/users',
+        urlRoot: config.urlRoot + '/user',
         url: function() {
             return this.urlRoot + '/' + this.id;
         },
