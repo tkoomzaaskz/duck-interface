@@ -5,4 +5,5 @@ jQuery.validator.addMethod("money", function(value, element) {
 $(document).ready( function() {
     TemplateEngine.fetchConcatenatedTemplates();
     TemplateManager.initAllTemplates();
+    url = 'http://localhost:8000/api/v1/';
 });

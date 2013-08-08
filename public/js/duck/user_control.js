@@ -6,12 +6,9 @@ var UsersControl = {
             dataType: "json",
             context: this,
             async: false,
-            url: "../php/client/json.php",
-            data: {
-                action: "users"
-            }
+            url: url + "user/"
         }).done(function(response) {
-            this.data = response;
+            this.data = response.objects;
             this.setAll(true);
         });
     },
@@ -22,20 +19,18 @@ var UsersControl = {
         return this.data;
     },
     setAll: function(chosen) {
-        var index;
-        for (index = 0; index < this.data.length; ++index) {
+        for (var index = 0; index < this.data.length; ++index) {
             this.data[index].chosen = chosen;
         }
     },
     setChosen: function(username_list) {
-        var index;
-        for (index = 0; index < this.data.length; ++index) {
-            this.data[index].chosen = ($.inArray(this.data[index].username, username_list) > -1);
+        for (var index = 0; index < this.data.length; ++index) {
+            this.data[index].chosen = ($.inArray(this.data[index].first_name, username_list) > -1);
         }
     },
     getChosen: function() {
         return $(this.getData()).map(function() {
-            return (this.chosen) ? this.username : null;
+            return (this.chosen) ? this.first_name : null;
         });
     }
 };
