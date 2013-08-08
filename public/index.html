@@ -1,14 +1,72 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/tr/html4/transitional.dtd">
 <html>
     <head>
         <title>Wealthy Laughing Duck</title>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/duck.css">
-        <script data-main="js/init" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.5/require.min.js"></script>
-        <link rel="shortcut icon" href="img/favicon.ico">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- jquery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/ICanHaz.js/0.10/ICanHaz.min.js"></script>
+        <script type="text/javascript" src="js/jquery.dataTables.nightly.js"></script>
+        <script type="text/javascript" src="js/datatable_behavior.js"></script>
+        <script type="text/javascript" src="js/jstree/jquery.jstree.js"></script>
+        <!-- bootstrap -->
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" type="text/css" href="css/datatable_bootstrap.css">
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://bootboxjs.com/bootbox.js"></script>
+        <!-- custom -->
+        <script type="text/javascript" src="js/duck/template_engine.js"></script>
+        <script type="text/javascript" src="js/duck/template_manager.js"></script>
+        <script type="text/javascript" src="js/duck/user_control.js"></script>
+        <script type="text/javascript" src="js/duck/user_dialog.js"></script>
+        <script type="text/javascript" src="js/duck/category_control.js"></script>
+        <script type="text/javascript" src="js/duck/category_dialog.js"></script>
+        <script type="text/javascript" src="js/duck/form_dialog.js"></script>
+        <script type="text/javascript" src="js/duck/main_control.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/wealthy_laughing_duck.css">
     </head>
     <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" id="menu_homepage" href="#">wealthy laughing duck</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" href="#">Add <b class="caret"></b></a>
+                                <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                    <li role="presentation"><a role="menuitem" data-toggle="modal" href="#incomeFormDialog">Income</a></li>
+                                    <li role="presentation"><a role="menuitem" data-toggle="modal" href="#outcomeFormDialog">Outcome</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" id="drop2" role="button" data-toggle="dropdown" href="#">Display <b class="caret"></b></a>
+                                <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                                    <li role="presentation"><a role="menuitem" id="menu_monthly_balance">Monthly balance</a></li>
+                                    <li role="presentation"><a role="menuitem" id="menu_category_total">Category total</a></li>
+                                    <li role="presentation"><a role="menuitem" id="menu_outcome_list">Outcome list</a></li>
+                                    <li role="presentation"><a role="menuitem" id="menu_income_list">Income list</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" id="drop3" role="button" data-toggle="dropdown" href="#">Manage <b class="caret"></b></a>
+                                <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                    <li role="presentation"><a role="menuitem" data-toggle="modal" href="#chooseUsersDialog">Users</a></li>
+                                    <li role="presentation"><a role="menuitem" data-toggle="modal" href="#chooseCategoriesDialog">Categories</a></li>
+                                </ul>
+                            </li>
+                            <li role="presentation"><a role="menuitem" href="https://github.com/tkoomzaaskz/wealthy-laughing-duck">see me on github!</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="main"></div>
     </body>
 </html>
