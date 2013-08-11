@@ -9,10 +9,7 @@ CategoryControl.prototype.fetchData = function() {
         dataType: "json",
         context: this,
         async: false,
-        url: "../php/client/json.php",
-        data: {
-            action: this.type + "Categories"
-        }
+        url: url + this.type + "/"
     }).done(function(response) {
         this.data = response;
     });
