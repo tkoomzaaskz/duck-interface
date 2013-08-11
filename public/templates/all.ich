@@ -58,7 +58,7 @@
     <select id="username" name="username" class="required">
         <option value="">choose user</option>
         {{#users}}
-        <option value="{{ username }}">{{ fullname }}</option>
+        <option value="{{ username }}">{{ first_name }} {{ last_name }}</option>
         {{/users}}
     </select>
 </script>
@@ -69,7 +69,7 @@
     <ul>
     {{#users}}
         <label class="checkbox">
-            <input type="checkbox"{{#chosen}} checked="checked"{{/chosen}} name="user" value="{{ username }}" /> {{ fullname }}
+            <input type="checkbox"{{#chosen}} checked="checked"{{/chosen}} name="user" value="{{ username }}" /> {{ first_name }} {{ last_name }}
         </label>
     {{/users}}
     </ul>
