@@ -1,6 +1,6 @@
 var TemplateEngine = {
-    path: 'templates/',
-    templates: ['containers', 'forms', 'filters', 'modals', 'misc'],
+    path: 'js/template/',
+    templates: ['categoryTotal', 'chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'header', 'incomeList', 'monthlyBalance', 'root', 'userSelect'],
     fetchTemplate: function(path) {
         $.ajax({
             type: 'GET',
@@ -18,7 +18,7 @@ var TemplateEngine = {
         }
         ich.grabTemplates();
     },
-    concatenated_templates: 'templates/all.ich',
+    concatenated_templates: 'js/template/all.ich',
     fetchConcatenatedTemplates: function() {
         this.fetchTemplate(this.concatenated_templates);
         ich.grabTemplates();
