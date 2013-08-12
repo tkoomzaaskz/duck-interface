@@ -3,6 +3,7 @@ requirejs.config({
     baseUrl: 'js',
     paths: {
         jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery',
+        jquery_validate: 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min',
         underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
         backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
         marionette: '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette',
