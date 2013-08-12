@@ -1,6 +1,6 @@
 var TemplateEngine = {
     path: 'js/template/',
-    templates: ['categoryTotal', 'chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'header', 'incomeList', 'monthlyBalance', 'root', 'userSelect'],
+    templates: ['categoryTotal', 'chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'incomeList', 'monthlyBalance', 'root', 'userSelect'],
     fetchTemplate: function(path) {
         $.ajax({
             type: 'GET',

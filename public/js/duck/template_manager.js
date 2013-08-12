@@ -23,6 +23,8 @@ var TemplateManager = {
         })
     },
     renderTemplates: function() {
+        $('body').html(ich.rootTemplate());
+
         // init main container body
         $(this.getMainContainerSelector()).html(ich.homepageTemplate());
 
