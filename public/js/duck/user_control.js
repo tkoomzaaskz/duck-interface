@@ -25,7 +25,7 @@ var UsersControl = {
     },
     setChosen: function(username_list) {
         for (var index = 0; index < this.data.length; ++index) {
-            this.data[index].chosen = ($.inArray(this.data[index].first_name, username_list) > -1);
+            this.data[index].chosen = ($.inArray(this.data[index].username, username_list) > -1);
         }
     },
     getChosen: function() {
