@@ -1,9 +1,15 @@
-jQuery.validator.addMethod("money", function(value, element) {
-    return this.optional(element) || /^(\d{1,6})(\.\d{1,2})?$/.test(value);
-}, "Must be proper currency format: dddddd.dd");
+define(['duck/template_engine', 'duck/template_manager'],
+function(TemplateEngine, TemplateManager) {
 
-$(document).ready( function() {
-    TemplateEngine.fetchConcatenatedTemplates();
-    TemplateManager.initAllTemplates();
-    url = 'http://localhost:8000/api/v1/';
+    'use strict';
+
+    jQuery.validator.addMethod("money", function(value, element) {
+        return this.optional(element) || /^(\d{1,6})(\.\d{1,2})?$/.test(value);
+    }, "Must be proper currency format: dddddd.dd");
+    
+    $(document).ready( function() {
+        TemplateEngine.fetchConcatenatedTemplates();
+        TemplateManager.initAllTemplates();
+    });
+
 });

@@ -1,4 +1,4 @@
-<script id="CategorySelectTemplate" type="text/html">
+<script id="categorySelectTemplate" type="text/html">
     <select id="category_id" name="category_id" class="required">
         <option value="">choose category</option>
         {{#categories}}

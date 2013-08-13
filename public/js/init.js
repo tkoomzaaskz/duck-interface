@@ -2,13 +2,13 @@ requirejs.config({
     enforceDefine: true,
     baseUrl: 'js',
     paths: {
-        jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery',
-        jquery_validate: 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min',
-        underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore',
-        backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
+        jquery: '../vendor/js/jquery/jquery-1.8.3',
+        jquery_validate: '../vendor/js/jquery/jquery.validate',
+        underscore: '../vendor/js/underscore',
+        backbone: '../vendor/js/backbone',
         marionette: '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette',
-        bootstrap: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min',
-        bootbox: '//bootboxjs.com/bootbox',
+        bootstrap: '../vendor/js/bootstrap/js/bootstrap',
+        bootbox: '../vendor/js/bootstrap/bootbox',
         icanhaz: '../vendor/js/icanhaz',
         text: '../vendor/js/text',
     },
@@ -35,12 +35,27 @@ requirejs.config({
             deps: ['jquery'],
             exports: '$.fn.popover'
         },
+        bootbox: {
+            deps: ['bootstrap'],
+            exports: 'bootbox'
+        },
         text: {
         },
     }
 });
 
-define(['application'],
-function(Application) {
-    Application.start();
+define(['jquery', 'bootstrap', 'bootbox', 'icanhaz', 'application', 'config',
+        'duck/template_engine', 'duck/template_manager',
+        'duck/user_control', 'duck/user_dialog',
+        'duck/category_control', 'duck/category_dialog',
+        'duck/form_dialog', 'duck/main_control', 'duck/main'],
+function($, Bootstrap, Bootbox, ich, Application, Config,
+        TemplateEngine, TemplateManager,
+        UserControl, UserDialog,
+        CategoryControl, CategoryDialog,
+        FormDialog, MainControl, Main) {
+
+    window.url = Config.urlRoot;
+
+    //Application.start();
 });

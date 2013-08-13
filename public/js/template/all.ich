@@ -45,7 +45,8 @@
         Coming soon...
     </p>
 </script>
-<script id="CategorySelectTemplate" type="text/html">
+
+<script id="categorySelectTemplate" type="text/html">
     <select id="category_id" name="category_id" class="required">
         <option value="">choose category</option>
         {{#categories}}
@@ -54,7 +55,7 @@
     </select>
 </script>
 
-<script id="UserSelectTemplate" type="text/html">
+<script id="userSelectTemplate" type="text/html">
     <select id="username" name="username" class="required">
         <option value="">choose user</option>
         {{#users}}
@@ -63,7 +64,7 @@
     </select>
 </script>
 
-<script id="UserCheckboxTemplate" type="text/html">
+<script id="userCheckboxTemplate" type="text/html">
     <p>
         Choose from the following users:
     <ul>
@@ -75,6 +76,7 @@
     </ul>
 </p>
 </script>
+
 <script id="formTemplate" type="text/html">
     <form class="form-horizontal well" data-async data-target="#{{ type }}FormDialog" method="POST">
         <div class="modal-header">
@@ -96,13 +98,13 @@
                 <div class="control-group">
                     <label class="control-label" for="username">User</label>
                     <div class="controls">
-                        {{>UserSelectTemplate}}
+                        {{>userSelectTemplate}}
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="category_id">Category</label>
                     <div class="controls">
-                        {{>CategorySelectTemplate}}
+                        {{>categorySelectTemplate}}
                     </div>
                 </div>
                 <div class="control-group">
@@ -119,6 +121,7 @@
         </div>
     </form>
 </script>
+
 <script id="errorTemplate" type="text/html">
     <p class="text-error">
         <strong>Following {{ type }} error occured</strong>: {{ message }}
@@ -131,6 +134,7 @@
     <div id="chooseUsersDialog" class="modal hide fade" role="dialog"></div>
     <div id="chooseCategoriesDialog" class="modal hide fade" role="dialog"></div>
 </script>
+
 <script id="chooseUsersTemplate" type="text/html">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>

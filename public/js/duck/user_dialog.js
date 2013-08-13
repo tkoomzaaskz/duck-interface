@@ -1,27 +1,36 @@
-var UserDialog = {
-    selector: '#chooseUsersDialog',
-    init: function() {
-        $(this.selector).html(ich.chooseUsersTemplate());
-        
-        var _self = this;
-        var users = UsersControl.getData();
+define(['duck/user_control'],
+function(UserControl) {
 
-        $(this.selector).on('show', function () {
-            if (users == null) {
-                $(_self.selector + ' .modal-body').html(TemplateManager.getRenderedError('AJAX'));
-            } else {
-                $(_self.selector + ' .modal-body').html(ich.UserCheckboxTemplate({
-                    'users': users
-                }));
-            }
-        });
+    'use strict';
 
-        $(this.selector + ' .btn-primary').bind('click', function() {
-            var chosen = $("input[name=user]:checked").map(function() {
-                return this.value;
+    var UserDialog = {
+        selector: '#chooseUsersDialog',
+        init: function() {
+            $(this.selector).html(ich.chooseUsersTemplate());
+            
+            var _self = this;
+            var users = UserControl.getData();
+    
+            $(this.selector).on('show', function () {
+                if (users == null) {
+                    $(_self.selector + ' .modal-body').html(TemplateManager.getRenderedError('AJAX'));
+                } else {
+                    $(_self.selector + ' .modal-body').html(ich.userCheckboxTemplate({
+                        'users': users
+                    }));
+                }
             });
-            UsersControl.setChosen(chosen);
-            $(_self.selector).modal('hide');
-        });
+    
+            $(this.selector + ' .btn-primary').bind('click', function() {
+                var chosen = $("input[name=user]:checked").map(function() {
+                    return this.value;
+                });
+                UserControl.setChosen(chosen);
+                $(_self.selector).modal('hide');
+            });
+        }
     }
-}
+
+    return UserDialog;
+
+});

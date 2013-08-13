@@ -1,4 +1,4 @@
-<script id="UserCheckboxTemplate" type="text/html">
+<script id="userCheckboxTemplate" type="text/html">
     <p>
         Choose from the following users:
     <ul>

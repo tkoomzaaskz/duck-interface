@@ -1,4 +1,4 @@
-<script id="UserSelectTemplate" type="text/html">
+<script id="userSelectTemplate" type="text/html">
     <select id="username" name="username" class="required">
         <option value="">choose user</option>
         {{#users}}

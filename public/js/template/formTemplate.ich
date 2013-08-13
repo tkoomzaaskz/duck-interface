@@ -19,13 +19,13 @@
                 <div class="control-group">
                     <label class="control-label" for="username">User</label>
                     <div class="controls">
-                        {{>UserSelectTemplate}}
+                        {{>userSelectTemplate}}
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="category_id">Category</label>
                     <div class="controls">
-                        {{>CategorySelectTemplate}}
+                        {{>categorySelectTemplate}}
                     </div>
                 </div>
                 <div class="control-group">
