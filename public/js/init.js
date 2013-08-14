@@ -1,9 +1,9 @@
 requirejs.config({
-    enforceDefine: true,
+//    enforceDefine: true, // jquery.validator is not defined
     baseUrl: 'js',
     paths: {
         jquery: '../vendor/js/jquery/jquery-1.8.3',
-        jquery_validate: '../vendor/js/jquery/jquery.validate',
+        jqueryValidate: '../vendor/js/jquery/jquery.validate',
         underscore: '../vendor/js/underscore',
         backbone: '../vendor/js/backbone',
         marionette: '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette',
@@ -26,6 +26,9 @@ requirejs.config({
         },
         jquery: {
             exports: '$'
+        },
+        jqueryValidate: {
+            deps: ['jquery']
         },
         icanhaz: {
           deps: ['jquery'],
