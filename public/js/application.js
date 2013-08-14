@@ -1,5 +1,5 @@
-define(['marionette', 'tools/logger', 'bootstrap', 'view/root'],
-function(Marionette, logger, bootstrap, RootView) {
+define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger', 'view/root'],
+function($, Backbone, Marionette, bootstrap, logger, RootView) {
 
     'use strict';
 
@@ -14,6 +14,12 @@ function(Marionette, logger, bootstrap, RootView) {
             logger.event(arguments);
             Backbone.Events.trigger.apply(this, arguments);
         }
+    });
+
+    Application.addInitializer(function(options) {
+      $.validator.addMethod("money", function(value, element) {
+        return this.optional(element) || /^(\d{1,6})(\.\d{1,2})?$/.test(value);
+      }, "Must be proper currency format: dddddd.dd");
     });
 
     Application.addInitializer(function(options) {
