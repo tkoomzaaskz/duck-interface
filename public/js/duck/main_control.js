@@ -15,12 +15,12 @@ function() {
             var itemsByID = [];
     
             categories.objects.forEach(function(item) {
-                itemsByID[item.id] = {
+                itemsByID.push({
                     data: {title: item.name},
                     attr: {id: item.id},
-                    parentID: item.parent_id,
+                    parentID: item.parent_id || null,
                     state: item.state
-                };
+                });
             });
     
             itemsByID.forEach(function(item) {

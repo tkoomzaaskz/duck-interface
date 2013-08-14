@@ -1,5 +1,5 @@
-define(['duck/main_control'],
-function(MainControl) {
+define(['duck/main_control', 'duck/template_manager'],
+function(MainControl, TemplateManager) {
 
     'use strict';
 
