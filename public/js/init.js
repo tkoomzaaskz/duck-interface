@@ -48,17 +48,13 @@ requirejs.config({
 });
 
 define(['jquery', 'bootstrap', 'bootbox', 'icanhaz', 'application', 'config',
-        'duck/template_engine', 'duck/template_manager',
-        'duck/user_control', 'duck/user_dialog',
-        'duck/category_control', 'duck/category_dialog',
-        'duck/form_dialog', 'duck/main_control'],
+    'duck/user_control', 'duck/user_dialog',
+    'duck/category_control', 'duck/category_dialog',
+    'duck/form_dialog', 'duck/main_control'],
 function($, Bootstrap, Bootbox, ich, Application, Config,
-        TemplateEngine, TemplateManager,
-        UserControl, UserDialog,
-        CategoryControl, CategoryDialog,
-        FormDialog, MainControl) {
-
-    window.url = Config.urlRoot;
+    UserControl, UserDialog,
+    CategoryControl, CategoryDialog,
+    FormDialog, MainControl) {
 
     Application.start();
 });

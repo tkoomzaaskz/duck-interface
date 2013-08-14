@@ -10,7 +10,6 @@ function(ich, FormDialog, UserDialog, CategoryDialog) {
             CategoryDialog.init();
             window.IncomeFormDialog.init();
             window.OutcomeFormDialog.init();
-            this.bindMenuOptions();
         },
         getMainContainerSelector: function () {
             return '.container#main';
@@ -42,32 +41,6 @@ function(ich, FormDialog, UserDialog, CategoryDialog) {
             $('a.btn-info').popover({
                 'placement': 'bottom'
             });
-        },
-        bindMenuOptions: function () {
-            $('#menu_homepage').bind('click', $.proxy(function(){
-                this.renderMainContainerTemplate('homepageTemplate');
-            }, TemplateManager));
-    
-            $('#menu_outcome_list').bind('click', $.proxy(function(){
-                this.renderMainContainerTemplate('outcomeListTemplate');
-                $('#outcomes').dataTable({
-                    "bServerSide": true,
-                    'sPaginationType': 'bootstrap',
-                    "sAjaxSource": '../php/client/json.php?type=outcomes'
-                });
-            }, TemplateManager));
-    
-            $('#menu_income_list').bind('click', $.proxy(function(){
-                this.renderMainContainerTemplate('incomeListTemplate');
-            }, TemplateManager));
-    
-            $('#menu_monthly_balance').bind('click', $.proxy(function(){
-                this.renderMainContainerTemplate('monthlyBalanceTemplate');
-            }, TemplateManager));
-    
-            $('#menu_category_total').bind('click', $.proxy(function(){
-                this.renderMainContainerTemplate('categoryTotalTemplate');
-            }, TemplateManager));
         }
     };
 
