@@ -11,7 +11,7 @@ function(Config) {
                 dataType: "json",
                 context: this,
                 async: false,
-                url: Config.urlRoot + "user/"
+                url: Config.urlRoot + '/' + "user/"
             }).done(function(response) {
                 this.data = response.objects;
                 this.setAll(true);

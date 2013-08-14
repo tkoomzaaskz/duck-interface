@@ -6,7 +6,7 @@ function(Backbone, config, logger) {
     return Backbone.Model.extend({
         urlRoot: config.urlRoot + '/category',
         url: function() {
-            return this.urlRoot + '/' + this.id + '/?format=json';
+            return this.urlRoot + '/' + this.type + 'category/';
         },
 
         initialize: function(options) {

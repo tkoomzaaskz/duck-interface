@@ -57,5 +57,5 @@ function($, Bootstrap, Bootbox, ich, Application, Config,
 
     window.url = Config.urlRoot;
 
-    //Application.start();
+    Application.start();
 });

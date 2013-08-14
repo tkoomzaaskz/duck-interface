@@ -19,7 +19,7 @@ function(Marionette, logger, bootstrap, RootView) {
     Application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
         var rootView = new RootView();
-        rootView.setElement('body').render();
+//        rootView.setElement('body').render();
 //        Application.bodyRegion.show(new RootView());
     });
 
