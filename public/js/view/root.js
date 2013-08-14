@@ -10,7 +10,8 @@ function(Backbone, logger, ich, loader, template,
 
         initialize: function(options) {
             logger.init('root');
-            loader.loadTemplate(template);
+            // temporarily switched off since old interface loads templates anyway
+            //loader.loadTemplate(template);
             this.usersView = new UsersView();
         },
 
