@@ -56,11 +56,11 @@ requirejs.config({
 });
 
 define(['jquery', 'bootstrap', 'bootbox', 'bootstrapModal', 'icanhaz', 'application', 'config',
-    'duck/user_control', 'duck/user_dialog',
+    'duck/user_control',
     'duck/category_control', 'duck/category_dialog',
     'duck/form_dialog', 'duck/main_control'],
 function($, Bootstrap, Bootbox, BootstrapModal, ich, Application, Config,
-    UserControl, UserDialog,
+    UserControl,
     CategoryControl, CategoryDialog,
     FormDialog, MainControl) {
 

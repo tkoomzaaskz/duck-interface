@@ -1,7 +1,7 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-    'view/root', 'view/hidden', 'duck/template_manager', 'jqueryValidate', 'jstree'],
+    'view/root', 'view/hidden', 'view/dialog/user', 'duck/template_manager', 'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette, bootstrap, logger,
-    RootView, HiddenView, TemplateManager) {
+    RootView, HiddenView, UserPseudoView, TemplateManager) {
 
     'use strict';
 
@@ -28,11 +28,11 @@ function($, Backbone, Marionette, bootstrap, logger,
         logger.log('APPLICATION', 'start');
         var rootView = new RootView();
         var hiddenView = new HiddenView();
-        rootView.setElement('body').render();
         hiddenView.setElement('body').render();
-        rootView.openHomepage();
+        rootView.setElement('body').render();
 //        Application.bodyRegion.show(new RootView());
         TemplateManager.initAllTemplates();
+        UserPseudoView.init();
     });
 
     return application;

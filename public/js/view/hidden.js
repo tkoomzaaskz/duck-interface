@@ -13,7 +13,7 @@ function(Backbone, logger, ich) {
         render: function() {
             logger.render('hidden');
             this.engine.fetchAllTemplates();
-            //this.$el.append("this is appendd template");
+            //this.$el.append("this is appended template");
             return this;
         },
 

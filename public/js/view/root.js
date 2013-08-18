@@ -50,8 +50,9 @@ function(Backbone, logger, ich, loader, template,
 
         render: function() {
             logger.render('root');
-            this.$el.html(ich.rootTemplate);
+            this.$el.append(ich.rootTemplate);
             // this.usersView.setElement(this.$el.find('#main')).render();
+            this.openHomepage();
             return this;
         }
     });
