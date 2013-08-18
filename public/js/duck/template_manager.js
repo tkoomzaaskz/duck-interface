@@ -1,15 +1,20 @@
-define(['icanhaz', 'duck/form_dialog', 'duck/user_dialog', 'duck/category_dialog'],
-function(ich, FormDialog, UserDialog, CategoryDialog) {
+define(['icanhaz', 'duck/form_dialog', 'duck/user_control', 'duck/user_dialog', 'duck/category_dialog'],
+function(ich, FormDialog, UserControl, UserDialog, CategoryDialog) {
 
     'use strict';
 
     var TemplateManager = {
         initAllTemplates: function() {
             this.renderTemplates();
+
             UserDialog.init();
             CategoryDialog.init();
-            window.IncomeFormDialog.init();
-            window.OutcomeFormDialog.init();
+
+            var IncomeFormDialog = new FormDialog(window.IncomeCategoryControl, UserControl, "income");
+            IncomeFormDialog.init();
+
+            var OutcomeFormDialog = new FormDialog(window.OutcomeCategoryControl, UserControl, "outcome");
+            OutcomeFormDialog.init();
         },
         getMainContainerSelector: function () {
             return '.container#main';

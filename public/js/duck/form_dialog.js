@@ -1,5 +1,5 @@
-define(['duck/user_control', 'duck/main_control'],
-function(UserControl, MainControl) {
+define(['duck/main_control'],
+function(MainControl) {
 
     'use strict';
 
@@ -94,9 +94,6 @@ function(UserControl, MainControl) {
             event.preventDefault();
         });
     };
-
-    window.IncomeFormDialog = new FormDialog(IncomeCategoryControl, UserControl, "income");
-    window.OutcomeFormDialog = new FormDialog(OutcomeCategoryControl, UserControl, "outcome");
 
     return FormDialog;
 
