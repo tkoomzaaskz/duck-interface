@@ -33,8 +33,8 @@ function($, Backbone, Marionette, bootstrap, logger,
 
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
-        var rootView = new RootView();
-        rootView.setElement('body').render();
+//        var rootView = new RootView();
+//        rootView.setElement('body').render();
 //        Application.bodyRegion.show(new RootView());
     });
 

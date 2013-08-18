@@ -1,5 +1,5 @@
-define(['duck/main_control'],
-function(MainControl) {
+define(['duck/main_control', 'bootbox'],
+function(MainControl, Bootbox) {
 
     'use strict';
 
@@ -40,7 +40,7 @@ function(MainControl) {
     
     FormDialog.prototype.init = function() {
         var _self = this;
-    
+
         // render templates
         $(this.getSelector()).html(ich[this.getTemplate()]({
             'currency': MainControl.getCurrency(),
