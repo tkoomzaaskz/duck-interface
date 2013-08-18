@@ -1,5 +1,5 @@
-define(['icanhaz', 'duck/form_dialog', 'duck/user_control', 'duck/category_dialog'],
-function(ich, FormDialog, UserControl, CategoryDialog) {
+define(['icanhaz', 'duck/form_dialog', 'duck/user_control'],
+function(ich, FormDialog, UserControl) {
 
     'use strict';
 
@@ -15,8 +15,6 @@ function(ich, FormDialog, UserControl, CategoryDialog) {
             $('a.btn-info').popover({
                 'placement': 'bottom'
             });
-
-            CategoryDialog.init();
 
             var IncomeFormDialog = new FormDialog(window.IncomeCategoryControl, UserControl, "income");
             IncomeFormDialog.init();
