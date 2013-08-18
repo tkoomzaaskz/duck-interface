@@ -1,7 +1,7 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-        'view/root', 'duck/template_manager', 'jqueryValidate'],
+        'view/root', 'view/hidden', 'duck/template_manager', 'jqueryValidate'],
 function($, Backbone, Marionette, bootstrap, logger,
-        RootView, TemplateManager) {
+        RootView, HiddenView, TemplateManager) {
 
     'use strict';
 
@@ -25,17 +25,14 @@ function($, Backbone, Marionette, bootstrap, logger,
     });
 
     application.addInitializer(function(options) {
-        $(document).ready( function() {
-            TemplateManager.engine.fetchAllTemplates();
-            TemplateManager.initAllTemplates();
-        });
-    });
-
-    application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
-//        var rootView = new RootView();
-//        rootView.setElement('body').render();
+        var rootView = new RootView();
+        var hiddenView = new HiddenView();
+        rootView.setElement('body').render();
+        hiddenView.setElement('body').render();
+        rootView.openHomepage();
 //        Application.bodyRegion.show(new RootView());
+        TemplateManager.initAllTemplates();
     });
 
     return application;
