@@ -6,7 +6,7 @@ requirejs.config({
         jqueryValidate: '../vendor/js/jquery/jquery.validate',
         underscore: '../vendor/js/underscore',
         backbone: '../vendor/js/backbone',
-        marionette: '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.0.1-bundled/backbone.marionette',
+        marionette: '../vendor/js/backbone.marionette',
         bootstrap: '../vendor/js/bootstrap/js/bootstrap',
         bootbox: '../vendor/js/bootstrap/bootbox',
         bootstrapModal: '../vendor/js/backbone.bootstrap-modal',
