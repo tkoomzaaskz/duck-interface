@@ -5,7 +5,7 @@ define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
 function($, Backbone, Marionette, bootstrap, logger,
     UserControl,
     RootView, HiddenView,
-    UserPseudoView, CategoryPseudoView, FormPseudoView) {
+    UserView, CategoryPseudoView, FormPseudoView) {
 
     'use strict';
 
@@ -43,7 +43,7 @@ function($, Backbone, Marionette, bootstrap, logger,
         var OutcomeFormDialog = new FormPseudoView(window.OutcomeCategoryControl, UserControl, "outcome");
         OutcomeFormDialog.init();
 
-        UserPseudoView.init();
+        var userView = new UserView();
         CategoryPseudoView.init();
     });
 

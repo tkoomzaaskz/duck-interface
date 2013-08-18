@@ -1,11 +1,12 @@
-define(['duck/user_control', 'icanhaz'],
-function(UserControl, ich) {
+define(['backbone', 'duck/user_control', 'icanhaz'],
+function(Backbone, UserControl, ich) {
 
     'use strict';
 
-    var UserDialog = {
+    return Backbone.View.extend({
+        el: '#chooseUsersDialog',
         selector: '#chooseUsersDialog',
-        init: function() {
+        initialize: function() {
             $(this.selector).html(ich.chooseUsersTemplate());
             
             var _self = this;
@@ -32,8 +33,5 @@ function(UserControl, ich) {
                 $(_self.selector).modal('hide');
             });
         }
-    }
-
-    return UserDialog;
-
+    });
 });
