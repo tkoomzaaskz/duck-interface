@@ -22,11 +22,6 @@ function(ich, FormDialog, UserControl) {
             var OutcomeFormDialog = new FormDialog(window.OutcomeCategoryControl, UserControl, "outcome");
             OutcomeFormDialog.init();
         },
-        renderMainContainerTemplate: function (template, options) {
-            if (typeof(options) === 'undefined') options = {};
-            var html = ich[template](options);
-            $('.container#main').html(html);
-        },
         getRenderedError: function(type) {
             return ich.errorTemplate({
                 'type': type,

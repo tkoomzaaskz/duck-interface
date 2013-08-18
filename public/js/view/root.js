@@ -17,15 +17,15 @@ function(Backbone, logger, ich, loader, template,
         },
 
         openHomepage: function() {
-            TemplateManager.renderMainContainerTemplate('homepageTemplate');
+            this.renderMainContainerTemplate('homepageTemplate');
         },
 
         openIncomeList: function() {
-            TemplateManager.renderMainContainerTemplate('incomeListTemplate');
+            this.renderMainContainerTemplate('incomeListTemplate');
         },
 
         openOutcomeList: function() {
-            TemplateManager.renderMainContainerTemplate('outcomeListTemplate');
+            this.renderMainContainerTemplate('outcomeListTemplate');
             $('#outcomes').dataTable({
                 "bServerSide": true,
                 'sPaginationType': 'bootstrap',
@@ -34,11 +34,17 @@ function(Backbone, logger, ich, loader, template,
         },
 
         openMonthlyBalance: function() {
-            TemplateManager.renderMainContainerTemplate('monthlyBalanceTemplate');
+            this.renderMainContainerTemplate('monthlyBalanceTemplate');
         },
 
         openCategoryTotal: function() {
-            TemplateManager.renderMainContainerTemplate('categoryTotalTemplate');
+            this.renderMainContainerTemplate('categoryTotalTemplate');
+        },
+
+        renderMainContainerTemplate: function (template, options) {
+            if (typeof(options) === 'undefined') options = {};
+            var html = ich[template](options);
+            $('.container#main').html(html);
         },
 
         initialize: function(options) {
