@@ -56,9 +56,9 @@ requirejs.config({
 });
 
 define(['jquery', 'bootstrap', 'bootbox', 'bootstrapModal', 'icanhaz', 'application', 'config',
-    'duck/user_control', 'duck/category_control', 'duck/form_dialog', 'duck/main_control'],
+    'duck/user_control', 'duck/category_control', 'duck/main_control'],
 function($, Bootstrap, Bootbox, BootstrapModal, ich, Application, Config,
-    UserControl, CategoryControl, FormDialog, MainControl) {
+    UserControl, CategoryControl, MainControl) {
 
     Application.start();
 });

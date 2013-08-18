@@ -1,9 +1,11 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-    'duck/form_dialog', 'duck/user_control',
-    'view/root', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'jqueryValidate', 'jstree'],
+    'duck/user_control',
+    'view/root', 'view/hidden',
+    'view/dialog/user', 'view/dialog/category', 'view/dialog/form', 'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette, bootstrap, logger,
-    FormDialog, UserControl,
-    RootView, HiddenView, UserPseudoView, CategoryPseudoView) {
+    UserControl,
+    RootView, HiddenView,
+    UserPseudoView, CategoryPseudoView, FormPseudoView) {
 
     'use strict';
 
@@ -45,10 +47,10 @@ function($, Backbone, Marionette, bootstrap, logger,
             'placement': 'bottom'
         });
 
-        var IncomeFormDialog = new FormDialog(window.IncomeCategoryControl, UserControl, "income");
+        var IncomeFormDialog = new FormPseudoView(window.IncomeCategoryControl, UserControl, "income");
         IncomeFormDialog.init();
 
-        var OutcomeFormDialog = new FormDialog(window.OutcomeCategoryControl, UserControl, "outcome");
+        var OutcomeFormDialog = new FormPseudoView(window.OutcomeCategoryControl, UserControl, "outcome");
         OutcomeFormDialog.init();
 
         UserPseudoView.init();
