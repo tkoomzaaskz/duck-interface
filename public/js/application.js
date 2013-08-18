@@ -1,8 +1,7 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-        'view/root', 'duck/template_engine', 'duck/template_manager',
-        'jqueryValidate'],
+        'view/root', 'duck/template_manager', 'jqueryValidate'],
 function($, Backbone, Marionette, bootstrap, logger,
-        RootView, TemplateEngine, TemplateManager) {
+        RootView, TemplateManager) {
 
     'use strict';
 
@@ -27,7 +26,7 @@ function($, Backbone, Marionette, bootstrap, logger,
 
     application.addInitializer(function(options) {
         $(document).ready( function() {
-            TemplateEngine.fetchAllTemplates();
+            TemplateManager.engine.fetchAllTemplates();
             TemplateManager.initAllTemplates();
         });
     });
