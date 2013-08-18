@@ -1,14 +1,14 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-        'view/root', 'view/hidden', 'duck/template_manager', 'jqueryValidate', 'jstree'],
+    'view/root', 'view/hidden', 'duck/template_manager', 'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette, bootstrap, logger,
-        RootView, HiddenView, TemplateManager) {
+    RootView, HiddenView, TemplateManager) {
 
     'use strict';
 
     var application = new Marionette.Application();
 
     application.addRegions({
-      bodyRegion: "body"
+        bodyRegion: "body"
     });
 
     application.addInitializer(function(options) {
@@ -19,9 +19,9 @@ function($, Backbone, Marionette, bootstrap, logger,
     });
 
     application.addInitializer(function(options) {
-      $.validator.addMethod("money", function(value, element) {
-        return this.optional(element) || /^(\d{1,6})(\.\d{1,2})?$/.test(value);
-      }, "Must be proper currency format: dddddd.dd");
+        $.validator.addMethod("money", function(value, element) {
+            return this.optional(element) || /^(\d{1,6})(\.\d{1,2})?$/.test(value);
+        }, "Must be proper currency format: dddddd.dd");
     });
 
     application.addInitializer(function(options) {
