@@ -8,17 +8,16 @@ function(Backbone, logger, ich) {
 
         initialize: function(options) {
             logger.init('hidden');
+            this.engine.fetchAllTemplates();
         },
 
         render: function() {
             logger.render('hidden');
-            this.engine.fetchAllTemplates();
-            //this.$el.append("this is appended template");
+            this.$el.append(ich.modalsContainerTemplate());
             return this;
         },
 
         engine: {
-            path: 'js/template/',
             templates: ['categoryTotal', 'chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'incomeList', 'monthlyBalance', 'root', 'userSelect'],
             fetchTemplate: function(path) {
                 $.ajax({
@@ -33,9 +32,9 @@ function(Backbone, logger, ich) {
             fetchAllTemplates: function() {
                 var index;
                 for (index = 0; index < this.templates.length; ++index) {
-                    this.fetchTemplate(this.path + this.templates[index] + '.ich');
+                    this.fetchTemplate('js/template/' + this.templates[index] + '.ich');
                 }
-                ich.grabTemplates();
+                ich.refresh();
             }
         }
     });

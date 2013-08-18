@@ -30,22 +30,12 @@ function($, Backbone, Marionette, bootstrap, logger,
 
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
-        var rootView = new RootView();
         var hiddenView = new HiddenView();
-        hiddenView.setElement('body').render();
+        var rootView = new RootView();
         rootView.setElement('body').render();
+        hiddenView.setElement('body').render();
+
 //        Application.bodyRegion.show(new RootView());
-
-        // append modal containers
-        $('body').append(ich.modalsContainerTemplate());
-
-        // bootstrap menu: dropdown
-        $('.dropdown-toggle').dropdown();
-
-        // popover-ize all info buttons
-        $('a.btn-info').popover({
-            'placement': 'bottom'
-        });
 
         var IncomeFormDialog = new FormPseudoView(window.IncomeCategoryControl, UserControl, "income");
         IncomeFormDialog.init();

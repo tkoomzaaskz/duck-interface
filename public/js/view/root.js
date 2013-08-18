@@ -56,9 +56,18 @@ function(Backbone, logger, ich, loader, template,
 
         render: function() {
             logger.render('root');
-            this.$el.append(ich.rootTemplate);
+            this.$el.html(ich.rootTemplate);
             // this.usersView.setElement(this.$el.find('#main')).render();
             this.openHomepage();
+
+            // bootstrap menu: dropdown
+            $('.dropdown-toggle').dropdown();
+
+            // popover-ize all info buttons
+            $('a.btn-info').popover({
+                'placement': 'bottom'
+            });
+
             return this;
         }
     });
