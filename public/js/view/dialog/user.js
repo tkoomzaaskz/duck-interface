@@ -13,7 +13,10 @@ function(UserControl, ich) {
     
             $(this.selector).on('show', function () {
                 if (users == null) {
-                    $(_self.selector + ' .modal-body').html(TemplateManager.getRenderedError('AJAX'));
+                    $(_self.selector + ' .modal-body').html(ich.errorTemplate({
+                        'type': 'AJAX',
+                        'message': 'could not load data from server'
+                    }));
                 } else {
                     $(_self.selector + ' .modal-body').html(ich.userCheckboxTemplate({
                         'users': users

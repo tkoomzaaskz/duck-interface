@@ -1,7 +1,7 @@
 define(['backbone', 'tools/logger', 'icanhaz', 'view/loader', 'text!template/root.ich',
-    'duck/template_manager', 'view/users'],
+    'view/users'],
 function(Backbone, logger, ich, loader, template,
-    TemplateManager, UsersView) {
+    UsersView) {
 
     'use strict';
 

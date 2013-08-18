@@ -1,7 +1,9 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-    'view/root', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'duck/template_manager', 'jqueryValidate', 'jstree'],
+    'duck/form_dialog', 'duck/user_control',
+    'view/root', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette, bootstrap, logger,
-    RootView, HiddenView, UserPseudoView, CategoryPseudoView, TemplateManager) {
+    FormDialog, UserControl,
+    RootView, HiddenView, UserPseudoView, CategoryPseudoView) {
 
     'use strict';
 
@@ -31,7 +33,24 @@ function($, Backbone, Marionette, bootstrap, logger,
         hiddenView.setElement('body').render();
         rootView.setElement('body').render();
 //        Application.bodyRegion.show(new RootView());
-        TemplateManager.initAllTemplates();
+
+        // append modal containers
+        $('body').append(ich.modalsContainerTemplate());
+
+        // bootstrap menu: dropdown
+        $('.dropdown-toggle').dropdown();
+
+        // popover-ize all info buttons
+        $('a.btn-info').popover({
+            'placement': 'bottom'
+        });
+
+        var IncomeFormDialog = new FormDialog(window.IncomeCategoryControl, UserControl, "income");
+        IncomeFormDialog.init();
+
+        var OutcomeFormDialog = new FormDialog(window.OutcomeCategoryControl, UserControl, "outcome");
+        OutcomeFormDialog.init();
+
         UserPseudoView.init();
         CategoryPseudoView.init();
     });
