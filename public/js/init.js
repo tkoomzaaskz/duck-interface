@@ -4,6 +4,7 @@ requirejs.config({
     paths: {
         jquery: '../vendor/js/jquery/jquery-1.8.3',
         jqueryValidate: '../vendor/js/jquery/jquery.validate',
+        jstree: '../vendor/js/jstree/jquery.jstree',
         underscore: '../vendor/js/underscore',
         backbone: '../vendor/js/backbone',
         marionette: '../vendor/js/backbone.marionette',
@@ -11,7 +12,7 @@ requirejs.config({
         bootbox: '../vendor/js/bootstrap/bootbox',
         bootstrapModal: '../vendor/js/backbone.bootstrap-modal',
         icanhaz: '../vendor/js/icanhaz',
-        text: '../vendor/js/text',
+        text: '../vendor/js/text'
     },
     shim: {
         backbone: {
@@ -29,6 +30,9 @@ requirejs.config({
             exports: '$'
         },
         jqueryValidate: {
+            deps: ['jquery']
+        },
+        jstree: {
             deps: ['jquery']
         },
         icanhaz: {

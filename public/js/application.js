@@ -1,5 +1,5 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-        'view/root', 'view/hidden', 'duck/template_manager', 'jqueryValidate'],
+        'view/root', 'view/hidden', 'duck/template_manager', 'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette, bootstrap, logger,
         RootView, HiddenView, TemplateManager) {
 
