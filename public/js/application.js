@@ -5,7 +5,7 @@ define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
 function($, Backbone, Marionette, bootstrap, logger,
     UserControl,
     RootView, HiddenView,
-    UserView, CategoryPseudoView, FormPseudoView) {
+    UserView, CategoryView, FormPseudoView) {
 
     'use strict';
 
@@ -44,7 +44,7 @@ function($, Backbone, Marionette, bootstrap, logger,
         OutcomeFormDialog.init();
 
         var userView = new UserView();
-        CategoryPseudoView.init();
+        var categoryView = new CategoryView();
     });
 
     return application;

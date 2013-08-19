@@ -1,10 +1,10 @@
-define(['duck/main_control'],
-function(MainControl) {
+define(['backbone', 'duck/main_control'],
+function(Backbone, MainControl) {
 
     'use strict';
 
     // see more about jstree at http://luban.danse.us/jazzclub/javascripts/jquery/jsTree/reference/
-    
+
     function CategoryDialogTab(categoryControl, selector) {
         this.categoryControl = categoryControl;
         this.selector = selector;
@@ -91,15 +91,19 @@ function(MainControl) {
         }
     };
     
-    var CategoryDialog = {
+    return Backbone.View.extend({
+        el: "#chooseCategoriesDialog",
+        selector: "#chooseCategoriesDialog",
+
         incomeTab: new CategoryDialogTab(window.IncomeCategoryControl, "#incomeCategoryTree"),
         outcomeTab: new CategoryDialogTab(window.OutcomeCategoryControl, "#outcomeCategoryTree"),
-        selector: "#chooseCategoriesDialog",
+
         getActiveTab: function() {
             var tab = $(this.selector + " .tab-pane.active").attr("id");
             return tab.substring(0, tab.length - 3);
         },
-        init: function() {
+
+        initialize: function() {
             $(this.selector).html(ich.chooseCategoriesTemplate());
     
             var _self = this;
@@ -127,8 +131,5 @@ function(MainControl) {
                 $.jstree._reference(_self.getActiveTab() + 'CategoryTree').rename(evt.currentTarget);
             });
         }
-    }
-
-    return CategoryDialog;
-
+    });
 });
