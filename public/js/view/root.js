@@ -1,5 +1,5 @@
 define(['backbone', 'tools/logger', 'icanhaz', 'view/loader', 'text!template/root.ich',
-    'view/users'],
+    'view/users', 'datatables'],
 function(Backbone, logger, ich, loader, template,
     UsersView) {
 
