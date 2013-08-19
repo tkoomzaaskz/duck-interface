@@ -8,7 +8,7 @@
         baseUrl: 'js',
         paths: {
             jquery: vendorDir + 'jquery/jquery',
-            jqueryValidate: staticDir + 'jquery/jquery.validate',
+            jqueryValidate: vendorDir + 'jquery.validation/jquery.validate',
             jstree: staticDir + 'jstree/jquery.jstree',
             underscore: vendorDir + 'underscore/underscore',
             backbone: vendorDir + 'backbone/backbone',

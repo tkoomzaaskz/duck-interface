@@ -34,6 +34,7 @@
     "bootbox": "~3.3.0",
     "jstree": "~2.0.0-alpha",
     "bootstrap": "2.3.2",
-    "datatables": "~1.9.4"
+    "datatables": "~1.9.4",
+    "jquery.validation": "~1.11.1"
   }
 }
