@@ -1,5 +1,5 @@
-define(['backbone', 'bootbox', 'duck/main_control', 'tools/logger'],
-function(Backbone, Bootbox, MainControl, logger) {
+define(['backbone', 'bootbox', 'tools/logger', 'tools/constants'],
+function(Backbone, Bootbox, logger, constants) {
 
     'use strict';
 
@@ -43,7 +43,7 @@ function(Backbone, Bootbox, MainControl, logger) {
     
             // render templates
             $(this.getSelector()).html(ich[this.getTemplate()]({
-                'currency': MainControl.getCurrency(),
+                'currency': constants.currency,
                 'users': this.userControl.getData(),
                 'categories': this.categoryControl.getData(),
                 'type': this.type
