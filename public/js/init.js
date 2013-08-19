@@ -1,24 +1,24 @@
 (function(require){
 
-    var vendorDir = '../vendor/js/';
-    var bowerDir = '../vendor-bower/';
+    var vendorDir = '../vendor/';
+    var staticDir = vendorDir + 'static/';
     
     requirejs.config({
     //    enforceDefine: true, // jquery.validator is not defined
         baseUrl: 'js',
         paths: {
-            jquery: bowerDir + 'jquery/jquery',
-            jqueryValidate: vendorDir + 'jquery/jquery.validate',
-            jstree: vendorDir + 'jstree/jquery.jstree',
-            underscore: bowerDir + 'underscore/underscore',
-            backbone: bowerDir + 'backbone/backbone',
-            marionette: bowerDir + 'backbone.marionette/lib/backbone.marionette',
-            bootstrap: bowerDir + 'bootstrap/docs/assets/js/bootstrap',
-            bootbox: bowerDir + 'bootbox/bootbox',
-            bootstrapModal: bowerDir + 'backbone.bootstrap-modal/src/backbone.bootstrap-modal',
-            icanhaz: bowerDir + 'icanhazjs/ICanHaz',
-            datatables: bowerDir + 'datatables/media/js/jquery.dataTables',
-            text: bowerDir + 'requirejs-text/text'
+            jquery: vendorDir + 'jquery/jquery',
+            jqueryValidate: staticDir + 'jquery/jquery.validate',
+            jstree: staticDir + 'jstree/jquery.jstree',
+            underscore: vendorDir + 'underscore/underscore',
+            backbone: vendorDir + 'backbone/backbone',
+            marionette: vendorDir + 'backbone.marionette/lib/backbone.marionette',
+            bootstrap: vendorDir + 'bootstrap/docs/assets/js/bootstrap',
+            bootbox: vendorDir + 'bootbox/bootbox',
+            bootstrapModal: vendorDir + 'backbone.bootstrap-modal/src/backbone.bootstrap-modal',
+            icanhaz: vendorDir + 'icanhazjs/ICanHaz',
+            datatables: vendorDir + 'datatables/media/js/jquery.dataTables',
+            text: vendorDir + 'requirejs-text/text'
         },
         shim: {
             backbone: {
