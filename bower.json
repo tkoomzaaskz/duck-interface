@@ -26,6 +26,9 @@
     "jquery": "1.8.3",
     "underscore": "~1.5.1",
     "backbone": "~1.0.0",
-    "icanhazjs": "~0.10.3"
+    "icanhazjs": "~0.10.3",
+    "requirejs": "~2.1.8",
+    "requirejs-text": "~2.0.10",
+    "backbone.marionette": "~1.1.0"
   }
 }

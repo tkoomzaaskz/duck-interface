@@ -12,12 +12,12 @@
             jstree: vendorDir + 'jstree/jquery.jstree',
             underscore: bowerDir + 'underscore/underscore',
             backbone: bowerDir + 'backbone/backbone',
-            marionette: vendorDir + 'backbone.marionette',
+            marionette: bowerDir + 'backbone.marionette/lib/backbone.marionette',
             bootstrap: vendorDir + 'bootstrap/js/bootstrap',
             bootbox: vendorDir + 'bootstrap/bootbox',
             bootstrapModal: vendorDir + 'backbone.bootstrap-modal',
             icanhaz: bowerDir + 'icanhazjs/ICanHaz',
-            text: vendorDir + 'text'
+            text: bowerDir + 'requirejs-text/text'
         },
         shim: {
             backbone: {
