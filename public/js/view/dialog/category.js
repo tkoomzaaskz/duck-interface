@@ -1,5 +1,5 @@
-define(['backbone', 'duck/main_control', 'tools/logger'],
-function(Backbone, MainControl, logger) {
+define(['backbone', 'bootbox', 'duck/main_control', 'tools/logger'],
+function(Backbone, Bootbox, MainControl, logger) {
 
     'use strict';
 
@@ -59,7 +59,7 @@ function(Backbone, MainControl, logger) {
                 }).done(function(response) {
                     _self.categoryControl.renameNode(id, new_name);
                 }).fail(function(response) {
-                    bootbox.alert("rename node failed.");
+                    Bootbox.alert("rename node failed.");
                 });
             })
             .bind("create_node.jstree", function (event, data) {
@@ -82,7 +82,7 @@ function(Backbone, MainControl, logger) {
                     data.rslt.obj.attr("id", new_id);
                     _self.categoryControl.addNode(new_id, "some name", parent_id);
                 }).fail(function(response) {
-                    bootbox.alert("create node failed.");
+                    Bootbox.alert("create node failed.");
                 });
             })
             .bind("delete_node.jstree", function (event, data) {

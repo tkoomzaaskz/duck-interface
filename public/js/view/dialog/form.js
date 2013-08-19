@@ -87,7 +87,7 @@ function(Backbone, Bootbox, MainControl, logger) {
                         data: form.serialize(),
                         success: function(data, status) {
                             $(_self.getSelector()).modal('hide');
-                            bootbox.alert(_self.getCapitalisedType() + " has been successfully added.");
+                            Bootbox.alert(_self.getCapitalisedType() + " has been successfully added.");
                         }
                     });
                 }
