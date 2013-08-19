@@ -1,5 +1,5 @@
-define(['backbone', 'bootbox', 'duck/main_control'],
-function(Backbone, Bootbox, MainControl) {
+define(['backbone', 'bootbox', 'duck/main_control', 'tools/logger'],
+function(Backbone, Bootbox, MainControl, logger) {
 
     'use strict';
 
@@ -35,6 +35,7 @@ function(Backbone, Bootbox, MainControl) {
         },
         
         initialize: function(options) {
+            logger.render('form dialog');
             this.categoryControl = options.categoryControl;
             this.userControl = options.userControl;
             this.type = options.type;

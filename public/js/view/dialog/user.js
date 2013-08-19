@@ -1,12 +1,14 @@
-define(['backbone', 'duck/user_control', 'icanhaz'],
-function(Backbone, UserControl, ich) {
+define(['backbone', 'duck/user_control', 'icanhaz', 'tools/logger'],
+function(Backbone, UserControl, ich, logger) {
 
     'use strict';
 
     return Backbone.View.extend({
         el: '#chooseUsersDialog',
         selector: '#chooseUsersDialog',
+
         initialize: function() {
+            logger.render('user dialog');
             $(this.selector).html(ich.chooseUsersTemplate());
             
             var _self = this;

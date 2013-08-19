@@ -1,5 +1,5 @@
-define(['backbone', 'duck/main_control'],
-function(Backbone, MainControl) {
+define(['backbone', 'duck/main_control', 'tools/logger'],
+function(Backbone, MainControl, logger) {
 
     'use strict';
 
@@ -104,6 +104,7 @@ function(Backbone, MainControl) {
         },
 
         initialize: function() {
+            logger.render('category dialog');
             $(this.selector).html(ich.chooseCategoriesTemplate());
     
             var _self = this;
