@@ -59,11 +59,8 @@
         }
     });
     
-    define(['jquery', 'bootstrap', 'bootbox', 'bootstrapModal', 'icanhaz', 'application', 'config',
-        'duck/user_control', 'duck/category_control'],
-    function($, Bootstrap, Bootbox, BootstrapModal, ich, Application, Config,
-        UserControl, CategoryControl) {
-
+    define(['application'],
+    function(Application) {
         Application.start();
     });
 }(require));

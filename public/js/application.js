@@ -1,8 +1,8 @@
-define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
+define(['jquery', 'backbone', 'marionette', 'tools/logger',
     'duck/user_control', 'duck/category_control',
     'view/root', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'],
-function($, Backbone, Marionette, bootstrap, logger,
+function($, Backbone, Marionette, logger,
     UserControl, CategoryControl,
     RootView, HiddenView, UserView, CategoryView, FormView) {
 
