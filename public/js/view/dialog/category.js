@@ -95,16 +95,16 @@ function(Backbone, MainControl, logger) {
         el: "#chooseCategoriesDialog",
         selector: "#chooseCategoriesDialog",
 
-        incomeTab: new CategoryDialogTab(window.IncomeCategoryControl, "#incomeCategoryTree"),
-        outcomeTab: new CategoryDialogTab(window.OutcomeCategoryControl, "#outcomeCategoryTree"),
-
         getActiveTab: function() {
             var tab = $(this.selector + " .tab-pane.active").attr("id");
             return tab.substring(0, tab.length - 3);
         },
 
-        initialize: function() {
+        initialize: function(options) {
             logger.render('category dialog');
+            this.incomeTab = new CategoryDialogTab(options.incomeCategoryControl, "#incomeCategoryTree");
+            this.outcomeTab = new CategoryDialogTab(options.outcomeCategoryControl, "#outcomeCategoryTree");
+
             $(this.selector).html(ich.chooseCategoriesTemplate());
     
             var _self = this;

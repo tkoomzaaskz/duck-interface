@@ -1,9 +1,9 @@
 define(['jquery', 'backbone', 'marionette', 'bootstrap', 'tools/logger',
-    'duck/user_control',
+    'duck/user_control', 'duck/category_control',
     'view/root', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette, bootstrap, logger,
-    UserControl,
+    UserControl, CategoryControl,
     RootView, HiddenView, UserView, CategoryView, FormView) {
 
     'use strict';
@@ -36,18 +36,28 @@ function($, Backbone, Marionette, bootstrap, logger,
 
 //        Application.bodyRegion.show(new RootView());
 
+        var incomeCategoryControl = new CategoryControl("income");
+
+        var outcomeCategoryControl = new CategoryControl("outcome");
+
         var IncomeFormDialog = new FormView({
-            categoryControl: window.IncomeCategoryControl,
+            categoryControl: incomeCategoryControl,
             userControl: UserControl,
             type: "income"
         });
+
         var OutcomeFormDialog = new FormView({
-            categoryControl: window.OutcomeCategoryControl,
+            categoryControl: outcomeCategoryControl,
             userControl: UserControl,
             type: "outcome"
         });
+
         var userView = new UserView();
-        var categoryView = new CategoryView();
+
+        var categoryView = new CategoryView({
+            incomeCategoryControl: incomeCategoryControl,
+            outcomeCategoryControl: outcomeCategoryControl
+        });
     });
 
     return application;

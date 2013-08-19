@@ -63,9 +63,6 @@ function(Config) {
         }
     };
 
-    window.IncomeCategoryControl = new CategoryControl("income");
-    window.OutcomeCategoryControl = new CategoryControl("outcome");
-    
     return CategoryControl;
 
 });

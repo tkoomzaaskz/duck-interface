@@ -7,7 +7,7 @@ function(Backbone, UserControl, ich, logger) {
         el: '#chooseUsersDialog',
         selector: '#chooseUsersDialog',
 
-        initialize: function() {
+        initialize: function(options) {
             logger.render('user dialog');
             $(this.selector).html(ich.chooseUsersTemplate());
             
