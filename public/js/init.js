@@ -1,21 +1,22 @@
 (function(require){
 
     var vendorDir = '../vendor/js/';
+    var bowerDir = '../vendor-bower/';
     
     requirejs.config({
     //    enforceDefine: true, // jquery.validator is not defined
         baseUrl: 'js',
         paths: {
-            jquery: vendorDir + 'jquery/jquery-1.8.3',
+            jquery: bowerDir + 'jquery/jquery',
             jqueryValidate: vendorDir + 'jquery/jquery.validate',
             jstree: vendorDir + 'jstree/jquery.jstree',
-            underscore: vendorDir + 'underscore',
-            backbone: vendorDir + 'backbone',
+            underscore: bowerDir + 'underscore/underscore',
+            backbone: bowerDir + 'backbone/backbone',
             marionette: vendorDir + 'backbone.marionette',
             bootstrap: vendorDir + 'bootstrap/js/bootstrap',
             bootbox: vendorDir + 'bootstrap/bootbox',
             bootstrapModal: vendorDir + 'backbone.bootstrap-modal',
-            icanhaz: vendorDir + 'icanhaz',
+            icanhaz: bowerDir + 'icanhazjs/ICanHaz',
             text: vendorDir + 'text'
         },
         shim: {

@@ -1,0 +1,31 @@
+{
+  "name": "duck-interface",
+  "version": "2.0.0-ALPHA",
+  "homepage": "https://github.com/tkoomzaaskz/duck-interface",
+  "authors": [
+    "Tomasz Ducin <tomasz.ducin@gmail.com>"
+  ],
+  "description": "Browser interface for Wealthy Laughing Duck project",
+  "main": "public/index.html",
+  "keywords": [
+    "duck",
+    "interface",
+    "backbone",
+    "marionette"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.8.3",
+    "underscore": "~1.5.1",
+    "backbone": "~1.0.0",
+    "icanhazjs": "~0.10.3"
+  }
+}
