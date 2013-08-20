@@ -2,14 +2,14 @@
 
     var vendorDir = '../vendor/';
     var staticDir = vendorDir + 'static/';
-    
+
     requirejs.config({
     //    enforceDefine: true, // jquery.validator is not defined
         baseUrl: 'js',
         paths: {
             jquery: vendorDir + 'jquery/jquery',
             jqueryValidate: vendorDir + 'jquery.validation/jquery.validate',
-            jstree: staticDir + 'jstree/jquery.jstree',
+            jstree: vendorDir + 'jstree/jquery.jstree',
             underscore: vendorDir + 'underscore/underscore',
             backbone: vendorDir + 'backbone/backbone',
             marionette: vendorDir + 'backbone.marionette/lib/backbone.marionette',
