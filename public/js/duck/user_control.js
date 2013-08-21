@@ -1,7 +1,25 @@
-define(['config'],
-function(Config) {
+define(['config', 'model/user', 'tools/logger'],
+function(config, UserModel, logger) {
 
     'use strict';
+
+    var col = Backbone.Collection.extend({
+        url: config.urlRoot + '/user/',
+        model: UserModel,
+
+        initialize: function() {
+            logger.collection('STATS');
+        },
+
+        parse: function(response) {
+            return response.objects;
+        }
+    });
+
+/*
+    col = new col();
+    col.fetch({ success: function() { console.log(col.length); } });
+*/
 
     var UsersControl = {
         data: null,
@@ -11,7 +29,7 @@ function(Config) {
                 dataType: "json",
                 context: this,
                 async: false,
-                url: Config.urlRoot + '/' + "user/"
+                url: config.urlRoot + '/' + "user/"
             }).done(function(response) {
                 this.data = response.objects;
                 this.setAll(true);

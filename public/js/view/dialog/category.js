@@ -41,7 +41,6 @@ function(_, Backbone, Bootbox, Tree, logger) {
 
         var tree = new Tree();
         _.each(categories.objects, function(node) {
-            console.log(node);
             if (node.parent_id === null) {
                 tree.push(node.id);
             } else {
@@ -118,7 +117,7 @@ function(_, Backbone, Bootbox, Tree, logger) {
                         action: "createNode",
                         parent_id: parent_id,
                         name: name,
-                        type: _self.categoryControl.getType()
+                        type: _self.categoryControl.type
                     }
                 }).done(function(response) {
                     new_id = response;

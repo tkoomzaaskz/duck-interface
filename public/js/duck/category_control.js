@@ -20,10 +20,6 @@ function(config) {
         });
     };
     
-    CategoryControl.prototype.getType = function() {
-        return this.type;
-    }
-    
     CategoryControl.prototype.getData = function() {
         if (this.data == null) {
             this.fetchData();
