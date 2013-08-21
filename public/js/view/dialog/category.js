@@ -1,7 +1,16 @@
-define(['backbone', 'bootbox', 'tools/logger'],
-function(Backbone, Bootbox, logger) {
+define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger'],
+function(_, Backbone, Bootbox, Tree, logger) {
 
     'use strict';
+
+    function InterfaceNode(node) {
+        this.data = {title: node.name};
+        this.attr = {id: node.id};
+    }
+
+    InterfaceNode.prototype = {
+        state: undefined
+    };
 
     // see more about jstree at http://luban.danse.us/jazzclub/javascripts/jquery/jsTree/reference/
 
@@ -9,41 +18,45 @@ function(Backbone, Bootbox, logger) {
         this.categoryControl = categoryControl;
         this.selector = selector;
     }
-    
+
     CategoryDialogTab.prototype.getTree = function() {
         var categories = this.categoryControl.getData();
         if (categories == null)
             return null;
 
-        var itemsByID = [];
-
-        categories.objects.forEach(function(item) {
-            itemsByID.push({
-                data: {title: item.name},
-                attr: {id: item.id},
-                parentID: item.parent_id || null,
-                state: item.state
-            });
+        // roots first
+        categories.objects.sort(function(a, b) {
+            var apundef = a.parent_id === null,
+                bpundef = b.parent_id === null;
+            if (apundef === bpundef) return a.id - b.id;
+            if (apundef && !bpundef) return -1;
+            return 1;
         });
 
-        itemsByID.forEach(function(item) {
-            if(item.parentID !== null) {
-                if (typeof itemsByID[item.parentID].children === "undefined") {
-                    itemsByID[item.parentID].children = [];
-                }
-                itemsByID[item.parentID].children.push(item);
+        var nodeMap = {};
+        _.each(categories.objects, function(node) {
+            nodeMap[node.id] = node;
+            if (node.parent_id === undefined) node.parent_id = null; // remove when python API returns proper parent_id value
+        });
+
+        var tree = new Tree();
+        _.each(categories.objects, function(node) {
+            console.log(node);
+            if (node.parent_id === null) {
+                tree.push(node.id);
+            } else {
+                tree.children[node.parent_id].push(node.id);
             }
         });
 
-        var roots = itemsByID.filter(function(item) {
-            return item.parentID === null;
+        var node, result = _.map(tree, function(id){
+            node = new InterfaceNode(nodeMap[id]);
+            node.children = _.map(tree.children[id], function(id2) {
+                return new InterfaceNode(nodeMap[id2]);
+            });
+            return node;
         });
-
-        itemsByID.forEach(function(item) {
-            delete item.parentID;
-        });
-
-        return roots;
+        return result;
     };
     
     CategoryDialogTab.prototype.render = function() {

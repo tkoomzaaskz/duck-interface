@@ -35,6 +35,7 @@
     "jstree": "v.pre1.0",
     "bootstrap": "2.3.2",
     "datatables": "~1.9.4",
-    "jquery.validation": "~1.11.1"
+    "jquery.validation": "~1.11.1",
+    "tree": "~0.1.0"
   }
 }

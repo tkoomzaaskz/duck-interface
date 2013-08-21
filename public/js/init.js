@@ -18,7 +18,8 @@
             bootstrapModal: vendorDir + 'backbone.bootstrap-modal/src/backbone.bootstrap-modal',
             icanhaz: vendorDir + 'icanhazjs/ICanHaz',
             datatables: vendorDir + 'datatables/media/js/jquery.dataTables',
-            text: vendorDir + 'requirejs-text/text'
+            text: vendorDir + 'requirejs-text/text',
+            tree: vendorDir + 'tree/src/tree'
         },
         shim: {
             backbone: {
@@ -61,6 +62,9 @@
             },
             text: {
             },
+            tree: {
+                exports: 'Tree'
+            }
         }
     });
     
