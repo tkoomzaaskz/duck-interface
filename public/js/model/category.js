@@ -4,9 +4,8 @@ function(Backbone, config, logger) {
     'use strict';
 
     return Backbone.Model.extend({
-        urlRoot: config.urlRoot + '/category',
         url: function() {
-            return this.urlRoot + '/' + this.type + 'category/';
+            return config.urlRoot + '/' + this.type + "category";
         },
 
         initialize: function(options) {

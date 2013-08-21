@@ -1,5 +1,5 @@
 define(['config'],
-function(Config) {
+function(config) {
 
     'use strict';
 
@@ -14,7 +14,7 @@ function(Config) {
             dataType: "json",
             context: this,
             async: false,
-            url: Config.urlRoot + '/' + this.type + "category/"
+            url: config.urlRoot + '/' + this.type + "category/"
         }).done(function(response) {
             this.data = response;
         });
