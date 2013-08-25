@@ -12,6 +12,19 @@ in JavaScript (additionally, using lots of modern tools, such as Backbone).
 It consumes a RESTful API to fetch duck data and allows end-user to access
 them easily.
 
+Installation
+============
+
+All dependencies can be installed using [bower](http://bower.io) by running
+the following:
+
+    $ bower install
+
+and that's it.
+
+Data Sources
+============
+
 The interface consumes:
  * [Django API](https://github.com/wealthy-laughing-duck/duck-api-rip)
  * [static JSON files](public/data)
