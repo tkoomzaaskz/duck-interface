@@ -9,6 +9,7 @@ function(Backbone, UserControl, ich, logger) {
 
         initialize: function(options) {
             logger.render('user dialog');
+            debugger;
             $(this.selector).html(ich.chooseUsersTemplate());
             
             var _self = this;

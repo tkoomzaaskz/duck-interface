@@ -4,7 +4,8 @@ function() {
     'use strict';
 
     return {
-        urlRoot: 'http://localhost:8000/api/v1',
+        urlRoot: 'http://my-app/api/v1',
+        useFakeServer: true,
         logging_enabled: true,
         logged_events: ['change', 'sync']
     };

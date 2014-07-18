@@ -4,7 +4,7 @@
     <ul>
     {{#users}}
         <label class="checkbox">
-            <input type="checkbox"{{#chosen}} checked="checked"{{/chosen}} name="user" value="{{ username }}" /> {{ first_name }} {{ last_name }}
+            <input type="checkbox"{{#chosen}} checked="checked"{{/chosen}} name="user" value="{{ username }}" /> {{ fullname }}
         </label>
     {{/users}}
     </ul>

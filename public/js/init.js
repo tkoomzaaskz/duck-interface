@@ -19,6 +19,10 @@
             icanhaz: vendorDir + 'icanhazjs/ICanHaz',
             datatables: vendorDir + 'datatables/media/js/jquery.dataTables',
             text: vendorDir + 'requirejs-text/text',
+//            sinon: vendorDir + 'sinon/lib/sinon',
+//            sinonFakeXmlHttpRequest: vendorDir + 'sinon/lib/sinon/util/fake_xml_http_request',
+//            sinonFakeServer: vendorDir + 'sinon/lib/sinon/util/fake_server',
+            sinon: staticDir + 'sinon',
             tree: vendorDir + 'tree/src/tree'
         },
         shim: {
@@ -68,8 +72,9 @@
         }
     });
     
-    define(['application'],
-    function(Application) {
+    define(['application', 'tools/fake'],
+    function(Application, Fake) {
+        Fake.init();
         Application.start();
     });
 }(require));
