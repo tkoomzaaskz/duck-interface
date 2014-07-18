@@ -4,7 +4,7 @@ function() {
     'use strict';
 
     return {
-        urlRoot: 'http://my-app/api/v1',
+        urlRoot: 'http://duck-api/',
         useFakeServer: true,
         logging_enabled: true,
         logged_events: ['change', 'sync']

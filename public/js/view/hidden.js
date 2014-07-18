@@ -28,7 +28,7 @@ function(Backbone, logger, ich) {
                 }).done(function(response) {
                     $('body').append(response);
                 }).fail(function(response) {
-                    debugger;
+                    throw new Error(response);
                 });
             },
             fetchAllTemplates: function() {

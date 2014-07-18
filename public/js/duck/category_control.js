@@ -14,7 +14,7 @@ function(config) {
             dataType: "json",
             context: this,
             async: false,
-            url: config.urlRoot + '/' + this.type + "category/"
+            url: config.urlRoot + '/' + this.type + "_category/"
         }).done(function(response) {
             this.data = response;
         });
