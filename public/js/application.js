@@ -1,8 +1,8 @@
-define(['jquery', 'backbone', 'marionette', 'tools/logger', 'tools/fake',
+define(['jquery', 'backbone', 'marionette', 'config', 'tools/logger', 'tools/fake',
     'duck/user_control', 'duck/category_control',
     'view/root', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'],
-function($, Backbone, Marionette, logger, fake,
+function($, Backbone, Marionette, config, logger, fake,
     UserControl, CategoryControl,
     RootView, HiddenView, UserView, CategoryView, FormView) {
 
@@ -14,13 +14,17 @@ function($, Backbone, Marionette, logger, fake,
         bodyRegion: "body"
     });
 
-    application.addInitializer(function(options) {
-        Backbone.Model.prototype.trigger = function() {
-            logger.event(arguments);
-            Backbone.Events.trigger.apply(this, arguments);
-        }
-    });
+    if (config.logged_events.length) {
+        // overriding backbone's model trigger function to log events
+        application.addInitializer(function(options) {
+            Backbone.Model.prototype.trigger = function() {
+                logger.event(arguments);
+                Backbone.Events.trigger.apply(this, arguments);
+            }
+        });
+    }
 
+    // provide custom jquery validators
     application.addInitializer(function(options) {
         $.validator.addMethod("money", function(value, element) {
             return this.optional(element) || /^(\d{1,6})(\.\d{1,2})?$/.test(value);
@@ -30,11 +34,8 @@ function($, Backbone, Marionette, logger, fake,
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
         var hiddenView = new HiddenView();
-        var rootView = new RootView();
-        rootView.setElement('body').render();
+        application.bodyRegion.show(new RootView());
         hiddenView.setElement('body').render();
-
-//        Application.bodyRegion.show(new RootView());
 
         var incomeCategoryControl = new CategoryControl("income");
 

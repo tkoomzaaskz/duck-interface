@@ -44,7 +44,7 @@ function(Backbone, logger, ich, loader, template,
         renderMainContainerTemplate: function (template, options) {
             if (typeof(options) === 'undefined') options = {};
             var html = ich[template](options);
-            $('.container#main').html(html);
+            this.$el.find('.container#main').html(html);
         },
 
         initialize: function(options) {
@@ -56,7 +56,7 @@ function(Backbone, logger, ich, loader, template,
 
         render: function() {
             logger.render('root');
-            this.$el.html(ich.rootTemplate);
+            this.$el.html(ich.rootTemplate());
             // this.usersView.setElement(this.$el.find('#main')).render();
             this.openHomepage();
 
