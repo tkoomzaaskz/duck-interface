@@ -25,22 +25,22 @@ function(_, Backbone, Bootbox, Tree, logger) {
             return null;
 
         // roots first
-        categories.objects.sort(function(a, b) {
-            var apundef = a.parent_id === null,
-                bpundef = b.parent_id === null;
-            if (apundef === bpundef) return a.id - b.id;
-            if (apundef && !bpundef) return -1;
+        categories.sort(function(a, b) {
+            var a_p_undef = a.parent_id === null,
+                b_p_undef = b.parent_id === null;
+            if (a_p_undef === b_p_undef) return a.id - b.id;
+            if (a_p_undef && !b_p_undef) return -1;
             return 1;
         });
 
         var nodeMap = {};
-        _.each(categories.objects, function(node) {
+        _.each(categories, function(node) {
             nodeMap[node.id] = node;
             if (node.parent_id === undefined) node.parent_id = null; // remove when python API returns proper parent_id value
         });
 
         var tree = new Tree();
-        _.each(categories.objects, function(node) {
+        _.each(categories, function(node) {
             if (node.parent_id === null) {
                 tree.push(node.id);
             } else {

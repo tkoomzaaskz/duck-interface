@@ -16,7 +16,7 @@ function(config) {
             async: false,
             url: config.urlRoot + '/' + this.type + "_category/"
         }).done(function(response) {
-            this.data = response;
+            this.data = response.objects;
         });
     };
     
