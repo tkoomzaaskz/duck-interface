@@ -7,7 +7,7 @@ function(Backbone, CategoryModel, config, logger) {
         model: CategoryModel,
 
         initialize: function(options) {
-            logger.model('categories', 'created', this);
+            logger.collection('categories', 'created', this);
             this.options = options;
             this.data = null; // FIXME: 2 b removed
         },

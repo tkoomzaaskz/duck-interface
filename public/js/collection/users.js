@@ -10,7 +10,7 @@ function(config, UserModel, logger) {
         model: UserModel,
 
         initialize: function() {
-            logger.collection('STATS');
+            logger.collection('users', 'created', this);
         },
 
         parse: function(response) {
