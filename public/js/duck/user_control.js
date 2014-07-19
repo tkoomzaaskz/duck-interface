@@ -16,11 +16,6 @@ function(config, UserModel, logger) {
         }
     });
 
-/*
-    col = new col();
-    col.fetch({ success: function() { console.log(col.length); } });
-*/
-
     var UsersControl = {
         data: null,
         fetchData: function() {
@@ -33,6 +28,9 @@ function(config, UserModel, logger) {
             }).done(function(response) {
                 this.data = response.objects;
                 this.setAll(true);
+            }).fail(function(response) {
+                console.log(response);
+                throw new Error(response);
             });
         },
         getData: function() {

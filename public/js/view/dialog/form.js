@@ -33,22 +33,25 @@ function(Backbone, Bootbox, logger, constants) {
         getCapitalisedType: function() {
             return this.type.charAt(0).toUpperCase() + this.type.slice(1);
         },
-        
+
+        render: function() {
+            $(this.getSelector()).html(ich[this.getTemplate()]({
+                'currency': constants.currency,
+                'users': this.userControl.getData(),
+                'categories': this.categories.getData(),
+                'type': this.type
+            }));
+        },
+
         initialize: function(options) {
             logger.render('form dialog');
-            this.categoryControl = options.categoryControl;
+            this.categories = options.categories;
             this.userControl = options.userControl;
             this.type = options.type;
             var _self = this;
     
-            // render templates
-            $(this.getSelector()).html(ich[this.getTemplate()]({
-                'currency': constants.currency,
-                'users': this.userControl.getData(),
-                'categories': this.categoryControl.getData(),
-                'type': this.type
-            }));
-        
+            //this.render();
+
             // validate form
             $(this.getSelector() + ' form').validate({
                 rules: {
@@ -90,6 +93,7 @@ function(Backbone, Bootbox, logger, constants) {
                             Bootbox.alert(_self.getCapitalisedType() + " has been successfully added.");
                         }
                     });
+                    // FIXME: provide fallback for ajax call above
                 }
                 event.preventDefault();
             });
