@@ -8,10 +8,8 @@ function(Backbone, Bootbox, logger, constants) {
 
         initialize: function(options) {
             logger.render('form dialog');
-            this.categories = options.categories;
-            this.users = options.users;
-            this.type = options.type;
-            this.selector = '#' + this.type + 'FormDialog';
+            this.options = options;
+            this.selector = '#' + this.options.type + 'FormDialog';
             this.setElement(this.selector);
     
             this.render();
@@ -19,12 +17,11 @@ function(Backbone, Bootbox, logger, constants) {
         },
 
         render: function() {
-            // FIXME: remove global jquery selector
-            $(this.selector).html(ich['formTemplate']({
+            this.$el.html(ich['formTemplate']({
                 'currency': constants.currency,
-                'users': this.users.getData(),
-                'categories': this.categories.getData(),
-                'type': this.type
+                'users': this.options.users.getData(),
+                'categories': this.options.categories.getData(),
+                'type': this.options.type
             }));
         },
 
@@ -42,7 +39,7 @@ function(Backbone, Bootbox, logger, constants) {
         },
 
         getCapitalisedType: function() {
-            return this.type.charAt(0).toUpperCase() + this.type.slice(1);
+            return this.options.type.charAt(0).toUpperCase() + this.options.type.slice(1);
         },
 
         bindBehaviors: function() {
