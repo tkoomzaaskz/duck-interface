@@ -11,6 +11,7 @@ function(Backbone, Bootbox, logger, constants) {
             this.categories = options.categories;
             this.users = options.users;
             this.type = options.type;
+            this.setElement('#' + this.type + 'FormDialog');
     
             this.render();
             this.bindBehaviors();
@@ -56,10 +57,13 @@ function(Backbone, Bootbox, logger, constants) {
         },
 
         bindBehaviors: function() {
-            var _self = this;
+            var
+                _self = this,
+                mainElement = this.$el,
+                formElement = this.$('form');
 
             // validate form
-            $(this.getSelector() + ' form').validate({
+            formElement.validate({
                 rules: {
                     amount: {
                         money: true
@@ -80,13 +84,13 @@ function(Backbone, Bootbox, logger, constants) {
             });
         
             // clear input data each time the dialog is shown
-            $(this.getSelector()).on('show', function () {
+            mainElement.on('show', function () {
                 _self.clearFormInputs();
                 _self.clearFormLayout();
             });
         
             // make ajax call after form is validated
-            $(this.getSelector() + ' form').on( "submit", function( event ) {
+            formElement.on('submit', function( event ) {
                 var form = $(this);
                 // form validates
                 if (form.validate().checkForm()) {
@@ -95,7 +99,7 @@ function(Backbone, Bootbox, logger, constants) {
                         url: "../php/client/json.php",
                         data: form.serialize(),
                         success: function(data, status) {
-                            $(_self.getSelector()).modal('hide');
+                            mainElement.modal('hide');
                             Bootbox.alert(_self.getCapitalisedType() + " has been successfully added.");
                         }
                     });
