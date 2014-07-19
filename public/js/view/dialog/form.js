@@ -6,33 +6,14 @@ function(Backbone, Bootbox, logger, constants) {
     return Backbone.View.extend({
         tagName: 'div',
 
-        getSelector: function() {
-            return '#' + this.type + 'FormDialog';
-        },
-        
-        getFormInput: function(input) {
-            return this.getSelector() + " #" + input;
-        },
-        
-        getTemplate: function() {
-            return 'formTemplate';
-        },
-        
-        clearFormInputs: function() {
-            $(this.getFormInput("amount")).val("");
-            $(this.getFormInput("username")).val("");
-            $(this.getFormInput("category_id")).val("");
-            $(this.getFormInput("comment")).val("");    
-        },
-        
-        clearFormLayout: function() {
-            $(this.getSelector() + " label.error").hide();
-            $(this.getSelector() + " .error").removeClass("error");
-            $(this.getSelector() + " .success").removeClass("success");
-        },
-        
-        getCapitalisedType: function() {
-            return this.type.charAt(0).toUpperCase() + this.type.slice(1);
+        initialize: function(options) {
+            logger.render('form dialog');
+            this.categories = options.categories;
+            this.users = options.users;
+            this.type = options.type;
+    
+            this.render();
+            this.bindBehaviors();
         },
 
         render: function() {
@@ -45,14 +26,37 @@ function(Backbone, Bootbox, logger, constants) {
             }));
         },
 
-        initialize: function(options) {
-            logger.render('form dialog');
-            this.categories = options.categories;
-            this.users = options.users;
-            this.type = options.type;
+        getSelector: function() {
+            return '#' + this.type + 'FormDialog';
+        },
+
+        getFormInput: function(input) {
+            return this.getSelector() + " #" + input;
+        },
+
+        getTemplate: function() {
+            return 'formTemplate';
+        },
+
+        clearFormInputs: function() {
+            $(this.getFormInput("amount")).val("");
+            $(this.getFormInput("username")).val("");
+            $(this.getFormInput("category_id")).val("");
+            $(this.getFormInput("comment")).val("");    
+        },
+
+        clearFormLayout: function() {
+            $(this.getSelector() + " label.error").hide();
+            $(this.getSelector() + " .error").removeClass("error");
+            $(this.getSelector() + " .success").removeClass("success");
+        },
+
+        getCapitalisedType: function() {
+            return this.type.charAt(0).toUpperCase() + this.type.slice(1);
+        },
+
+        bindBehaviors: function() {
             var _self = this;
-    
-            //this.render();
 
             // validate form
             $(this.getSelector() + ' form').validate({
