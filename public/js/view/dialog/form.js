@@ -62,13 +62,14 @@ function(Backbone, Bootbox, logger, constants) {
                     }
                 },
                 highlight: function(element) {
-                    $(element).closest('.control-group')
-                    .removeClass('success').addClass('error');
+                    $(element)
+                        .closest('.control-group')
+                        .removeClass('success').addClass('error');
                 },
                 success: function(element) {
-                    element
-                    .addClass('valid').closest('.control-group')
-                    .removeClass('error').addClass('success');
+                    element.addClass('valid')
+                        .closest('.control-group')
+                        .removeClass('error').addClass('success');
                 }
             });
         

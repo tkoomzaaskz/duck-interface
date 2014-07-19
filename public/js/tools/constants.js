@@ -4,6 +4,10 @@ function() {
     'use strict';
 
     return {
-        currency: 'zł'
+        currency: 'zł',
+        ajaxError: {
+            'type': 'AJAX',
+            'message': 'could not load data from server'
+        }
     };
 });

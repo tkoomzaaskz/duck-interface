@@ -1,5 +1,5 @@
-define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger'],
-function(_, Backbone, Bootbox, Tree, logger) {
+define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/constants'],
+function(_, Backbone, Bootbox, Tree, logger, constants) {
 
     'use strict';
 
@@ -64,10 +64,7 @@ function(_, Backbone, Bootbox, Tree, logger) {
         var _self = this;
     
         if (tree == null) {
-            $(this.selector).html(ich.errorTemplate({
-                'type': 'AJAX',
-                'message': 'could not load data from server'
-            }));
+            $(this.selector).html(ich.errorTemplate(constants.ajaxError));
         } else {
             $(this.selector).jstree({
                 "json_data" : {

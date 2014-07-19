@@ -1,5 +1,5 @@
-define(['backbone', 'icanhaz', 'tools/logger'],
-function(Backbone, ich, logger) {
+define(['backbone', 'icanhaz', 'tools/logger', 'tools/constants'],
+function(Backbone, ich, logger, constants) {
 
     'use strict';
 
@@ -11,17 +11,21 @@ function(Backbone, ich, logger) {
         initialize: function(options) {
             logger.render('user dialog');
             this.options = options;
-            $(this.selector).html(ich.chooseUsersTemplate());
+            this.render();
+            this.bindBehaviors();
+        },
 
+        render: function() {
+            this.$el.html(ich.chooseUsersTemplate());
+        },
+
+        bindBehaviors: function() {
             var _self = this;
             var user_data = this.options.users.getData();
 
             $(this.selector).on('show', function () {
                 if (user_data == null) {
-                    $(_self.selector + ' .modal-body').html(ich.errorTemplate({
-                        'type': 'AJAX',
-                        'message': 'could not load data from server'
-                    }));
+                    $(_self.selector + ' .modal-body').html(ich.errorTemplate(constants.ajaxError));
                 } else {
                     $(_self.selector + ' .modal-body').html(ich.userCheckboxTemplate({
                         'users': user_data
@@ -33,7 +37,7 @@ function(Backbone, ich, logger) {
                 var chosen = $("input[name=user]:checked").map(function() {
                     return this.value;
                 });
-                this.users.setChosen(chosen);
+                _self.options.users.setChosen(chosen);
                 $(_self.selector).modal('hide');
             });
         }
