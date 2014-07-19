@@ -11,7 +11,8 @@ function(Backbone, Bootbox, logger, constants) {
             this.categories = options.categories;
             this.users = options.users;
             this.type = options.type;
-            this.setElement('#' + this.type + 'FormDialog');
+            this.selector = '#' + this.type + 'FormDialog';
+            this.setElement(this.selector);
     
             this.render();
             this.bindBehaviors();
@@ -19,7 +20,7 @@ function(Backbone, Bootbox, logger, constants) {
 
         render: function() {
             // FIXME: remove global jquery selector
-            $(this.getSelector()).html(ich[this.getTemplate()]({
+            $(this.selector).html(ich['formTemplate']({
                 'currency': constants.currency,
                 'users': this.users.getData(),
                 'categories': this.categories.getData(),
@@ -27,29 +28,17 @@ function(Backbone, Bootbox, logger, constants) {
             }));
         },
 
-        getSelector: function() {
-            return '#' + this.type + 'FormDialog';
-        },
-
-        getFormInput: function(input) {
-            return this.getSelector() + " #" + input;
-        },
-
-        getTemplate: function() {
-            return 'formTemplate';
-        },
-
         clearFormInputs: function() {
-            $(this.getFormInput("amount")).val("");
-            $(this.getFormInput("username")).val("");
-            $(this.getFormInput("category_id")).val("");
-            $(this.getFormInput("comment")).val("");    
+            this.$('#amount').val('');
+            this.$('#username').val('');
+            this.$('#category_id').val('');
+            this.$('#comment').val('');
         },
 
         clearFormLayout: function() {
-            $(this.getSelector() + " label.error").hide();
-            $(this.getSelector() + " .error").removeClass("error");
-            $(this.getSelector() + " .success").removeClass("success");
+            this.$('label.error').hide();
+            this.$('.error').removeClass("error");
+            this.$('.success').removeClass("success");
         },
 
         getCapitalisedType: function() {
