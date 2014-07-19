@@ -12,6 +12,14 @@ function(_, config) {
             }
         },
 
+        error: function() {
+            if (config.logging_enabled) {
+                var args = Array.prototype.slice.call(arguments);
+                args.unshift(new Date().toTimeString());
+                console.error.apply(console, args);
+            }
+        },
+
         event: function() {
             var args = Array.prototype.slice.call(arguments);
             if (_.indexOf(config.logged_events, args[0][0]) > -1) {

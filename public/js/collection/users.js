@@ -30,8 +30,8 @@ function(config, UserModel, logger) {
                 this.data = response.objects;
                 this.setAll(true);
             }).fail(function(response) {
-                console.log(response);
-                throw new Error(response);
+                logger.log(response);
+                logger.error("Fetching user data failed, see response above");
             });
         },
 

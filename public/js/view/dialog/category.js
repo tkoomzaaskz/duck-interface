@@ -83,7 +83,7 @@ function(_, Backbone, Bootbox, Tree, logger, constants) {
                 // data.rslt.op.attr("id") - old parent
                 // data.rslt.np.attr("id") - new parent
                 // data.rslt.cp - current posision
-                console.log(id, parent_id, event, data);
+                logger.log("jstree-test-log", id, parent_id, event, data);
             })
             .bind("rename_node.jstree", function (event, data) {
                 var id = data.rslt.obj.attr("id");
@@ -127,7 +127,7 @@ function(_, Backbone, Bootbox, Tree, logger, constants) {
                 });
             })
             .bind("delete_node.jstree", function (event, data) {
-                console.log(event, data)
+                logger.log("jstree-test-log", event, data);
             });
         }
     };

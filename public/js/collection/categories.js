@@ -27,7 +27,8 @@ function(Backbone, CategoryModel, config, logger) {
             }).done(function(response) {
                 this.data = response.objects;
             }).fail(function(response) {
-                throw new Error(response);
+                logger.log(response);
+                logger.error("Fetching category data failed, see response above");
             });
         },
 

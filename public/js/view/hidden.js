@@ -28,8 +28,8 @@ function(Backbone, logger, ich) {
                 }).done(function(response) {
                     $('body').append(response);
                 }).fail(function(response) {
-                    console.log(response);
-                    throw new Error(response);
+                    logger.log(response);
+                    logger.error("Fetching templates failed, see response above");
                 });
             },
             fetchAllTemplates: function() {
