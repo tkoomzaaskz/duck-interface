@@ -64,10 +64,6 @@ function(Backbone, logger, ich, loader, template,
             // this.usersView.setElement(this.$el.find('#main')).render();
             this.openHomepage();
 
-            // bootstrap menu: dropdown
-            // FIXME: this.$el instead of global selector
-            $('.dropdown-toggle').dropdown();
-
             // popover-ize all info buttons
             // FIXME: this.$el instead of global selector
             $('a.btn-info').popover({
