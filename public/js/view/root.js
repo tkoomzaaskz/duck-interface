@@ -6,6 +6,7 @@ function(Backbone, logger, ich, loader, template,
     'use strict';
 
     return Backbone.View.extend({
+        // FIXME: the body tag seems to be appended to another body tag
         tagName: 'body',
 
         events: {
@@ -26,11 +27,13 @@ function(Backbone, logger, ich, loader, template,
 
         openOutcomeList: function() {
             this.renderMainContainerTemplate('outcomeListTemplate');
+/*
             $('#outcomes').dataTable({
                 "bServerSide": true,
                 'sPaginationType': 'bootstrap',
                 "sAjaxSource": '../php/client/json.php?type=outcomes'
             });
+*/
         },
 
         openMonthlyBalance: function() {
@@ -49,6 +52,7 @@ function(Backbone, logger, ich, loader, template,
 
         initialize: function(options) {
             logger.init('root');
+            // FIXME: resolve loading templates
             // temporarily switched off since old interface loads templates anyway
             //loader.loadTemplate(template);
             this.usersView = new UsersView();
@@ -61,9 +65,11 @@ function(Backbone, logger, ich, loader, template,
             this.openHomepage();
 
             // bootstrap menu: dropdown
+            // FIXME: this.$el instead of global selector
             $('.dropdown-toggle').dropdown();
 
             // popover-ize all info buttons
+            // FIXME: this.$el instead of global selector
             $('a.btn-info').popover({
                 'placement': 'bottom'
             });

@@ -19,10 +19,8 @@
             icanhaz: vendorDir + 'icanhazjs/ICanHaz',
             datatables: vendorDir + 'datatables/media/js/jquery.dataTables',
             text: vendorDir + 'requirejs-text/text',
-//            sinon: vendorDir + 'sinon/lib/sinon',
-//            sinonFakeXmlHttpRequest: vendorDir + 'sinon/lib/sinon/util/fake_xml_http_request',
-//            sinonFakeServer: vendorDir + 'sinon/lib/sinon/util/fake_server',
             sinon: staticDir + 'sinon',
+            // FIXME: try to load sinon from bower package, not from static file
             tree: vendorDir + 'tree/src/tree'
         },
         shim: {

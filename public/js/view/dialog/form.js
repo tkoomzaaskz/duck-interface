@@ -4,6 +4,7 @@ function(Backbone, Bootbox, logger, constants) {
     'use strict';
 
     return Backbone.View.extend({
+        tagName: 'div',
 
         getSelector: function() {
             return '#' + this.type + 'FormDialog';
@@ -35,9 +36,10 @@ function(Backbone, Bootbox, logger, constants) {
         },
 
         render: function() {
+            // FIXME: remove global jquery selector
             $(this.getSelector()).html(ich[this.getTemplate()]({
                 'currency': constants.currency,
-                'users': this.userControl.getData(),
+                'users': this.users.getData(),
                 'categories': this.categories.getData(),
                 'type': this.type
             }));
@@ -46,7 +48,7 @@ function(Backbone, Bootbox, logger, constants) {
         initialize: function(options) {
             logger.render('form dialog');
             this.categories = options.categories;
-            this.userControl = options.userControl;
+            this.users = options.users;
             this.type = options.type;
             var _self = this;
     

@@ -1,13 +1,15 @@
-define(['backbone', 'config', 'tools/logger'],
-function(Backbone, config, logger) {
+define(['backbone', 'model/category', 'config', 'tools/logger'],
+function(Backbone, CategoryModel, config, logger) {
 
     'use strict';
 
     return Backbone.Collection.extend({
+        model: CategoryModel,
+
         initialize: function(options) {
+            logger.model('categories', 'created', this);
             this.options = options;
             this.data = null; // FIXME: 2 b removed
-            logger.model('categories', 'created', this);
         },
 
         url: function() {

@@ -3,8 +3,10 @@ function(config, UserModel, logger) {
 
     'use strict';
 
-    var col = Backbone.Collection.extend({
+    var Users = Backbone.Collection.extend({
+
         url: config.urlRoot + '/user/',
+
         model: UserModel,
 
         initialize: function() {
@@ -13,11 +15,10 @@ function(config, UserModel, logger) {
 
         parse: function(response) {
             return response.objects;
-        }
-    });
+        },
 
-    var UsersControl = {
         data: null,
+
         fetchData: function() {
             $.ajax({
                 type: "GET",
@@ -33,29 +34,32 @@ function(config, UserModel, logger) {
                 throw new Error(response);
             });
         },
+
         getData: function() {
             if (this.data == null) {
                 this.fetchData();
             }
             return this.data;
         },
+
         setAll: function(chosen) {
             for (var index = 0; index < this.data.length; ++index) {
                 this.data[index].chosen = chosen;
             }
         },
+
         setChosen: function(username_list) {
             for (var index = 0; index < this.data.length; ++index) {
                 this.data[index].chosen = ($.inArray(this.data[index].username, username_list) > -1);
             }
         },
+
         getChosen: function() {
             return $(this.getData()).map(function() {
                 return (this.chosen) ? this.first_name : null;
             });
         }
-    };
+    });
 
-    return UsersControl;
-
+    return Users;
 });
