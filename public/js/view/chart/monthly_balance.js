@@ -1,5 +1,5 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'chartjs', 'chart/random'],
-function(Backbone, ich, logger, Chart, RandomChart) {
+define(['backbone', 'icanhaz', 'tools/logger', 'chart/random'],
+function(Backbone, ich, logger, RandomChart) {
 
     'use strict';
 
@@ -27,12 +27,11 @@ function(Backbone, ich, logger, Chart, RandomChart) {
                 height: this.defaults.height,
                 elementId: this.defaults.elementId
             }));
-            var randomSize = Math.round(Math.random() * 5) + 2;
-            var ctx = this.$(this.defaults.elementId).get(0).getContext('2d');
-            var randomChart = new RandomChart({cols: 4, rows:2});
-            // FIXME: remove window/global assignment
-            window.myBar = new Chart(ctx).Bar(randomChart.getChartData(), {
-                responsive : true
+            this.chart = new RandomChart({
+                context: this.$(this.defaults.elementId).get(0).getContext('2d'),
+                rows: Math.round(Math.random() * 5) + 2,
+                cols: 4,
+                maxValue: 1000
             });
         }
     });

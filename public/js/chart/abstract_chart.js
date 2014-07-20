@@ -1,16 +1,19 @@
-define(['backbone', 'tools/logger'],
-function(Backbone, logger) {
+define(['backbone', 'chartjs', 'tools/logger', 'chart/colors'],
+function(Backbone, Chart, logger, Colors) {
 
     'use strict';
 
     return Backbone.Model.extend({
+        type: null, // shall be overriden in sub-objects
 
-        initialize: function(options) {
-            logger.model('chart', 'created', this);
-            // options should include:
-            // * color attributes
-            // FIXME: define above
-            this.options = options;
+        _createBaseChart: function() {
+            this.chart = new Chart(this.options.context)[this.type](this.getChartData(), {
+                responsive : true
+            });
+        },
+
+        destroyBaseChart: function() {
+            this.chart.destroy();
         },
 
         _required: function(arg, name) {
@@ -18,6 +21,8 @@ function(Backbone, logger) {
                 throw new Error(name + ' must be set');
             }
         },
+
+        colors: Colors,
 
         // enable extending AbstractChart
         extend: Backbone.Model.extend,
@@ -28,7 +33,7 @@ function(Backbone, logger) {
 
         getChartData: function() {
             return {
-		labels: this.getLabels(),
+		labels: this.get('labels'),
 		datasets: this.getDataSets()
             };
         }
