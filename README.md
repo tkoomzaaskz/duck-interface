@@ -27,7 +27,12 @@ Data Sources
 
 The interface consumes:
  * [Django API](https://github.com/wealthy-laughing-duck/duck-api-rip)
+ * Fake Server, based on [sinon.js](https://github.com/cjohansen/Sinon.JS), to make development independent on external APIs
  * [static JSON files](public/data)
- * [raw PHP API communicating Java Thrift server](https://github.com/wealthy-laughing-duck/wealthy-laughing-duck)
 
 This can be configured by changing the URL of the API (the data source).
+
+ToDos
+=====
+
+The interface still has major tasks to be done, check [todos list](TODO.md).
