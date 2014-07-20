@@ -1,5 +1,5 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'chart/random'],
-function(Backbone, ich, logger, RandomChart) {
+define(['backbone', 'icanhaz', 'tools/logger', 'chart/random', 'chart/monthly_balance'],
+function(Backbone, ich, logger, RandomChart, MonthlyBalanceChart) {
 
     'use strict';
 
@@ -27,12 +27,22 @@ function(Backbone, ich, logger, RandomChart) {
                 height: this.defaults.height,
                 elementId: this.defaults.elementId
             }));
+//
+            this.chart = new MonthlyBalanceChart({
+                context: this.$(this.defaults.elementId).get(0).getContext('2d'),
+                users: [1,2,4],
+                from: '2013-11',
+                to: '2014-03'
+            });
+//
+/*
             this.chart = new RandomChart({
                 context: this.$(this.defaults.elementId).get(0).getContext('2d'),
                 rows: Math.round(Math.random() * 5) + 2,
                 cols: 4,
                 maxValue: 1000
             });
+*/
         }
     });
 });

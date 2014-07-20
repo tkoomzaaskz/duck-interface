@@ -4,6 +4,7 @@ function(_) {
     'use strict';
 
     var rgbs = {
+        black: [30, 30, 30],
         grey: [140, 140, 140],
         red: [220, 80, 80],
         green: [80, 220, 80],

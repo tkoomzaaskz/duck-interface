@@ -18,7 +18,7 @@ function(Backbone, Chart, logger, Colors) {
         extend: Backbone.Model.extend,
 
         _createBaseChart: function() {
-            this.chart = new Chart(this.options.context)[this.type](this.chartData(), {
+            this.chart = new Chart(this.get('context'))[this.type](this.chartData(), {
                 responsive : true
             });
         },
@@ -37,10 +37,30 @@ function(Backbone, Chart, logger, Colors) {
                 item.data = data[i];
                 values.push(item);
             }
-            return {
+            var result = {
 		labels: this.get('labels'),
 		datasets: values
             };
-        },
+	    logger.log('chart data', result);
+	    return result;
+        }
+/*
+
++----------+-------------+----------------+
+| Section  | John Lennon | Paul McCartney |
++----------+-------------+----------------+
+| February | 93.52       | 845.98         |
++----------+-------------+----------------+
+| March    | 234.97      | 341.09         |
++----------+-------------+----------------+
+| April    | 739.10      | 32.47          |
++----------+-------------+----------------+
+| May      | 600.39      | 23.98          |
++----------+-------------+----------------+
+
+cols = [ John Lennon, Paul McCartney ] - colors
+rows = [ February, March, APril, May ] - labels
+
+*/
     });
 });

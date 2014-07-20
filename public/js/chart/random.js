@@ -12,17 +12,16 @@ function(_, logger, AbstractChart) {
             this._required(options.rows, 'initialize:options.rows');
             this._required(options.context, 'initialize:options.context');
             this._required(options.rows, 'initialize:options.maxValue');
-            this.options = options;
             this.generateRandomData();
             this._createBaseChart();
         },
 
         randomScalingFactor: function() {
-            return Math.round(Math.random() * this.options.maxValue);
+            return Math.round(Math.random() * this.get('maxValue'));
         },
 
         randomSequence: function() {
-            var res = [], count = this.options.rows;
+            var res = [], count = this.get('rows');
             for (var i = 0; i < count; i++) {
                 res.push(this.randomScalingFactor());
             }
@@ -30,7 +29,7 @@ function(_, logger, AbstractChart) {
         },
 
         randomData: function() {
-            var count = this.options.cols, res = [];
+            var count = this.get('cols'), res = [];
             for (var i = 0; i < count; i++) {
                 res.push(this.randomSequence());
             }
@@ -38,7 +37,7 @@ function(_, logger, AbstractChart) {
         },
 
         randomLabels: function() {
-            var res = [], count = this.options.rows;
+            var res = [], count = this.get('rows');
             for (var i = 1; i <= count; i++) {
                 res.push('label ' + i);
             }
@@ -46,7 +45,7 @@ function(_, logger, AbstractChart) {
         },
 
         randomColors: function() {
-            return _.sample(this.colors, this.options.cols)
+            return _.sample(this.colors, this.get('cols'))
         },
 
         generateRandomData: function() {
