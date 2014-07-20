@@ -7,7 +7,10 @@ function(_) {
         grey: [140, 140, 140],
         red: [220, 80, 80],
         green: [80, 220, 80],
-        blue: [80, 80, 220]
+        blue: [80, 80, 220],
+        turquoise: [80, 220, 220],
+        purple: [220, 80, 220],
+        yellow: [220, 220, 80]
     };
 
     var opacities = {
