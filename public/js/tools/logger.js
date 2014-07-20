@@ -40,6 +40,12 @@ function(_, config) {
             this.log.apply(this, args);
         },
 
+        view: function() {
+            var args = Array.prototype.slice.call(arguments);
+            args.unshift("VIEW");
+            this.log.apply(this, args);
+        },
+
         model: function() {
             var args = Array.prototype.slice.call(arguments);
             args.unshift("MODEL");

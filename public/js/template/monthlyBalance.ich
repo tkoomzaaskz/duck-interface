@@ -1,6 +1,6 @@
 <script id="monthlyBalanceTemplate" type="text/html">
     <h1>monthly balance</h1>
-    <p>
-        Coming soon...
-    </p>
+    <div style="width: 50%">
+        <canvas id="{{ elementId }}" height="{{ height }}" width="{{ width }}"></canvas>
+    </div>
 </script>

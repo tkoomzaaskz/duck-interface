@@ -19,8 +19,10 @@
             icanhaz: vendorDir + 'icanhazjs/ICanHaz',
             datatables: vendorDir + 'datatables/media/js/jquery.dataTables',
             text: vendorDir + 'requirejs-text/text',
+            // FIXME: try to load chart from bower package
+            chartjs: staticDir + 'Chart',
+            // FIXME: try to load sinon from bower package
             sinon: staticDir + 'sinon',
-            // FIXME: try to load sinon from bower package, not from static file
             tree: vendorDir + 'tree/src/tree'
         },
         shim: {

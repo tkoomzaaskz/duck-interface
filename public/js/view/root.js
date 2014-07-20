@@ -1,13 +1,11 @@
 define(['backbone', 'tools/logger', 'icanhaz', 'view/loader', 'text!template/root.ich',
-    'view/users', 'datatables'],
+    'view/users', 'view/chart/monthly_balance', 'datatables'],
 function(Backbone, logger, ich, loader, template,
-    UsersView) {
+    UsersView, MonthlyBalanceChartView) {
 
     'use strict';
 
     return Backbone.View.extend({
-        // FIXME: the body tag seems to be appended to another body tag
-        tagName: 'body',
 
         events: {
             'click #menu_homepage': 'openHomepage',
@@ -37,7 +35,8 @@ function(Backbone, logger, ich, loader, template,
         },
 
         openMonthlyBalance: function() {
-            this.renderMainContainerTemplate('monthlyBalanceTemplate');
+            var chartView = new MonthlyBalanceChartView();
+            chartView.render();
         },
 
         openCategoryTotal: function() {
@@ -47,7 +46,7 @@ function(Backbone, logger, ich, loader, template,
         renderMainContainerTemplate: function (template, options) {
             if (typeof(options) === 'undefined') options = {};
             var html = ich[template](options);
-            this.$el.find('.container#main').html(html);
+            this.$('.container#main').html(html);
         },
 
         initialize: function(options) {
