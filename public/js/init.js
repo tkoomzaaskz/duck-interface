@@ -8,6 +8,7 @@
         baseUrl: 'js',
         paths: {
             jquery: vendorDir + 'jquery/jquery',
+            jqueryCookie: vendorDir + 'jquery.cookie/jquery.cookie',
             jqueryValidate: vendorDir + 'jquery.validation/jquery.validate',
             jstree: vendorDir + 'jstree/jquery.jstree',
             underscore: vendorDir + 'underscore/underscore',
@@ -39,6 +40,9 @@
             },
             jquery: {
                 exports: '$'
+            },
+            jqueryCookie: {
+                deps: ['jquery']
             },
             jqueryValidate: {
                 deps: ['jquery']
@@ -72,7 +76,8 @@
         }
     });
 
-    define(['application'],
+    define(['application',
+        'jquery', 'jqueryCookie', 'jqueryValidate'],
     function(Application) {
         Application.start();
     });

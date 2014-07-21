@@ -1,10 +1,10 @@
 define(['jquery', 'backbone', 'marionette',
-    'config', 'tools/logger', 'tools/fake',
+    'config', 'tools/logger', 'tools/fake', 'tools/auth',
     'collection/users', 'collection/categories',
     'view/root', 'view/login', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette,
-    config, logger, Fake,
+    config, logger, Fake, Auth,
     Users, Categories,
     RootView, LoginView, HiddenView, UserView, CategoryView, FormView) {
 
@@ -22,8 +22,15 @@ function($, Backbone, Marionette,
 
         openLoginView: function() {
             this.bodyRegion.show(this.loginView);
-        }
+        },
 
+        open: function() {
+            if (Auth.verify()) {
+                this.openRootView();
+            } else {
+                this.openLoginView();
+            }
+        }
     });
 
     application.addRegions({
@@ -51,7 +58,7 @@ function($, Backbone, Marionette,
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
         var hiddenView = new HiddenView();
-        this.openLoginView();
+        this.open();
         hiddenView.setElement('body').render();
 
         var users = new Users();
@@ -82,7 +89,8 @@ function($, Backbone, Marionette,
         });
     });
 
-    application.listenTo(application.loginView, 'login:success', application.openRootView);
+    application.listenTo(application.loginView, 'login:success', application.open);
+    application.listenTo(application.rootView, 'logout', application.open);
 
     application.on('initialize:before', function(options) {
         Fake.init();

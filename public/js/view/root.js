@@ -1,6 +1,6 @@
-define(['backbone', 'tools/logger', 'icanhaz', 'view/loader', 'text!template/root.ich',
+define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader', 'text!template/root.ich',
     'view/users', 'view/chart/monthly_balance', 'datatables'],
-function(Backbone, logger, ich, loader, template,
+function(Backbone, logger, Auth, ich, loader, template,
     UsersView, MonthlyBalanceChartView) {
 
     'use strict';
@@ -12,7 +12,8 @@ function(Backbone, logger, ich, loader, template,
             'click #menu_income_list': 'openIncomeList',
             'click #menu_outcome_list': 'openOutcomeList',
             'click #menu_monthly_balance': 'openMonthlyBalance',
-            'click #menu_category_total': 'openCategoryTotal'
+            'click #menu_category_total': 'openCategoryTotal',
+            'click #logout': 'logout'
         },
 
         openHomepage: function() {
@@ -41,6 +42,11 @@ function(Backbone, logger, ich, loader, template,
 
         openCategoryTotal: function() {
             this.renderMainContainerTemplate('categoryTotalTemplate');
+        },
+
+        logout: function() {
+            Auth.logout();
+            this.trigger('logout');
         },
 
         renderMainContainerTemplate: function (template, options) {
