@@ -1,16 +1,30 @@
 define(['jquery', 'backbone', 'marionette',
     'config', 'tools/logger', 'tools/fake',
     'collection/users', 'collection/categories',
-    'view/root', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
+    'view/root', 'view/login', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette,
-    config, logger, fake,
+    config, logger, Fake,
     Users, Categories,
-    RootView, HiddenView, UserView, CategoryView, FormView) {
+    RootView, LoginView, HiddenView, UserView, CategoryView, FormView) {
 
     'use strict';
 
-    var application = new Marionette.Application();
+    var application = new Marionette.Application({
+
+        rootView: new RootView(),
+
+        loginView: new LoginView(),
+
+        openRootView: function() {
+            this.bodyRegion.show(this.rootView);
+        },
+
+        openLoginView: function() {
+            this.bodyRegion.show(this.loginView);
+        }
+
+    });
 
     application.addRegions({
         bodyRegion: "body"
@@ -19,9 +33,10 @@ function($, Backbone, Marionette,
     if (config.logged_events.length) {
         // overriding backbone's model trigger function to log events
         application.addInitializer(function(options) {
-            Backbone.Model.prototype.trigger = function() {
+            var original_trigger = Backbone.Events.trigger;
+            Backbone.Model.prototype.trigger = Backbone.Marionette.Application.prototype.trigger = function() {
                 logger.event(arguments);
-                Backbone.Events.trigger.apply(this, arguments);
+                original_trigger.apply(this, arguments);
             }
         });
     }
@@ -36,7 +51,7 @@ function($, Backbone, Marionette,
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
         var hiddenView = new HiddenView();
-        application.bodyRegion.show(new RootView());
+        this.openLoginView();
         hiddenView.setElement('body').render();
 
         var users = new Users();
@@ -65,6 +80,17 @@ function($, Backbone, Marionette,
             incomeCategories: incomeCategories,
             outcomeCategories: outcomeCategories
         });
+    });
+
+    application.listenTo(application.loginView, 'login:success', application.openRootView);
+
+    application.on('initialize:before', function(options) {
+        Fake.init();
+        Backbone.history.start();
+    });
+
+    application.on('initialize:after', function(options) {
+        logger.log('initialization finished');
     });
 
     return application;

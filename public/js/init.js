@@ -71,10 +71,9 @@
             }
         }
     });
-    
-    define(['application', 'tools/fake'],
-    function(Application, Fake) {
-        Fake.init();
+
+    define(['application'],
+    function(Application) {
         Application.start();
     });
 }(require));

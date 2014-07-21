@@ -18,7 +18,7 @@ function(Backbone, logger, ich) {
         },
 
         engine: {
-            templates: ['categoryTotal', 'chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'incomeList', 'monthlyBalance', 'root', 'userSelect'],
+            templates: ['categoryTotal', 'chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'incomeList', 'monthlyBalance', 'root', 'login', 'userSelect'],
             fetchTemplate: function(path) {
                 $.ajax({
                     type: 'GET',
