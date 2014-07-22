@@ -149,6 +149,10 @@ function(_, Backbone, Bootbox, Tree, logger, constants, loader,
             loader.addTemplate(template);
             loader.addTemplate(templateError);
             this.$el.html(ich.chooseCategoriesTemplate());
+            // FIXME: below doesn't seem to work
+            this.$('a.btn-info').popover({
+                'placement': 'bottom'
+            });
         },
 
         initialize: function(options) {

@@ -21,6 +21,9 @@ function(Backbone, ich, logger, constants, loader, template, templateCheckbox, t
 
         render: function() {
             this.$el.html(ich.chooseUsersTemplate());
+            this.$('a.btn-info').popover({
+                'placement': 'bottom'
+            });
         },
 
         bindBehaviors: function() {
@@ -28,15 +31,12 @@ function(Backbone, ich, logger, constants, loader, template, templateCheckbox, t
             var user_data = this.options.users.getData();
 
             $(this.selector).on('show', function () {
-                if (user_data == null) {
-                    $(_self.selector + ' .modal-body').html(ich.errorTemplate(constants.ajaxError));
-                } else {
-                    $(_self.selector + ' .modal-body').html(ich.userCheckboxTemplate({
-                        'users': user_data
-                    }));
-                }
+                var content = user_data == null
+                    ? ich.errorTemplate(constants.ajaxError)
+                    : ich.userCheckboxTemplate({ 'users': user_data });
+                $(_self.selector + ' .modal-body').html(content);
             });
-    
+
             $(this.selector + ' .btn-primary').bind('click', function() {
                 var chosen = $("input[name=user]:checked").map(function() {
                     return this.value;

@@ -75,13 +75,6 @@ function(Backbone, logger, Auth, ich, loader,
             this.$el.html(ich.rootTemplate());
             this.$el.append(ich.modalsContainerTemplate());
             this.openHomepage();
-
-            // popover-ize all info buttons
-            // FIXME: this.$el instead of global selector
-            $('a.btn-info').popover({
-                'placement': 'bottom'
-            });
-
             return this;
         }
     });
