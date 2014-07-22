@@ -1,4 +1,4 @@
-<script id="incomeListTemplate" type="text/html">
+<script id="incomesTemplate" type="text/html">
     <h1>Incomes</h1>
     <p>
         Coming soon...

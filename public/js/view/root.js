@@ -1,7 +1,7 @@
 define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader', 'text!template/root.ich',
-    'view/chart/monthly_balance', 'view/chart/category_total', 'datatables'],
+    'view/homepage', 'view/grid/incomes', 'view/grid/outcomes', 'view/chart/monthly_balance', 'view/chart/category_total', 'datatables'],
 function(Backbone, logger, Auth, ich, loader, template,
-    MonthlyBalanceChartView, CategoryTotalChartView) {
+    HomepageView, IncomesView, OutcomesView, MonthlyBalanceChartView, CategoryTotalChartView) {
 
     'use strict';
 
@@ -9,23 +9,27 @@ function(Backbone, logger, Auth, ich, loader, template,
 
         events: {
             'click #menu_homepage': 'openHomepage',
-            'click #menu_income_list': 'openIncomeList',
-            'click #menu_outcome_list': 'openOutcomeList',
+            'click #menu_income_list': 'openIncomes',
+            'click #menu_outcome_list': 'openOutcomes',
             'click #menu_monthly_balance': 'openMonthlyBalance',
             'click #menu_category_total': 'openCategoryTotal',
             'click #logout': 'logout'
         },
 
         openHomepage: function() {
-            this.renderMainContainerTemplate('homepageTemplate');
+            var homepageView = new HomepageView();
+            homepageView.setElement(this.$('.container#main'));
+            homepageView.render();
         },
 
-        openIncomeList: function() {
-            this.renderMainContainerTemplate('incomeListTemplate');
+        openIncomes: function() {
+            var incomesView = new IncomesView();
+            incomesView.render();
         },
 
-        openOutcomeList: function() {
-            this.renderMainContainerTemplate('outcomeListTemplate');
+        openOutcomes: function() {
+            var outcomesView = new OutcomesView();
+            outcomesView.render();
 /*
             $('#outcomes').dataTable({
                 "bServerSide": true,

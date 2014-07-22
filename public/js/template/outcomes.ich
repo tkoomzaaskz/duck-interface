@@ -1,4 +1,4 @@
-<script id="outcomeListTemplate" type="text/html">
+<script id="outcomesTemplate" type="text/html">
     <h1>Outcomes</h1>
     <table class="table table-striped" id="outcomes">
         <thead>

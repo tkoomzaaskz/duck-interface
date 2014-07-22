@@ -17,8 +17,8 @@
                             <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop2">
                                 <li role="presentation"><a role="menuitem" id="menu_monthly_balance">Monthly balance</a></li>
                                 <li role="presentation"><a role="menuitem" id="menu_category_total">Category total</a></li>
-                                <li role="presentation"><a role="menuitem" id="menu_outcome_list">Outcome list</a></li>
-                                <li role="presentation"><a role="menuitem" id="menu_income_list">Income list</a></li>
+                                <li role="presentation"><a role="menuitem" id="menu_outcome_list">Outcomes</a></li>
+                                <li role="presentation"><a role="menuitem" id="menu_income_list">Incomes</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

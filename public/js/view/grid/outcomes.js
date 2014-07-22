@@ -1,4 +1,4 @@
-define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/categoryTotal.ich'],
+define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/outcomes.ich'],
 function(Backbone, ich, loader, logger, template) {
 
     'use strict';
@@ -8,13 +8,13 @@ function(Backbone, ich, loader, logger, template) {
         el: '.container#main',
 
         initialize: function(options) {
-            logger.view('category total chart');
+            logger.view('outcomes');
             loader.addTemplate(template);
         },
 
         render: function() {
-            logger.render('category total chart');
-            this.$el.html(ich.categoryTotalTemplate({}));
+            logger.render('outcomes');
+            this.$el.html(ich.outcomesTemplate({}));
         }
     });
 });
