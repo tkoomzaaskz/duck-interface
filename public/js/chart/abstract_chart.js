@@ -1,5 +1,5 @@
-define(['backbone', 'chartjs', 'tools/logger', 'chart/colors'],
-function(Backbone, Chart, logger, Colors) {
+define(['jquery', 'backbone', 'chartjs', 'tools/logger', 'chart/colors'],
+function($, Backbone, Chart, logger, Colors) {
 
     'use strict';
 
@@ -19,8 +19,10 @@ function(Backbone, Chart, logger, Colors) {
 
         _createBaseChart: function() {
             this.chart = new Chart(this.get('context'))[this.type](this.chartData(), {
-                responsive : true
+                responsive : true,
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
             });
+	    $('body').append(this.chart.generateLegend());
         },
 
         destroyBaseChart: function() {

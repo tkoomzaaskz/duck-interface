@@ -23,6 +23,8 @@ function(Backbone, ich, loader, logger, template,
             elementId: 'canvas',
         },
 
+        // FIXME: destroy view when unused: http://stackoverflow.com/a/11534056
+        // do this manually or rely on Marionette?
         render: function() {
             logger.render('monthly balance chart');
             this.$el.html(ich.monthlyBalanceTemplate({
