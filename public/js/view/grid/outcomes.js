@@ -15,6 +15,9 @@ function(Backbone, ich, loader, logger, template) {
         render: function() {
             logger.render('outcomes');
             this.$el.html(ich.outcomesTemplate({}));
+            this.$('#outcomes').dataTable( {
+               "ajax": "data/outcomes.json"
+            });
         }
     });
 });
