@@ -1,0 +1,8 @@
+<script id="languagesTemplate" type="text/html">
+    <div class="btn-toolbar language-toolbar">
+        <div class="btn-group">
+            <a class="btn" href="#"><img src="img/blank.gif" class="flag flag-us" alt="United States"></a>
+            <a class="btn" href="#"><img src="img/blank.gif" class="flag flag-pl" alt="Poland"></a>
+        </div>
+    </div>
+</script>

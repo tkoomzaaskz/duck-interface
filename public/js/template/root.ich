@@ -1,7 +1,7 @@
 <script id="rootTemplate" type="text/html">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
-            <div class="container">
+            <div class="container" id="header">
                 <a class="brand" id="menu_homepage" href="#">wealthy laughing duck</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
@@ -31,12 +31,6 @@
                         <li role="presentation"><a role="menuitem" id="logout" href="#logout">Logout</a></li>
                         <li role="presentation"><a role="menuitem" href="https://github.com/tkoomzaaskz/duck-interface">see me on github!</a></li>
                     </ul>
-                </div>
-                <div class="btn-toolbar language-toolbar">
-                    <div class="btn-group">
-                        <a class="btn" href="#"><img src="img/blank.gif" class="flag flag-us" alt="United States"></a>
-                        <a class="btn" href="#"><img src="img/blank.gif" class="flag flag-pl" alt="Poland"></a>
-                    </div>
                 </div>
             </div>
         </div>

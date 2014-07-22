@@ -1,10 +1,10 @@
 define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader',
     'text!template/root.ich', 'text!template/modalsContainer.ich',
-    'view/homepage', 'view/grid/incomes', 'view/grid/outcomes',
+    'view/languages', 'view/homepage', 'view/grid/incomes', 'view/grid/outcomes',
     'view/chart/monthly_balance', 'view/chart/category_total'],
 function(Backbone, logger, Auth, ich, loader,
     template, templateModals,
-    HomepageView, IncomesView, OutcomesView,
+    LanguagesView, HomepageView, IncomesView, OutcomesView,
     MonthlyBalanceChartView, CategoryTotalChartView) {
 
     'use strict';
@@ -73,6 +73,8 @@ function(Backbone, logger, Auth, ich, loader,
         render: function() {
             logger.render('root');
             this.$el.html(ich.rootTemplate());
+            var languagesView = new LanguagesView()
+            languagesView.setElement(this.$('.container#header')).render();
             this.$el.append(ich.modalsContainerTemplate());
             this.openHomepage();
             return this;
