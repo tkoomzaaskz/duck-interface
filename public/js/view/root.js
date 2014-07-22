@@ -1,7 +1,7 @@
 define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader', 'text!template/root.ich',
-    'view/chart/monthly_balance', 'datatables'],
+    'view/chart/monthly_balance', 'view/chart/category_total', 'datatables'],
 function(Backbone, logger, Auth, ich, loader, template,
-    MonthlyBalanceChartView) {
+    MonthlyBalanceChartView, CategoryTotalChartView) {
 
     'use strict';
 
@@ -41,7 +41,8 @@ function(Backbone, logger, Auth, ich, loader, template,
         },
 
         openCategoryTotal: function() {
-            this.renderMainContainerTemplate('categoryTotalTemplate');
+            var chartView = new CategoryTotalChartView();
+            chartView.render();
         },
 
         logout: function() {

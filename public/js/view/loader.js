@@ -4,7 +4,7 @@ function(ich, logger) {
     'use strict';
 
     return {
-        templates: ['categoryTotal', 'chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'incomeList', 'userSelect'],
+        templates: ['chooseUsers', 'formTemplate', 'homepage', 'modalsContainer', 'outcomeList', 'userCheckbox', 'categorySelect', 'chooseCategories', 'errorTemplate', 'incomeList', 'userSelect'],
 
         addTemplate: function(tpl) {
             $(tpl).each(function() {
