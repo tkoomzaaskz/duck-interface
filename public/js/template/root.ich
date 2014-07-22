@@ -29,7 +29,7 @@
                             </ul>
                         </li>
                         <li role="presentation"><a role="menuitem" id="logout" href="#logout">Logout</a></li>
-                        <li role="presentation"><a role="menuitem" href="https://github.com/tkoomzaaskz/wealthy-laughing-duck">see me on github!</a></li>
+                        <li role="presentation"><a role="menuitem" href="https://github.com/tkoomzaaskz/duck-interface">see me on github!</a></li>
                     </ul>
                 </div>
                 <div class="btn-toolbar language-toolbar">

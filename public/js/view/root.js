@@ -1,7 +1,11 @@
-define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader', 'text!template/root.ich',
-    'view/homepage', 'view/grid/incomes', 'view/grid/outcomes', 'view/chart/monthly_balance', 'view/chart/category_total', 'datatables'],
-function(Backbone, logger, Auth, ich, loader, template,
-    HomepageView, IncomesView, OutcomesView, MonthlyBalanceChartView, CategoryTotalChartView) {
+define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader',
+    'text!template/root.ich', 'text!template/modalsContainer.ich',
+    'view/homepage', 'view/grid/incomes', 'view/grid/outcomes',
+    'view/chart/monthly_balance', 'view/chart/category_total'],
+function(Backbone, logger, Auth, ich, loader,
+    template, templateModals,
+    HomepageView, IncomesView, OutcomesView,
+    MonthlyBalanceChartView, CategoryTotalChartView) {
 
     'use strict';
 
@@ -62,6 +66,7 @@ function(Backbone, logger, Auth, ich, loader, template,
 
         initialize: function(options) {
             loader.addTemplate(template);
+            loader.addTemplate(templateModals);
             logger.init('root');
         },
 

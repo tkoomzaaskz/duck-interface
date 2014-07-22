@@ -1,5 +1,6 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'tools/constants'],
-function(Backbone, ich, logger, constants) {
+define(['backbone', 'icanhaz', 'tools/logger', 'tools/constants', 'view/loader',
+    'text!template/chooseUsers.ich', 'text!template/userCheckbox.ich', 'text!template/errorTemplate.ich'],
+function(Backbone, ich, logger, constants, loader, template, templateCheckbox, templateError) {
 
     'use strict';
 
@@ -11,6 +12,9 @@ function(Backbone, ich, logger, constants) {
         initialize: function(options) {
             logger.render('user dialog');
             this.options = options;
+            loader.addTemplate(template);
+            loader.addTemplate(templateCheckbox);
+            loader.addTemplate(templateError);
             this.render();
             this.bindBehaviors();
         },

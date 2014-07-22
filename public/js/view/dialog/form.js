@@ -1,5 +1,7 @@
-define(['underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants'],
-function(_, Backbone, Bootbox, logger, constants) {
+define(['underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants', 'view/loader',
+    'text!template/formTemplate.ich', 'text!template/userSelect.ich', 'text!template/categorySelect.ich'],
+function(_, Backbone, Bootbox, logger, constants, loader,
+    template, templateUserSelect, templateCategorySelect) {
 
     'use strict';
 
@@ -8,10 +10,13 @@ function(_, Backbone, Bootbox, logger, constants) {
 
         initialize: function(options) {
             logger.render('form dialog');
+            loader.addTemplate(template);
+            loader.addTemplate(templateUserSelect);
+            loader.addTemplate(templateCategorySelect);
             this.options = options;
             this.selector = '#' + this.options.type + 'FormDialog';
             this.setElement(this.selector);
-    
+
             this.render();
             this.bindBehaviors();
         },

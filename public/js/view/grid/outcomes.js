@@ -1,4 +1,5 @@
-define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/outcomes.ich'],
+define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/outcomes.ich',
+    'datatables'],
 function(Backbone, ich, loader, logger, template) {
 
     'use strict';

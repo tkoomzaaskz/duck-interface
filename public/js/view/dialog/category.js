@@ -1,5 +1,7 @@
-define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/constants'],
-function(_, Backbone, Bootbox, Tree, logger, constants) {
+define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/constants', 'view/loader',
+    'text!template/chooseCategories.ich', 'text!template/errorTemplate.ich'],
+function(_, Backbone, Bootbox, Tree, logger, constants, loader,
+    template, templateError) {
 
     'use strict';
 
@@ -144,6 +146,8 @@ function(_, Backbone, Bootbox, Tree, logger, constants) {
         },
 
         render: function() {
+            loader.addTemplate(template);
+            loader.addTemplate(templateError);
             this.$el.html(ich.chooseCategoriesTemplate());
         },
 
