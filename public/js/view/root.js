@@ -1,7 +1,7 @@
 define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader', 'text!template/root.ich',
-    'view/users', 'view/chart/monthly_balance', 'datatables'],
+    'view/chart/monthly_balance', 'datatables'],
 function(Backbone, logger, Auth, ich, loader, template,
-    UsersView, MonthlyBalanceChartView) {
+    MonthlyBalanceChartView) {
 
     'use strict';
 
@@ -49,24 +49,21 @@ function(Backbone, logger, Auth, ich, loader, template,
             this.trigger('logout');
         },
 
-        renderMainContainerTemplate: function (template, options) {
+        renderMainContainerTemplate: function (templateName, options) {
             if (typeof(options) === 'undefined') options = {};
-            var html = ich[template](options);
+            var html = ich[templateName](options);
             this.$('.container#main').html(html);
         },
 
         initialize: function(options) {
+            loader.addTemplate(template);
             logger.init('root');
-            // FIXME: resolve loading templates
-            // temporarily switched off since old interface loads templates anyway
-            //loader.loadTemplate(template);
-            this.usersView = new UsersView();
         },
 
         render: function() {
             logger.render('root');
             this.$el.html(ich.rootTemplate());
-            // this.usersView.setElement(this.$el.find('#main')).render();
+            this.$el.append(ich.modalsContainerTemplate());
             this.openHomepage();
 
             // popover-ize all info buttons

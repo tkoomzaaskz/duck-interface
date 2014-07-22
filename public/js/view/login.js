@@ -7,6 +7,11 @@ function($, _, Backbone,
 
     return Backbone.View.extend({
 
+        initialize: function() {
+            logger.view('login');
+            loader.addTemplate(template);
+        },
+
         events: {
             'click #loginButton': 'processLogin'
         },

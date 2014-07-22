@@ -1,12 +1,12 @@
 define(['jquery', 'backbone', 'marionette',
     'config', 'tools/logger', 'tools/fake', 'tools/auth',
     'collection/users', 'collection/categories',
-    'view/root', 'view/login', 'view/hidden', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
+    'view/loader', 'view/root', 'view/login', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'],
 function($, Backbone, Marionette,
     config, logger, Fake, Auth,
     Users, Categories,
-    RootView, LoginView, HiddenView, UserView, CategoryView, FormView) {
+    Loader, RootView, LoginView, UserView, CategoryView, FormView) {
 
     'use strict';
 
@@ -57,9 +57,8 @@ function($, Backbone, Marionette,
 
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
-        var hiddenView = new HiddenView();
+        Loader.fetchAllTemplates();
         this.open();
-        hiddenView.setElement('body').render();
 
         var users = new Users();
 

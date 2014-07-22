@@ -1,5 +1,7 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'chart/random', 'chart/monthly_balance'],
-function(Backbone, ich, logger, RandomChart, MonthlyBalanceChart) {
+define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/monthlyBalance.ich',
+    'chart/random', 'chart/monthly_balance'],
+function(Backbone, ich, loader, logger, template,
+    RandomChart, MonthlyBalanceChart) {
 
     'use strict';
 
@@ -10,6 +12,7 @@ function(Backbone, ich, logger, RandomChart, MonthlyBalanceChart) {
         initialize: function(options) {
             // FIXME: unify logger.render and logger.view among all views
             logger.view('monthly balance chart');
+            loader.addTemplate(template);
             this.options = options;
         },
 
