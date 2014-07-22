@@ -12,6 +12,7 @@
             jqueryValidate: vendorDir + 'jquery.validation/jquery.validate',
             jstree: vendorDir + 'jstree/jquery.jstree',
             underscore: vendorDir + 'underscore/underscore',
+            underscoreString: vendorDir + 'underscore.string/lib/underscore.string',
             backbone: vendorDir + 'backbone/backbone',
             marionette: vendorDir + 'backbone.marionette/lib/backbone.marionette',
             bootstrap: vendorDir + 'bootstrap/docs/assets/js/bootstrap',
@@ -27,17 +28,6 @@
             tree: vendorDir + 'tree/src/tree'
         },
         shim: {
-            backbone: {
-                deps: ['jquery', 'underscore'],
-                exports: 'Backbone'
-            },
-            marionette: {
-                deps: ['jquery', 'underscore', 'backbone'],
-                exports: 'Marionette'
-            },
-            underscore: {
-                exports: '_'
-            },
             jquery: {
                 exports: '$'
             },
@@ -47,6 +37,35 @@
             jqueryValidate: {
                 deps: ['jquery']
             },
+
+            underscore: {
+                exports: '_'
+            },
+            underscoreString: {
+                deps: ['underscore']
+            },
+
+            backbone: {
+                deps: ['jquery', 'underscore'],
+                exports: 'Backbone'
+            },
+            marionette: {
+                deps: ['jquery', 'underscore', 'backbone'],
+                exports: 'Marionette'
+            },
+
+            bootstrap: {
+                deps: ['jquery'],
+                exports: '$.fn.popover'
+            },
+            bootstrapModal: {
+                deps: ['bootstrap', 'backbone']
+            },
+            bootbox: {
+                deps: ['bootstrap'],
+                exports: 'bootbox'
+            },
+
             jstree: {
                 deps: ['jquery']
             },
@@ -57,17 +76,6 @@
               deps: ['jquery'],
               exports: 'ich'
             },
-            bootstrap: {
-                deps: ['jquery'],
-                exports: '$.fn.popover'
-            },
-            bootbox: {
-                deps: ['bootstrap'],
-                exports: 'bootbox'
-            },
-            bootstrapModal: {
-                deps: ['bootstrap', 'backbone']
-            },
             text: {
             },
             tree: {
@@ -76,9 +84,11 @@
         }
     });
 
-    define(['application',
+    define(['require', 'application',
+        'underscore', 'underscoreString',
         'jquery', 'jqueryCookie', 'jqueryValidate'],
-    function(Application) {
+    function(require, Application, _) {
+        _.mixin(_.str.exports());
         Application.start();
     });
 }(require));

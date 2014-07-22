@@ -1,5 +1,5 @@
-define(['backbone', 'bootbox', 'tools/logger', 'tools/constants'],
-function(Backbone, Bootbox, logger, constants) {
+define(['underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants'],
+function(_, Backbone, Bootbox, logger, constants) {
 
     'use strict';
 
@@ -38,10 +38,6 @@ function(Backbone, Bootbox, logger, constants) {
             this.$('.success').removeClass("success");
         },
 
-        getCapitalisedType: function() {
-            return this.options.type.charAt(0).toUpperCase() + this.options.type.slice(1);
-        },
-
         bindBehaviors: function() {
             var
                 _self = this,
@@ -69,13 +65,13 @@ function(Backbone, Bootbox, logger, constants) {
                         .removeClass('error').addClass('success');
                 }
             });
-        
+
             // clear input data each time the dialog is shown
             mainElement.on('show', function () {
                 _self.clearFormInputs();
                 _self.clearFormLayout();
             });
-        
+
             // make ajax call after form is validated
             formElement.on('submit', function( event ) {
                 var form = $(this);
@@ -87,7 +83,7 @@ function(Backbone, Bootbox, logger, constants) {
                         data: form.serialize(),
                         success: function(data, status) {
                             mainElement.modal('hide');
-                            Bootbox.alert(_self.getCapitalisedType() + " has been successfully added.");
+                            Bootbox.alert(_.capitalize(_.self.options.type) + " has been successfully added.");
                         }
                     });
                     // FIXME: provide fallback for ajax call above
