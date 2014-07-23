@@ -17,10 +17,8 @@
             tree: '../vendor/tree/src/tree',
             icanhaz: '../vendor/icanhazjs/ICanHaz',
             text: '../vendor/requirejs-text/text',
-            // FIXME: try to load chart from bower package
-            chartjs: '../vendor/static/Chart',
-            // FIXME: try to load sinon from bower package
-            sinon: '../vendor/static/sinon',
+            chartjs: '../vendor/chartjs/Chart',
+            sinon: '../vendor/sinon/index',
 
             // application structure
             chart: 'chart',

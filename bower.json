@@ -37,9 +37,9 @@
     "backbone.bootstrap-modal": "~0.9.0",
     "icanhazjs": "~0.10.3",
     "jstree": "v.pre1.0",
+    "chartjs": "~0.2.0",
     "datatables": "~1.10.1",
     "tree": "~0.1.0",
-    "sinon": "~1.10.3",
-    "chartjs": "~0.2.0"
+    "sinon": "http://sinonjs.org/releases/sinon-1.10.3.js"
   }
 }

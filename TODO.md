@@ -9,3 +9,8 @@ Todos
  * provide grunt automation
  * check for `FIXME` tags inside the code
 
+Less important
+==============
+
+ * provide better way for fetching sinon via bower, currently it's saved as index.js due to bower stupidity, see https://muffinresearch.co.uk/using-sinon-js-with-bower-why-is-sinon-foo-undefined/
+
