@@ -1,31 +1,37 @@
 (function(require){
-
-    var vendorDir = '../vendor/';
-    var staticDir = vendorDir + 'static/';
-
     requirejs.config({
-    //    enforceDefine: true, // jquery.validator is not defined
-        baseUrl: 'js',
+        baseUrl: './',
         paths: {
-            jquery: vendorDir + 'jquery/jquery',
-            jqueryCookie: vendorDir + 'jquery.cookie/jquery.cookie',
-            jqueryValidate: vendorDir + 'jquery.validation/jquery.validate',
-            jstree: vendorDir + 'jstree/jquery.jstree',
-            underscore: vendorDir + 'underscore/underscore',
-            underscoreString: vendorDir + 'underscore.string/lib/underscore.string',
-            backbone: vendorDir + 'backbone/backbone',
-            marionette: vendorDir + 'backbone.marionette/lib/backbone.marionette',
-            bootstrap: vendorDir + 'bootstrap/docs/assets/js/bootstrap',
-            bootbox: vendorDir + 'bootbox/bootbox',
-            bootstrapModal: vendorDir + 'backbone.bootstrap-modal/src/backbone.bootstrap-modal',
-            icanhaz: vendorDir + 'icanhazjs/ICanHaz',
-            datatables: vendorDir + 'datatables/media/js/jquery.dataTables',
-            text: vendorDir + 'requirejs-text/text',
+            jquery: 'vendor/jquery/jquery',
+            jqueryCookie: 'vendor/jquery.cookie/jquery.cookie',
+            jqueryValidate: 'vendor/jquery.validation/jquery.validate',
+            datatables: 'vendor/datatables/media/js/jquery.dataTables',
+            jstree: 'vendor/jstree/jquery.jstree',
+            underscore: 'vendor/underscore/underscore',
+            underscoreString: 'vendor/underscore.string/lib/underscore.string',
+            backbone: 'vendor/backbone/backbone',
+            marionette: 'vendor/backbone.marionette/lib/backbone.marionette',
+            bootstrap: 'vendor/bootstrap/docs/assets/js/bootstrap',
+            bootbox: 'vendor/bootbox/bootbox',
+            bootstrapModal: 'vendor/backbone.bootstrap-modal/src/backbone.bootstrap-modal',
+            tree: 'vendor/tree/src/tree',
+            icanhaz: 'vendor/icanhazjs/ICanHaz',
+            text: 'vendor/requirejs-text/text',
             // FIXME: try to load chart from bower package
-            chartjs: staticDir + 'Chart',
+            chartjs: 'vendor/static/Chart',
             // FIXME: try to load sinon from bower package
-            sinon: staticDir + 'sinon',
-            tree: vendorDir + 'tree/src/tree'
+            sinon: 'vendor/static/sinon',
+
+            // application structure
+            chart: 'chart',
+            collection: 'collection',
+            model: 'model',
+            template: 'template',
+            tools: 'tools',
+            view: 'view',
+
+            application: 'application',
+            config: 'config',
         },
         shim: {
             jquery: {

@@ -1,2 +1,5 @@
 /nbproject/private/
-/public/vendor/
+/src/vendor/
+/node_modules/
+/build/
+/temp/
