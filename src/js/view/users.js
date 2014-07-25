@@ -7,8 +7,13 @@ function(Backbone, logger, UserModel) {
         tagName: 'div',
 
         initialize: function(options) {
-            logger.init('users');
+            logger.view('users');
             this.loadUsers();
+        },
+
+        render: function() {
+            logger.render('users');
+            return this;
         },
 
         loadUsers: function() {
@@ -17,12 +22,6 @@ function(Backbone, logger, UserModel) {
                 var user = new UserModel({id: ids[id], view: this});
                 user.fetch({ success: function(model, response){ model.template(); } });
             }
-        },
-
-        render: function() {
-            logger.render('users');
-            this.$el.html("<h1>hello world from W-L-D</h1>Those are our users:<ul></ul>");
-            return this;
         }
     });
 });

@@ -1,6 +1,6 @@
-define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/incomes.ich',
+define(['backbone', 'icanhaz', 'tools/loader', 'tools/logger', 'text!template/incomes.ich',
     'datatables'],
-function(Backbone, ich, loader, logger, template) {
+function(Backbone, ich, Loader, logger, template) {
 
     'use strict';
 
@@ -10,7 +10,7 @@ function(Backbone, ich, loader, logger, template) {
 
         initialize: function(options) {
             logger.view('incomes');
-            loader.addTemplate(template);
+            Loader.addTemplate(template);
         },
 
         render: function() {

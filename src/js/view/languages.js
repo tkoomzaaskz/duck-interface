@@ -1,6 +1,6 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'view/loader',
+define(['backbone', 'icanhaz', 'tools/logger', 'tools/loader',
     'text!template/languages.ich'],
-function(Backbone, ich, logger, loader, template) {
+function(Backbone, ich, logger, Loader, template) {
 
     'use strict';
 
@@ -12,12 +12,12 @@ function(Backbone, ich, logger, loader, template) {
         },
 
         initialize: function(options) {
-            logger.render('languages dialog');
-            this.options = options;
-            loader.addTemplate(template);
+            logger.view('languages');
+            Loader.addTemplate(template);
         },
 
         render: function() {
+            logger.render('languages');
             this.$el.append(ich.languagesTemplate());
         },
 

@@ -1,6 +1,6 @@
-define(['underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants', 'view/loader',
+define(['underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants', 'tools/loader',
     'text!template/formTemplate.ich', 'text!template/userSelect.ich', 'text!template/categorySelect.ich'],
-function(_, Backbone, Bootbox, logger, constants, loader,
+function(_, Backbone, Bootbox, logger, Constants, Loader,
     template, templateUserSelect, templateCategorySelect) {
 
     'use strict';
@@ -9,10 +9,10 @@ function(_, Backbone, Bootbox, logger, constants, loader,
         tagName: 'div',
 
         initialize: function(options) {
-            logger.render('form dialog');
-            loader.addTemplate(template);
-            loader.addTemplate(templateUserSelect);
-            loader.addTemplate(templateCategorySelect);
+            logger.view('form dialog');
+            Loader.addTemplate(template);
+            Loader.addTemplate(templateUserSelect);
+            Loader.addTemplate(templateCategorySelect);
             this.options = options;
             this.selector = '#' + this.options.type + 'FormDialog';
             this.setElement(this.selector);
@@ -22,8 +22,9 @@ function(_, Backbone, Bootbox, logger, constants, loader,
         },
 
         render: function() {
+            logger.render('form dialog');
             this.$el.html(ich['formTemplate']({
-                'currency': constants.currency,
+                'currency': Constants.currency,
                 'users': this.options.users.getData(),
                 'categories': this.options.categories.getData(),
                 'type': this.options.type

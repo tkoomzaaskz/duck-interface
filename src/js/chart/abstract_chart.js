@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'chartjs', 'tools/logger', 'chart/colors'],
+define(['jquery', 'backbone', 'chartjs', 'tools/logger', 'tools/colors'],
 function($, Backbone, Chart, logger, Colors) {
 
     'use strict';

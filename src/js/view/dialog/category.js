@@ -1,6 +1,6 @@
-define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/constants', 'view/loader',
+define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/constants', 'tools/loader',
     'text!template/chooseCategories.ich', 'text!template/errorTemplate.ich'],
-function(_, Backbone, Bootbox, Tree, logger, constants, loader,
+function(_, Backbone, Bootbox, Tree, logger, Constants, Loader,
     template, templateError) {
 
     'use strict';
@@ -66,7 +66,7 @@ function(_, Backbone, Bootbox, Tree, logger, constants, loader,
         var _self = this;
     
         if (tree == null) {
-            $(this.selector).html(ich.errorTemplate(constants.ajaxError));
+            $(this.selector).html(ich.errorTemplate(Constants.ajaxError));
         } else {
             $(this.selector).jstree({
                 "json_data" : {
@@ -140,23 +140,8 @@ function(_, Backbone, Bootbox, Tree, logger, constants, loader,
         selector: "#chooseCategoriesDialog",
         // FIXME: remove selector ?
 
-        getActiveTab: function() {
-            var tab = $(this.selector + " .tab-pane.active").attr("id");
-            return tab.substring(0, tab.length - 3);
-        },
-
-        render: function() {
-            loader.addTemplate(template);
-            loader.addTemplate(templateError);
-            this.$el.html(ich.chooseCategoriesTemplate());
-            // FIXME: below doesn't seem to work
-            this.$('a.btn-info').popover({
-                'placement': 'bottom'
-            });
-        },
-
         initialize: function(options) {
-            logger.render('category dialog');
+            logger.view('category dialog');
             this.incomeTab = new CategoryDialogTab(options.incomeCategories, "#incomeCategoryTree");
             this.outcomeTab = new CategoryDialogTab(options.outcomeCategories, "#outcomeCategoryTree");
     
@@ -184,6 +169,22 @@ function(_, Backbone, Bootbox, Tree, logger, constants, loader,
             $(this.selector + " a").live("dblclick", function(evt) {
                 $.jstree._reference(_self.getActiveTab() + 'CategoryTree').rename(evt.currentTarget);
             });
+        },
+
+        render: function() {
+            logger.render('category dialog');
+            Loader.addTemplate(template);
+            Loader.addTemplate(templateError);
+            this.$el.html(ich.chooseCategoriesTemplate());
+            // FIXME: below doesn't seem to work
+            this.$('a.btn-info').popover({
+                'placement': 'bottom'
+            });
+        },
+
+        getActiveTab: function() {
+            var tab = $(this.selector + " .tab-pane.active").attr("id");
+            return tab.substring(0, tab.length - 3);
         }
     });
 });

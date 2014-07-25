@@ -1,8 +1,8 @@
-define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'view/loader',
+define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'tools/loader',
     'text!template/root.ich', 'text!template/modalsContainer.ich',
     'view/languages', 'view/homepage', 'view/grid/incomes', 'view/grid/outcomes',
     'view/chart/monthly_balance', 'view/chart/category_total'],
-function(Backbone, logger, Auth, ich, loader,
+function(Backbone, logger, Auth, ich, Loader,
     template, templateModals,
     LanguagesView, HomepageView, IncomesView, OutcomesView,
     MonthlyBalanceChartView, CategoryTotalChartView) {
@@ -18,6 +18,22 @@ function(Backbone, logger, Auth, ich, loader,
             'click #menu_monthly_balance': 'openMonthlyBalance',
             'click #menu_category_total': 'openCategoryTotal',
             'click #logout': 'logout'
+        },
+
+        initialize: function(options) {
+            logger.view('root');
+            Loader.addTemplate(template);
+            Loader.addTemplate(templateModals);
+        },
+
+        render: function() {
+            logger.render('root');
+            this.$el.html(ich.rootTemplate());
+            var languagesView = new LanguagesView()
+            languagesView.setElement(this.$('.container#header')).render();
+            this.$el.append(ich.modalsContainerTemplate());
+            this.openHomepage();
+            return this;
         },
 
         openHomepage: function() {
@@ -62,22 +78,6 @@ function(Backbone, logger, Auth, ich, loader,
             if (typeof(options) === 'undefined') options = {};
             var html = ich[templateName](options);
             this.$('.container#main').html(html);
-        },
-
-        initialize: function(options) {
-            loader.addTemplate(template);
-            loader.addTemplate(templateModals);
-            logger.init('root');
-        },
-
-        render: function() {
-            logger.render('root');
-            this.$el.html(ich.rootTemplate());
-            var languagesView = new LanguagesView()
-            languagesView.setElement(this.$('.container#header')).render();
-            this.$el.append(ich.modalsContainerTemplate());
-            this.openHomepage();
-            return this;
         }
     });
 });

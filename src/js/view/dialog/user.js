@@ -1,6 +1,6 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'tools/constants', 'view/loader',
+define(['backbone', 'icanhaz', 'tools/logger', 'tools/constants', 'tools/loader',
     'text!template/chooseUsers.ich', 'text!template/userCheckbox.ich', 'text!template/errorTemplate.ich'],
-function(Backbone, ich, logger, constants, loader, template, templateCheckbox, templateError) {
+function(Backbone, ich, logger, Constants, Loader, template, templateCheckbox, templateError) {
 
     'use strict';
 
@@ -10,16 +10,17 @@ function(Backbone, ich, logger, constants, loader, template, templateCheckbox, t
         selector: '#chooseUsersDialog',
 
         initialize: function(options) {
-            logger.render('user dialog');
+            logger.view('user dialog');
             this.options = options;
-            loader.addTemplate(template);
-            loader.addTemplate(templateCheckbox);
-            loader.addTemplate(templateError);
+            Loader.addTemplate(template);
+            Loader.addTemplate(templateCheckbox);
+            Loader.addTemplate(templateError);
             this.render();
             this.bindBehaviors();
         },
 
         render: function() {
+            logger.render('user dialog');
             this.$el.html(ich.chooseUsersTemplate());
             this.$('a.btn-info').popover({
                 'placement': 'bottom'
@@ -32,7 +33,7 @@ function(Backbone, ich, logger, constants, loader, template, templateCheckbox, t
 
             $(this.selector).on('show', function () {
                 var content = user_data == null
-                    ? ich.errorTemplate(constants.ajaxError)
+                    ? ich.errorTemplate(Constants.ajaxError)
                     : ich.userCheckboxTemplate({ 'users': user_data });
                 $(_self.selector + ' .modal-body').html(content);
             });

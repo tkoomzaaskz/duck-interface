@@ -30,6 +30,35 @@ function($, Backbone, Marionette,
             } else {
                 this.openLoginView();
             }
+        },
+
+        createViews: function() {
+            var users = new Users();
+    
+            var incomeCategories = new Categories({type: "income"});
+    
+            var outcomeCategories = new Categories({type: "outcome"});
+    
+            var userView = new UserView({
+                users: users
+            });
+    
+            var IncomeFormDialog = new FormView({
+                categories: incomeCategories,
+                users: users,
+                type: "income"
+            });
+    
+            var OutcomeFormDialog = new FormView({
+                categories: outcomeCategories,
+                users: users,
+                type: "outcome"
+            });
+    
+            var categoryView = new CategoryView({
+                incomeCategories: incomeCategories,
+                outcomeCategories: outcomeCategories
+            });
         }
     });
 
@@ -58,33 +87,7 @@ function($, Backbone, Marionette,
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
         this.open();
-
-        var users = new Users();
-
-        var incomeCategories = new Categories({type: "income"});
-
-        var outcomeCategories = new Categories({type: "outcome"});
-
-        var userView = new UserView({
-            users: users
-        });
-
-        var IncomeFormDialog = new FormView({
-            categories: incomeCategories,
-            users: users,
-            type: "income"
-        });
-
-        var OutcomeFormDialog = new FormView({
-            categories: outcomeCategories,
-            users: users,
-            type: "outcome"
-        });
-
-        var categoryView = new CategoryView({
-            incomeCategories: incomeCategories,
-            outcomeCategories: outcomeCategories
-        });
+        this.createViews();
     });
 
     application.listenTo(application.loginView, 'login:success', application.open);

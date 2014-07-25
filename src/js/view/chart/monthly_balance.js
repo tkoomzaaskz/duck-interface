@@ -1,6 +1,6 @@
-define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/monthlyBalance.ich',
+define(['backbone', 'icanhaz', 'tools/loader', 'tools/logger', 'text!template/monthlyBalance.ich',
     'chart/random', 'chart/monthly_balance'],
-function(Backbone, ich, loader, logger, template,
+function(Backbone, ich, Loader, logger, template,
     RandomChart, MonthlyBalanceChart) {
 
     'use strict';
@@ -9,18 +9,16 @@ function(Backbone, ich, loader, logger, template,
         tagName: 'div',
         el: '.container#main',
 
-        initialize: function(options) {
-            // FIXME: unify logger.render and logger.view among all views
-            logger.view('monthly balance chart');
-            loader.addTemplate(template);
-            this.options = options;
-        },
-
-        // FIXME: is defaults used by views ? (not only models ?)
         defaults: {
             width: 600,
             height: 450,
             elementId: 'canvas',
+        },
+
+        initialize: function(options) {
+            this.options = _.extend({}, this.defaults, this.options);
+            logger.view('monthly balance chart');
+            Loader.addTemplate(template);
         },
 
         // FIXME: destroy view when unused: http://stackoverflow.com/a/11534056
@@ -34,7 +32,7 @@ function(Backbone, ich, loader, logger, template,
             }));
 //
             this.chart = new MonthlyBalanceChart({
-                context: this.$(this.defaults.elementId).get(0).getContext('2d'),
+                context: this.$(this.options.elementId).get(0).getContext('2d'),
                 users: [1,2,4],
                 from: '2013-11',
                 to: '2014-03'

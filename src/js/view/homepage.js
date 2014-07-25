@@ -1,5 +1,5 @@
-define(['backbone', 'icanhaz', 'view/loader', 'tools/logger', 'text!template/homepage.ich'],
-function(Backbone, ich, loader, logger, template) {
+define(['backbone', 'icanhaz', 'tools/loader', 'tools/logger', 'text!template/homepage.ich'],
+function(Backbone, ich, Loader, logger, template) {
 
     'use strict';
 
@@ -9,7 +9,7 @@ function(Backbone, ich, loader, logger, template) {
 
         initialize: function(options) {
             logger.view('homepage');
-            loader.addTemplate(template);
+            Loader.addTemplate(template);
         },
 
         render: function() {
