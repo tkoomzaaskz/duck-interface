@@ -25,7 +25,7 @@ function(_, Backbone, Bootbox, logger, Constants, Loader,
             logger.render('form dialog');
             this.$el.html(ich['formTemplate']({
                 'currency': Constants.currency,
-                'users': this.options.users.getData(),
+                'users': this.options.users.getFullnames(),
                 'categories': this.options.categories.getData(),
                 'type': this.options.type
             }));

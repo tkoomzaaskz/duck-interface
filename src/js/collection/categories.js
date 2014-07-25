@@ -3,6 +3,15 @@ function(Backbone, CategoryModel, config, logger) {
 
     'use strict';
 
+    function InterfaceNode(node) {
+        this.data = {title: node.name};
+        this.attr = {id: node.id};
+    }
+
+    InterfaceNode.prototype = {
+        state: undefined
+    };
+
     return Backbone.Collection.extend({
 
         model: CategoryModel,
@@ -70,6 +79,47 @@ function(Backbone, CategoryModel, config, logger) {
             } else {
                 return false;
             }
+        },
+
+        getTree: function() {
+            var categories = this.getData();
+            if (categories == null)
+                return null;
+
+            // roots first
+            categories.sort(function(a, b) {
+                var a_p_undef = a.parent_id === null,
+                    b_p_undef = b.parent_id === null;
+                if (a_p_undef === b_p_undef) return a.id - b.id;
+                if (a_p_undef && !b_p_undef) return -1;
+                return 1;
+            });
+
+            var nodeMap = {},
+                tree = new Tree();
+            _.each(categories, function(node) {
+                nodeMap[node.id] = node;
+                if (node.parent_id === undefined) {
+                    node.parent_id = null; // remove when API returns proper parent_id value
+                }
+                if (node.parent_id === null) {
+                    tree.push(node.id);
+                } else {
+                    tree.children[node.parent_id].push(node.id);
+                }
+            });
+
+            var node, children, result = _.map(tree, function(id){
+                node = new InterfaceNode(nodeMap[id]);
+                children = _.map(tree.children[id], function(id2) {
+                    return new InterfaceNode(nodeMap[id2]);
+                });
+                if (children.length) {
+                    node.children = children;
+                }
+                return node;
+            });
+            return result;
         }
     });
 });

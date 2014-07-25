@@ -1,9 +1,9 @@
 define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'tools/loader',
-    'text!template/root.ich', 'text!template/modalsContainer.ich',
+    'text!template/root.ich', 'text!template/modalsContainer.ich', 'text!template/errorTemplate.ich',
     'view/languages', 'view/homepage', 'view/grid/incomes', 'view/grid/outcomes',
     'view/chart/monthly_balance', 'view/chart/category_total'],
 function(Backbone, logger, Auth, ich, Loader,
-    template, templateModals,
+    template, templateModals, templateError,
     LanguagesView, HomepageView, IncomesView, OutcomesView,
     MonthlyBalanceChartView, CategoryTotalChartView) {
 
@@ -24,6 +24,7 @@ function(Backbone, logger, Auth, ich, Loader,
             logger.view('root');
             Loader.addTemplate(template);
             Loader.addTemplate(templateModals);
+            Loader.addTemplate(templateError);
         },
 
         render: function() {

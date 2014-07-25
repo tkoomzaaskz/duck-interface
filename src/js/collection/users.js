@@ -25,6 +25,12 @@ function(Backbone, config, UserModel, logger) {
             return response.objects;
         },
 
+        getFullnames: function(chosen) {
+            return this.map(function(model) {
+                return model.getFullName();
+            });
+        },
+
         setAll: function(chosen) {
             this.each(function(model) {
                 model.set('chosen', chosen);

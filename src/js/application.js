@@ -33,28 +33,30 @@ function($, Backbone, Marionette,
         },
 
         createViews: function() {
+            // FIXME: asynchronous collection fetch
+            // http://stackoverflow.com/questions/12168587/how-to-synchronize-multiple-backbone-js-fetches
             var users = new Users();
-    
-            var incomeCategories = new Categories({type: "income"});
-    
-            var outcomeCategories = new Categories({type: "outcome"});
-    
+
+            var incomeCategories = new Categories([], {type: "income"});
+
+            var outcomeCategories = new Categories([], {type: "outcome"});
+
             var userView = new UserView({
                 users: users
             });
-    
+
             var IncomeFormDialog = new FormView({
                 categories: incomeCategories,
                 users: users,
                 type: "income"
             });
-    
+
             var OutcomeFormDialog = new FormView({
                 categories: outcomeCategories,
                 users: users,
                 type: "outcome"
             });
-    
+
             var categoryView = new CategoryView({
                 incomeCategories: incomeCategories,
                 outcomeCategories: outcomeCategories

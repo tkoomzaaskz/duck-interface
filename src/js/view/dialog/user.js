@@ -35,6 +35,7 @@ function(Backbone, ich, logger, Constants, Loader, template, templateCheckbox, t
             var _self = this;
             var collection = this.options.users;
 
+            // FIXME: show or shown?
             this.$el.on('show', function () {
                 var content = collection.length == 0
                     ? ich.errorTemplate(Constants.ajaxError)
