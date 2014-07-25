@@ -1,12 +1,14 @@
 <script id="userCheckboxTemplate" type="text/html">
     <p>
         Choose from the following users:
-    <ul>
-    {{#users}}
-        <label class="checkbox">
-            <input type="checkbox"{{#chosen}} checked="checked"{{/chosen}} name="user" value="{{ username }}" /> {{ first_name }} {{ last_name }}
-        </label>
-    {{/users}}
-    </ul>
-</p>
+        <ul>
+        {{#users}}
+          {{#attributes}}
+            <label class="checkbox">
+                <input type="checkbox"{{#chosen}} checked="checked"{{/chosen}} name="user" value="{{ username }}" /> {{ first_name }} {{ last_name }}
+            </label>
+          {{/attributes}}
+        {{/users}}
+        </ul>
+    </p>
 </script>

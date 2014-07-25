@@ -1,9 +1,9 @@
-define(['config', 'model/user', 'tools/logger'],
-function(config, UserModel, logger) {
+define(['backbone', 'config', 'model/user', 'tools/logger'],
+function(Backbone, config, UserModel, logger) {
 
     'use strict';
 
-    var Users = Backbone.Collection.extend({
+    return Backbone.Collection.extend({
 
         url: config.urlRoot + '/user/',
 
@@ -11,55 +11,36 @@ function(config, UserModel, logger) {
 
         initialize: function() {
             logger.collection('users', 'created', this);
+            this.fetch({
+                success: function(collection, response, options) {
+                    collection.setAll(true);
+                },
+                error: function(collection, response, options) {
+                    logger.error('Fetching user data failed', response);
+                }
+            });
         },
 
         parse: function(response) {
             return response.objects;
         },
 
-        data: null,
-
-        fetchData: function() {
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                context: this,
-                async: false,
-                url: config.urlRoot + '/' + "user/"
-            }).done(function(response) {
-                this.data = response.objects;
-                this.setAll(true);
-            }).fail(function(response) {
-                logger.log(response);
-                logger.error("Fetching user data failed, see response above");
-            });
-        },
-
-        getData: function() {
-            if (this.data == null) {
-                this.fetchData();
-            }
-            return this.data;
-        },
-
         setAll: function(chosen) {
-            for (var index = 0; index < this.data.length; ++index) {
-                this.data[index].chosen = chosen;
-            }
+            this.each(function(model) {
+                model.set('chosen', chosen);
+            });
         },
 
         setChosen: function(username_list) {
-            for (var index = 0; index < this.data.length; ++index) {
-                this.data[index].chosen = ($.inArray(this.data[index].username, username_list) > -1);
-            }
+            this.map(function(model) {
+                model.set('chosen', _.contains(username_list, model.get('username')));
+            });
         },
 
         getChosen: function() {
-            return $(this.getData()).map(function() {
-                return (this.chosen) ? this.first_name : null;
+            return this.map(function(model) {
+                return model.get('first_name');
             });
         }
     });
-
-    return Users;
 });

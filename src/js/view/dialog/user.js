@@ -27,23 +27,26 @@ function(Backbone, ich, logger, Constants, Loader, template, templateCheckbox, t
             });
         },
 
+        getChecked: function() {
+            return this.$("input[name=user]:checked").map(function() {
+                return this.value;
+            });
+        },
+
         bindBehaviors: function() {
             var _self = this;
-            var user_data = this.options.users.getData();
+            var collection = this.options.users;
 
-            $(this.selector).on('show', function () {
-                var content = user_data == null
+            this.$el.on('show', function () {
+                var content = collection.models.length == 0
                     ? ich.errorTemplate(Constants.ajaxError)
-                    : ich.userCheckboxTemplate({ 'users': user_data });
+                    : ich.userCheckboxTemplate({ 'users': collection.models });
                 $(_self.selector + ' .modal-body').html(content);
             });
 
-            $(this.selector + ' .btn-primary').bind('click', function() {
-                var chosen = $("input[name=user]:checked").map(function() {
-                    return this.value;
-                });
-                _self.options.users.setChosen(chosen);
-                $(_self.selector).modal('hide');
+            this.$('.btn-primary').bind('click', function() {
+                _self.options.users.setChosen(_self.getChecked());
+                _self.$el.modal('hide');
             });
         }
     });

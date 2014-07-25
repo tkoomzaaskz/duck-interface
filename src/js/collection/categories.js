@@ -4,9 +4,10 @@ function(Backbone, CategoryModel, config, logger) {
     'use strict';
 
     return Backbone.Collection.extend({
+
         model: CategoryModel,
 
-        initialize: function(options) {
+        initialize: function(models, options) {
             logger.collection('categories', 'created', this);
             this.options = options;
             this.data = null; // FIXME: 2 b removed
