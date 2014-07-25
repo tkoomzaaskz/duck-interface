@@ -7,11 +7,9 @@ function(Backbone, ich, logger, Constants, Loader, template, templateCheckbox, t
     return Backbone.View.extend({
         tagName: 'div',
         el: '#chooseUsersDialog',
-        selector: '#chooseUsersDialog',
 
         initialize: function(options) {
             logger.view('user dialog');
-            this.options = options;
             Loader.addTemplate(template);
             Loader.addTemplate(templateCheckbox);
             Loader.addTemplate(templateError);
@@ -38,10 +36,10 @@ function(Backbone, ich, logger, Constants, Loader, template, templateCheckbox, t
             var collection = this.options.users;
 
             this.$el.on('show', function () {
-                var content = collection.models.length == 0
+                var content = collection.length == 0
                     ? ich.errorTemplate(Constants.ajaxError)
                     : ich.userCheckboxTemplate({ 'users': collection.models });
-                $(_self.selector + ' .modal-body').html(content);
+                _self.$('.modal-body').html(content);
             });
 
             this.$('.btn-primary').bind('click', function() {
