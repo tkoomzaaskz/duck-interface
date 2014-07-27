@@ -20,18 +20,17 @@ function(_, Backbone, Bootbox, Tree, logger, Loader,
                 el: '#outcomeCategoryTree',
                 categories: options.outcomeCategories
             });
-debugger;
+
             var _self = this;
-            this.$el.on('shown', function () {
+//            this.$el.on('show', function () {
                 _self.render();
                 _self.incomeTab.render();
                 _self.outcomeTab.render();
-            });
+//            });
         },
 
         render: function() {
             logger.render('category dialog');
-debugger;
             this.$el.html(ich.chooseCategoriesTemplate());
             // FIXME: below doesn't seem to work
             this.$('a.btn-info').popover({
@@ -42,14 +41,11 @@ debugger;
 
         bindBehaviors: function() {
             var _self = this;
-
-debugger;
             this.$('a[data-toggle="tab"]').on('shown', function (e) {
 debugger;
                 e.target // activated tab
                 e.relatedTarget // previous tab
             })
-
 
             this.$(".action-create").bind('click', function() {
                 $("#" + _self.getActiveTab() + "CategoryTree").jstree("create", null, "last", {

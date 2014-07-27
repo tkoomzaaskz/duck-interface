@@ -11,7 +11,10 @@ function(Backbone, config, UserModel, logger) {
 
         initialize: function() {
             logger.collection('users', 'created', this);
-            this.fetch({
+        },
+
+        fetchHandle: function() {
+            return this.fetch({
                 success: function(collection, response, options) {
                     collection.setAll(true);
                 },

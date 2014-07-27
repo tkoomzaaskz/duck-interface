@@ -29,9 +29,10 @@ function(_, Backbone,
         processLogin: function(e) {
             e.preventDefault();
             this.setCursor('progress');
+            debugger;
             var _self = this,
-                login = this.$('input')[0].value,
-                password = this.$('input')[1].value;
+                login = this.$('input#inputLogin').val(),
+                password = this.$('input#inputPassword').val();
             if (Auth.login(login, password)) {
                 setTimeout(function() {
                     _self.trigger('login:success');

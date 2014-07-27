@@ -17,7 +17,7 @@ function(Backbone, logger, Auth, ich, Loader,
             'click #menu_outcome_list': 'openOutcomes',
             'click #menu_monthly_balance': 'openMonthlyBalance',
             'click #menu_category_total': 'openCategoryTotal',
-            'click #logout': 'logout'
+            'click #menu_logout': 'logout'
         },
 
         initialize: function(options) {
@@ -30,9 +30,9 @@ function(Backbone, logger, Auth, ich, Loader,
         render: function() {
             logger.render('root');
             this.$el.html(ich.rootTemplate());
-            var languagesView = new LanguagesView()
-            languagesView.setElement(this.$('.container#header')).render();
             this.$el.append(ich.modalsContainerTemplate());
+//            var languagesView = new LanguagesView();
+//            languagesView.setElement(this.$('.container#header')).render();
             this.openHomepage();
             return this;
         },
@@ -51,13 +51,6 @@ function(Backbone, logger, Auth, ich, Loader,
         openOutcomes: function() {
             var outcomesView = new OutcomesView();
             outcomesView.render();
-/*
-            $('#outcomes').dataTable({
-                "bServerSide": true,
-                'sPaginationType': 'bootstrap',
-                "sAjaxSource": '../php/client/json.php?type=outcomes'
-            });
-*/
         },
 
         openMonthlyBalance: function() {

@@ -1,5 +1,5 @@
-define(['jquery', 'backbone', 'chartjs', 'tools/logger', 'tools/colors'],
-function($, Backbone, Chart, logger, Colors) {
+define(['jquery', 'backbone', 'marionette', 'chartjs', 'tools/logger', 'tools/colors'],
+function($, Backbone, Marionette, Chart, logger, Colors) {
 
     'use strict';
 
@@ -15,7 +15,7 @@ function($, Backbone, Chart, logger, Colors) {
         },
 
         // enable extending AbstractChart
-        extend: Backbone.Model.extend,
+        extend: Marionette.extend,
 
         _createBaseChart: function() {
             this.chart = new Chart(this.get('context'))[this.type](this.chartData(), {

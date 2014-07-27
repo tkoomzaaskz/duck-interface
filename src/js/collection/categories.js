@@ -14,6 +14,10 @@ function(Backbone, CategoryModel, config, logger) {
 
     return Backbone.Collection.extend({
 
+        url: function() {
+            return config.urlRoot + '/' + this.options.type + "_category/";
+        },
+
         model: CategoryModel,
 
         initialize: function(models, options) {
@@ -22,8 +26,15 @@ function(Backbone, CategoryModel, config, logger) {
             this.data = null; // FIXME: 2 b removed
         },
 
-        url: function() {
-            return config.urlRoot + '/' + this.options.type + "_category/";
+        fetchHandle: function() {
+            return this.fetch({
+                success: function(collection, response, options) {
+                    // ?
+                },
+                error: function(collection, response, options) {
+                    logger.error('Fetching category data failed', response);
+                }
+            });
         },
 
         // FIXME: fetching data shall be removed with built-in backbone fetching mechanism

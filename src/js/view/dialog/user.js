@@ -1,6 +1,7 @@
 define(['backbone', 'icanhaz', 'tools/logger', 'tools/constants', 'tools/loader',
     'text!template/chooseUsers.ich', 'text!template/userCheckbox.ich', 'text!template/errorTemplate.ich'],
-function(Backbone, ich, logger, Constants, Loader, template, templateCheckbox, templateError) {
+function(Backbone, ich, logger, Constants, Loader,
+    template, templateCheckbox, templateError) {
 
     'use strict';
 

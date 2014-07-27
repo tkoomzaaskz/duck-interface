@@ -32,34 +32,45 @@ function($, Backbone, Marionette,
             }
         },
 
-        createViews: function() {
+        createCollections: function() {
             // FIXME: asynchronous collection fetch
             // http://stackoverflow.com/questions/12168587/how-to-synchronize-multiple-backbone-js-fetches
-            var users = new Users();
 
-            var incomeCategories = new Categories([], {type: "income"});
+            this.users = new Users();
+            this.incomes = new Categories([], {type: "income"});
+            this.outcomes = new Categories([], {type: "outcome"});
 
-            var outcomeCategories = new Categories([], {type: "outcome"});
-
-            var userView = new UserView({
-                users: users
+            var _self = this;
+            $.when(
+                this.users.fetchHandle(),
+                this.incomes.fetchHandle(),
+                this.outcomes.fetchHandle()
+            ).done(function(){
+                _self.trigger('app:ready');
+                logger.log('READY NOW!');
             });
+        },
 
+        createViews: function() {
             var IncomeFormDialog = new FormView({
-                categories: incomeCategories,
-                users: users,
-                type: "income"
+                categories: this.incomes,
+                users: this.users,
+                type: 'income'
             });
 
             var OutcomeFormDialog = new FormView({
-                categories: outcomeCategories,
-                users: users,
-                type: "outcome"
+                categories: this.outcomes,
+                users: this.users,
+                type: 'outcome'
             });
 
             var categoryView = new CategoryView({
-                incomeCategories: incomeCategories,
-                outcomeCategories: outcomeCategories
+                incomeCategories: this.incomes,
+                outcomeCategories: this.outcomes
+            });
+
+            var userView = new UserView({
+                users: this.users
             });
         }
     });
@@ -89,6 +100,7 @@ function($, Backbone, Marionette,
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
         this.open();
+        this.createCollections();
         this.createViews();
     });
 

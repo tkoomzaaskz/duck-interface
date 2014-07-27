@@ -1,40 +1,48 @@
 <script id="rootTemplate" type="text/html">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container" id="header">
-                <a class="brand" id="menu_homepage" href="#">wealthy laughing duck</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" id="drop1" role="button" data-toggle="dropdown" href="#">Add <b class="caret"></b></a>
-                            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                                <li role="presentation"><a role="menuitem" data-toggle="modal" href="#incomeFormDialog">Income</a></li>
-                                <li role="presentation"><a role="menuitem" data-toggle="modal" href="#outcomeFormDialog">Outcome</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" id="drop2" role="button" data-toggle="dropdown" href="#">Display <b class="caret"></b></a>
-                            <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                                <li role="presentation"><a role="menuitem" id="menu_monthly_balance">Monthly balance</a></li>
-                                <li role="presentation"><a role="menuitem" id="menu_category_total">Category total</a></li>
-                                <li role="presentation"><a role="menuitem" id="menu_outcome_list">Outcomes</a></li>
-                                <li role="presentation"><a role="menuitem" id="menu_income_list">Incomes</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" id="drop3" role="button" data-toggle="dropdown" href="#">Manage <b class="caret"></b></a>
-                            <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                                <li role="presentation"><a role="menuitem" data-toggle="modal" href="#chooseUsersDialog">Users</a></li>
-                                <li role="presentation"><a role="menuitem" data-toggle="modal" href="#chooseCategoriesDialog">Categories</a></li>
-                            </ul>
-                        </li>
-                        <li role="presentation"><a role="menuitem" id="logout" href="#logout">Logout</a></li>
-                        <li role="presentation"><a role="menuitem" href="https://github.com/tkoomzaaskz/duck-interface">see me on github!</a></li>
-                    </ul>
-                </div>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container" id="header">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">1</span>
+                    <span class="icon-bar">2</span>
+                    <span class="icon-bar">3</span>
+                </button>
+                <a class="navbar-brand" id="menu_homepage" href="#homepage">wealthy laughing duck</a>
             </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#menu_add" class="dropdown-toggle" data-toggle="dropdown">Add<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a data-toggle="modal" data-target="#incomeFormDialog" href="#incomeFormDialog">Income</a></li>
+                            <li><a data-toggle="modal" data-target="#outcomeFormDialog" href="#outcomeFormDialog">Outcome</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#menu_display" class="dropdown-toggle" data-toggle="dropdown">Display<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">Charts</li>
+                            <li><a id="menu_monthly_balance" href="#monthlyBalance">Monthly balance</a></li>
+                            <li><a id="menu_category_total" href="#categoryTotal">Category total</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Lists</li>
+                            <li><a id="menu_outcome_list" href="#OutcomeList">Outcomes</a></li>
+                            <li><a id="menu_income_list" href="#IncomeList">Incomes</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#menu_manage" class="dropdown-toggle" data-toggle="dropdown">Manage<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a data-toggle="modal" data-target="#chooseUsersDialog" href="#chooseUsersDialog">Users</a></li>
+                            <li><a data-toggle="modal" data-target="#chooseCategoriesDialog" href="#chooseCategoriesDialog">Categories</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="menu_logout" href="#logout">Logout</a></li>
+                    <li><a href="https://github.com/tkoomzaaskz/duck-interface">see me on github!</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
         </div>
     </div>
-
     <div class="container" id="main"></div>
 </script>
