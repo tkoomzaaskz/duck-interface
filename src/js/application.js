@@ -52,26 +52,30 @@ function($, Backbone, Marionette,
         },
 
         createViews: function() {
-            var IncomeFormDialog = new FormView({
+            var incomeFormView = new FormView({
                 categories: this.incomes,
                 users: this.users,
                 type: 'income'
             });
+            $('body').append(incomeFormView.$el);
 
-            var OutcomeFormDialog = new FormView({
+            var outcomeFormView = new FormView({
                 categories: this.outcomes,
                 users: this.users,
                 type: 'outcome'
             });
+            $('body').append(outcomeFormView.$el);
 
             var categoryView = new CategoryView({
                 incomeCategories: this.incomes,
                 outcomeCategories: this.outcomes
             });
+            $('body').append(categoryView.$el);
 
             var userView = new UserView({
                 users: this.users
             });
+            $('body').append(userView.$el);
         }
     });
 

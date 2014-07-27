@@ -6,7 +6,6 @@ function(_, Backbone, Bootbox, logger, Constants, Loader,
     'use strict';
 
     return Backbone.View.extend({
-        tagName: 'div',
 
         initialize: function(options) {
             logger.view('form dialog');
@@ -14,8 +13,6 @@ function(_, Backbone, Bootbox, logger, Constants, Loader,
             Loader.addTemplate(templateUserSelect);
             Loader.addTemplate(templateCategorySelect);
             this.options = options;
-            this.selector = '#' + this.options.type + 'FormDialog';
-            this.setElement(this.selector);
 
             this.render();
             this.bindBehaviors();
@@ -23,7 +20,7 @@ function(_, Backbone, Bootbox, logger, Constants, Loader,
 
         render: function() {
             logger.render('form dialog');
-            this.$el.html(ich['formTemplate']({
+            this.setElement(ich['formTemplate']({
                 'currency': Constants.currency,
                 'users': this.options.users.getFullnames(),
                 'categories': this.options.categories.getData(),

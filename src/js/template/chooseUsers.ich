@@ -1,4 +1,5 @@
 <script id="chooseUsersTemplate" type="text/html">
+<div id="chooseUsersDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="chooseUsersModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,4 +16,5 @@
             </div>
         </div>
     </div>
+</div>
 </script>

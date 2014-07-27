@@ -6,8 +6,6 @@ function(Backbone, ich, logger, Constants, Loader,
     'use strict';
 
     return Backbone.View.extend({
-        tagName: 'div',
-        el: '#chooseUsersDialog',
 
         initialize: function(options) {
             logger.view('user dialog');
@@ -15,15 +13,15 @@ function(Backbone, ich, logger, Constants, Loader,
             Loader.addTemplate(templateCheckbox);
             Loader.addTemplate(templateError);
             this.render();
-            this.bindBehaviors();
         },
 
         render: function() {
             logger.render('user dialog');
-            this.$el.html(ich.chooseUsersTemplate());
+            this.setElement(ich.chooseUsersTemplate());
             this.$('a.btn-info').popover({
                 'placement': 'bottom'
             });
+            this.bindBehaviors();
         },
 
         getChecked: function() {
@@ -37,7 +35,7 @@ function(Backbone, ich, logger, Constants, Loader,
             var collection = this.options.users;
 
             // FIXME: show or shown?
-            this.$el.on('show', function () {
+            this.$el.on('show.bs.modal', function () {
                 var content = collection.length == 0
                     ? ich.errorTemplate(Constants.ajaxError)
                     : ich.userCheckboxTemplate({ 'users': collection.models });

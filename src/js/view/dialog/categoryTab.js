@@ -1,7 +1,7 @@
-define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/constants', 'tools/loader',
-    'text!template/chooseCategories.ich', 'text!template/errorTemplate.ich'],
-function(_, Backbone, Bootbox, Tree, logger, Constants, Loader,
-    template, templateError) {
+define(['underscore', 'backbone', 'bootbox', 'tree',
+    'tools/logger', 'tools/constants', 'tools/loader'],
+function(_, Backbone, Bootbox, Tree,
+    logger, Constants, Loader) {
 
     'use strict';
 
@@ -10,7 +10,6 @@ function(_, Backbone, Bootbox, Tree, logger, Constants, Loader,
 
         initialize: function CategoryDialogTab(options) {
             this.categories = options.categories;
-            this.selector = options.el;
         },
 
         render: function() {
@@ -18,9 +17,9 @@ function(_, Backbone, Bootbox, Tree, logger, Constants, Loader,
             var _self = this;
 
             if (tree == null) {
-                $(this.selector).html(ich.errorTemplate(Constants.ajaxError));
+                this.$el.html(ich.errorTemplate(Constants.ajaxError));
             } else {
-                $(this.selector).jstree({
+                this.$el.jstree({
                     "json_data" : {
                         "data" : tree,
                         "progressive_render" : true
@@ -84,6 +83,7 @@ function(_, Backbone, Bootbox, Tree, logger, Constants, Loader,
                     logger.log("jstree-test-log", event, data);
                 });
             }
+            return this;
         }
     });
 });

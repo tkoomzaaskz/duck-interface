@@ -1,6 +1,0 @@
-<script id="modalsContainerTemplate" type="text/html">
-    <div id="outcomeFormDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="outcomeFormModalLabel" aria-hidden="true"></div>
-    <div id="incomeFormDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="incomeFormModalLabel" aria-hidden="true"></div>
-    <div id="chooseUsersDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="chooseUsersModalLabel" aria-hidden="true"></div>
-    <div id="chooseCategoriesDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="chooseCategoriesModalLabel" aria-hidden="true"></div>
-</script>

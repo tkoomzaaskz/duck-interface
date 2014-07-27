@@ -1,4 +1,5 @@
 <script id="formTemplate" type="text/html">
+<div id="{{ type }}FormDialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="{{ type }}FormModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -45,4 +46,5 @@
             </div>
         </div>
     </div>
+</div>
 </script>
