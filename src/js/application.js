@@ -51,31 +51,31 @@ function($, Backbone, Marionette,
             });
         },
 
-        createViews: function() {
+        attachModals: function() {
             var incomeFormView = new FormView({
                 categories: this.incomes,
                 users: this.users,
                 type: 'income'
-            });
-            $('body').append(incomeFormView.$el);
+            })
+            this.bodyRegion.$el.append(incomeFormView.$el);
 
             var outcomeFormView = new FormView({
                 categories: this.outcomes,
                 users: this.users,
                 type: 'outcome'
             });
-            $('body').append(outcomeFormView.$el);
+            this.bodyRegion.$el.append(outcomeFormView.$el);
 
             var categoryView = new CategoryView({
                 incomeCategories: this.incomes,
                 outcomeCategories: this.outcomes
             });
-            $('body').append(categoryView.$el);
+            this.bodyRegion.$el.append(categoryView.$el);
 
             var userView = new UserView({
                 users: this.users
             });
-            $('body').append(userView.$el);
+            this.bodyRegion.$el.append(userView.$el);
         }
     });
 
@@ -105,7 +105,7 @@ function($, Backbone, Marionette,
         logger.log('APPLICATION', 'start');
         this.open();
         this.createCollections();
-        this.createViews();
+        this.attachModals();
     });
 
     application.listenTo(application.loginView, 'login:success', application.open);
