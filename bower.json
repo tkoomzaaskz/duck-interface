@@ -25,7 +25,7 @@
   "dependencies": {
     "requirejs": "~2.1.8",
     "requirejs-text": "~2.0.10",
-    "jquery": "1.8.3",
+    "jquery": "~2.1.1",
     "jquery.cookie": "~1.4.1",
     "jquery.validation": "~1.11.1",
     "underscore": "~1.5.1",

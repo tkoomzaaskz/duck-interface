@@ -2,7 +2,7 @@
     requirejs.config({
         baseUrl: 'js/',
         paths: {
-            jquery: '../vendor/jquery/jquery',
+            jquery: '../vendor/jquery/dist/jquery',
             jqueryCookie: '../vendor/jquery.cookie/jquery.cookie',
             jqueryValidate: '../vendor/jquery.validation/jquery.validate',
             datatables: '../vendor/datatables/media/js/jquery.dataTables',
