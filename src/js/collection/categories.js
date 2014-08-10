@@ -29,7 +29,7 @@ function(Backbone, CategoryModel, config, logger) {
         fetchHandle: function() {
             return this.fetch({
                 success: function(collection, response, options) {
-                    // ?
+                    // debugger;
                 },
                 error: function(collection, response, options) {
                     logger.error('Fetching category data failed', response);
@@ -120,7 +120,7 @@ function(Backbone, CategoryModel, config, logger) {
                 }
             });
 
-            var node, children, result = _.map(tree, function(id){
+            var node, children, result = _.map(tree, function(id) {
                 node = new InterfaceNode(nodeMap[id]);
                 children = _.map(tree.children[id], function(id2) {
                     return new InterfaceNode(nodeMap[id2]);

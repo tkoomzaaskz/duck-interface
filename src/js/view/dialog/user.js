@@ -31,7 +31,7 @@ function(Backbone, ich, logger, Constants, Loader,
         },
 
         bindBehaviors: function() {
-            var _self = this;
+            var self = this;
             var collection = this.options.users;
 
             // FIXME: show or shown?
@@ -39,12 +39,12 @@ function(Backbone, ich, logger, Constants, Loader,
                 var content = collection.length == 0
                     ? ich.errorTemplate(Constants.ajaxError)
                     : ich.userCheckboxTemplate({ 'users': collection.models });
-                _self.$('.modal-body').html(content);
+                self.$('.modal-body').html(content);
             });
 
             this.$('.btn-primary').bind('click', function() {
-                _self.options.users.setChosen(_self.getChecked());
-                _self.$el.modal('hide');
+                self.options.users.setChosen(self.getChecked());
+                self.$el.modal('hide');
             });
         }
     });

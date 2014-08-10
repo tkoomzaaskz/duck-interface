@@ -29,19 +29,18 @@ function(_, Backbone,
         processLogin: function(e) {
             e.preventDefault();
             this.setCursor('progress');
-            debugger;
-            var _self = this,
+            var self = this,
                 login = this.$('input#inputLogin').val(),
                 password = this.$('input#inputPassword').val();
             if (Auth.login(login, password)) {
                 setTimeout(function() {
-                    _self.trigger('login:success');
-                    _self.setCursor('default');
+                    self.trigger('login:success');
+                    self.setCursor('default');
                 }, 1000);
             } else {
                 setTimeout(function() {
-                    _self.trigger('login:error');
-                    _self.setCursor('default');
+                    self.trigger('login:error');
+                    self.setCursor('default');
                     alert('error');
                 }, 1000);
             }

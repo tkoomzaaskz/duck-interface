@@ -13,8 +13,8 @@ function(_, Backbone, Bootbox, Tree,
         },
 
         render: function() {
-            var tree = this.options.categories.getTree();
-            var _self = this;
+            var tree = this.options.categories.getTree(),
+                self = this;
 
             if (tree == null) {
                 this.$el.html(ich.errorTemplate(Constants.ajaxError));
@@ -28,7 +28,7 @@ function(_, Backbone, Bootbox, Tree,
                 })
                 .bind("open_node.jstree close_node.jstree", function (event, data) {
                     var state = event.type == "open_node" ? "open" : "closed";
-                    _self.categories.setState(data.rslt.obj.attr("id"), state);
+                    self.categories.setState(data.rslt.obj.attr("id"), state);
                 })
                 .bind("move_node.jstree", function (event, data) {
                     var id = data.rslt.o.attr("id");
@@ -51,7 +51,7 @@ function(_, Backbone, Bootbox, Tree,
                             new_name: new_name
                         }
                     }).done(function(response) {
-                        _self.categories.renameNode(id, new_name);
+                        self.categories.renameNode(id, new_name);
                     }).fail(function(response) {
                         Bootbox.alert("rename node failed.");
                     });
@@ -68,13 +68,13 @@ function(_, Backbone, Bootbox, Tree,
                             action: "createNode",
                             parent_id: parent_id,
                             name: name,
-                            type: _self.categories.options.type
+                            type: self.categories.options.type
                         }
                     }).done(function(response) {
                         new_id = response;
                         // update tree component
                         data.rslt.obj.attr("id", new_id);
-                        _self.categories.addNode(new_id, "some name", parent_id);
+                        self.categories.addNode(new_id, "some name", parent_id);
                     }).fail(function(response) {
                         Bootbox.alert("create node failed.");
                     });

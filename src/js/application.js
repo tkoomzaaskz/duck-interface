@@ -40,13 +40,13 @@ function($, Backbone, Marionette,
             this.incomes = new Categories([], {type: "income"});
             this.outcomes = new Categories([], {type: "outcome"});
 
-            var _self = this;
+            var self = this;
             $.when(
                 this.users.fetchHandle(),
                 this.incomes.fetchHandle(),
                 this.outcomes.fetchHandle()
             ).done(function(){
-                _self.trigger('app:ready');
+                self.trigger('app:ready');
                 logger.log('READY NOW!');
             });
         },

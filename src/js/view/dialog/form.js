@@ -43,7 +43,7 @@ function(_, Backbone, Bootbox, logger, Constants, Loader,
 
         bindBehaviors: function() {
             var
-                _self = this,
+                self = this,
                 mainElement = this.$el,
                 formElement = this.$('form');
 
@@ -71,8 +71,8 @@ function(_, Backbone, Bootbox, logger, Constants, Loader,
 
             // clear input data each time the dialog is shown
             mainElement.on('show', function () {
-                _self.clearFormInputs();
-                _self.clearFormLayout();
+                self.clearFormInputs();
+                self.clearFormLayout();
             });
 
             // make ajax call after form is validated

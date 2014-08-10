@@ -32,29 +32,29 @@ function(_, Backbone, Bootbox, Tree, logger, Loader,
         },
 
         bindBehaviors: function() {
-            var _self = this;
+            var self = this;
             this.$('a[data-toggle="tab"]').on('shown.bs.modal', function (e) {
-                debugger;
+                // debugger;
                 e.target // activated tab
                 e.relatedTarget // previous tab
             })
 
             this.$(".action-create").bind('click', function() {
-                _self.getActiveTree().jstree("create", null, "last", {
+                self.getActiveTree().jstree("create", null, "last", {
                     data: "category-name"
                 });
             });
 
             this.$(".action-rename").bind('click', function() {
-                _self.getActiveTree().jstree("rename");
+                self.getActiveTree().jstree("rename");
             });
 
             this.$(".action-delete").bind('click', function() {
-                _self.getActiveTree().jstree("remove");
+                self.getActiveTree().jstree("remove");
             });
 
             this.$("a").live("dblclick", function(e) {
-                _self.$.jstree._reference(_self.getActiveId()).rename(e.currentTarget);
+                self.$.jstree._reference(self.getActiveId()).rename(e.currentTarget);
             });
         },
 
