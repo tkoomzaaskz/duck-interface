@@ -1,16 +1,8 @@
-define(['backbone', 'model/category', 'config', 'tools/logger'],
-function(Backbone, CategoryModel, config, logger) {
+define([
+    'backbone', 'model/category', 'config', 'tools/logger'
+], function(Backbone, CategoryModel, config, logger) {
 
     'use strict';
-
-    function InterfaceNode(node) {
-        this.data = {title: node.name};
-        this.attr = {id: node.id};
-    }
-
-    InterfaceNode.prototype = {
-        state: undefined
-    };
 
     return Backbone.Collection.extend({
 
@@ -20,12 +12,25 @@ function(Backbone, CategoryModel, config, logger) {
 
         model: CategoryModel,
 
+        parse: function (response) {
+            return response.objects;
+        },
+
+        comparator: function(a, b) {
+            var a_p_undef = a.get('parent_id') === null,
+                b_p_undef = b.get('parent_id') === null;
+            if (a_p_undef === b_p_undef) return a.get('id') - b.get('id');
+            if (a_p_undef && !b_p_undef) return -1;
+            return 1;
+        },
+
         initialize: function(models, options) {
             logger.collection('categories', 'created', this);
             this.options = options;
             this.data = null; // FIXME: 2 b removed
         },
 
+        // FIXME: move fetchHandle out from here
         fetchHandle: function() {
             return this.fetch({
                 success: function(collection, response, options) {
@@ -37,100 +42,59 @@ function(Backbone, CategoryModel, config, logger) {
             });
         },
 
-        // FIXME: fetching data shall be removed with built-in backbone fetching mechanism
-        fetchData: function() {
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                context: this,
-                async: false, // FIXME: why async ?
-                url: this.url()
-            }).done(function(response) {
-                this.data = response.objects;
-            }).fail(function(response) {
-                logger.log(response);
-                logger.error("Fetching category data failed, see response above");
-            });
-        },
-
-        getData: function() {
-            if (this.data == null) {
-                this.fetchData();
-            }
-            return this.data;
-        },
-
         addNode: function(id, name, parent_id) {
             if (parent_id == -1) parent_id = null;
             var node = {
-                "id": id,
-                "name": name,
-                "parent_id": parent_id
+                id: id,
+                name: name,
+                parent_id: parent_id
             };
             this.data.push(node);
         },
 
-        getNode: function(id) {
-            var found = $(this.getData()).map(function() {
-                return (this.id == id) ? this : null;
-            });
-            return found.length ? found[0] : null;
-        },
-
         renameNode: function(id, new_name) {
-            var node = this.getNode(id);
-            node.name = new_name;
+            var node = this.get(id);
+            node.set('name', new_name);
         },
 
         setState: function(id, value) {
-            var node = this.getNode(id);
-            if (node != null) {
-                node.state = value;
+            var node = this.get(id);
+            if (node) {
+                node('state', value);
                 return true;
             } else {
                 return false;
             }
         },
 
-        getTree: function() {
-            var categories = this.getData();
-            if (categories == null)
-                return null;
+        getJsTree: function() {
+            if (!this.length)
+                throw new Error('Tree is empty');
 
-            // roots first
-            categories.sort(function(a, b) {
-                var a_p_undef = a.parent_id === null,
-                    b_p_undef = b.parent_id === null;
-                if (a_p_undef === b_p_undef) return a.id - b.id;
-                if (a_p_undef && !b_p_undef) return -1;
-                return 1;
-            });
-
-            var nodeMap = {},
+            var node, children, parent_id,
+                nodeMap = {},
                 tree = new Tree();
-            _.each(categories, function(node) {
+
+            this.each(function(node) {
+                parent_id = node.get('parent_id');
                 nodeMap[node.id] = node;
-                if (node.parent_id === undefined) {
-                    node.parent_id = null; // remove when API returns proper parent_id value
-                }
-                if (node.parent_id === null) {
+                if (parent_id === null) {
                     tree.push(node.id);
                 } else {
-                    tree.children[node.parent_id].push(node.id);
+                    tree.children[parent_id].push(node.id);
                 }
             });
 
-            var node, children, result = _.map(tree, function(id) {
-                node = new InterfaceNode(nodeMap[id]);
+            return _.map(tree, function(id) {
+                node = nodeMap[id].getJsTreeNode();
                 children = _.map(tree.children[id], function(id2) {
-                    return new InterfaceNode(nodeMap[id2]);
+                    return nodeMap[id2].getJsTreeNode();
                 });
                 if (children.length) {
                     node.children = children;
                 }
                 return node;
             });
-            return result;
         }
     });
 });

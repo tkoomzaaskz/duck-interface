@@ -1,5 +1,6 @@
-define(['jquery', 'backbone', 'marionette', 'chartjs', 'tools/logger', 'tools/colors'],
-function($, Backbone, Marionette, Chart, logger, Colors) {
+define([
+    'jquery', 'backbone', 'marionette', 'chartjs', 'tools/logger', 'tools/colors'
+], function($, Backbone, Marionette, Chart, logger, Colors) {
 
     'use strict';
 

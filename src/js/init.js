@@ -1,4 +1,5 @@
 (function(require){
+
     requirejs.config({
         baseUrl: 'js/',
         paths: {
@@ -16,12 +17,12 @@
             bootbox: '../vendor/bootbox/bootbox',
             bootstrapModal: '../vendor/backbone.bootstrap-modal/src/backbone.bootstrap-modal',
             tree: '../vendor/tree/src/tree',
-            icanhaz: '../vendor/icanhazjs/ICanHaz',
             text: '../vendor/requirejs-text/text',
             chartjs: '../vendor/chartjs/Chart',
             sinon: '../vendor/sinon/index',
 
             // application structure
+            templates: '../templates',
             chart: 'chart',
             collection: 'collection',
             model: 'model',
@@ -77,10 +78,6 @@
             datatables: {
                 deps: ['jquery']
             },
-            icanhaz: {
-              deps: ['jquery'],
-              exports: 'ich'
-            },
             text: {
             },
             tree: {
@@ -89,11 +86,12 @@
         }
     });
 
-    define(['require', 'application',
-        'underscore', 'underscoreString',
-        'jquery', 'jqueryCookie', 'jqueryValidate'],
-    function(require, Application, _) {
+    define([
+        'require', 'application', 'underscore', 'underscoreString',
+        'jqueryCookie', 'jqueryValidate'
+    ], function(require, Application, _) {
         _.mixin(_.str.exports());
         Application.start();
     });
+
 }(require));

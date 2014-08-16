@@ -1,5 +1,6 @@
-define(['underscore', 'config'],
-function(_, config) {
+define([
+    'underscore', 'config'
+], function(_, config) {
 
     'use strict';
 

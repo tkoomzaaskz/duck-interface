@@ -1,5 +1,6 @@
-define(['underscore', 'tools/logger', 'tools/colors', 'tools/calendar', 'chart/abstract_chart'],
-function(_, logger, Colors, Calendar, AbstractChart) {
+define([
+    'underscore', 'tools/logger', 'tools/colors', 'tools/calendar', 'chart/abstract_chart'
+], function(_, logger, Colors, Calendar, AbstractChart) {
 
     'use strict';
 

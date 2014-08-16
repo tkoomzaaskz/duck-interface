@@ -1,11 +1,13 @@
-define(['backbone', 'icanhaz', 'tools/loader', 'tools/logger', 'text!template/monthlyBalance.ich',
-    'chart/random', 'chart/monthly_balance'],
-function(Backbone, ich, Loader, logger, template,
-    RandomChart, MonthlyBalanceChart) {
+define([
+    'backbone', 'tools/logger', 'chart/random', 'chart/monthly_balance',
+    'text!templates/chart/monthlyBalance.html'
+], function(Backbone, logger, RandomChart, MonthlyBalanceChart, tpl) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        loggerName: 'monthly balance chart',
         tagName: 'div',
         el: '.container#main',
 
@@ -17,15 +19,14 @@ function(Backbone, ich, Loader, logger, template,
 
         initialize: function(options) {
             this.options = _.extend({}, this.defaults, this.options);
-            logger.view('monthly balance chart');
-            Loader.addTemplate(template);
+            logger.view(this.loggerName);
         },
 
         // FIXME: destroy view when unused: http://stackoverflow.com/a/11534056
         // do this manually or rely on Marionette?
         render: function() {
-            logger.render('monthly balance chart');
-            this.$el.html(ich.monthlyBalanceTemplate({
+            logger.render(this.loggerName);
+            this.$el.html(this.template({
                 width: this.defaults.width,
                 height: this.defaults.height,
                 elementId: this.defaults.elementId
@@ -46,6 +47,7 @@ function(Backbone, ich, Loader, logger, template,
                 maxValue: 1000
             });
 */
+            return this;
         }
     });
 });

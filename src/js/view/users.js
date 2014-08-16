@@ -1,5 +1,6 @@
-define(['backbone', 'tools/logger', 'model/user'],
-function(Backbone, logger, UserModel) {
+define([
+    'backbone', 'tools/logger', 'model/user'
+], function(Backbone, logger, UserModel) {
 
     'use strict';
 

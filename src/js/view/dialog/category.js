@@ -1,15 +1,16 @@
-define(['underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/loader',
-    'view/dialog/categoryTab', 'text!template/chooseCategories.ich'],
-function(_, Backbone, Bootbox, Tree, logger, Loader,
-    CategoryTab, template) {
+define([
+    'underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'view/dialog/categoryTab',
+    'text!templates/dialog/chooseCategories.html'
+], function(_, Backbone, Bootbox, Tree, logger, CategoryTab, tpl) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        loggerName: 'category dialog',
 
         initialize: function(options) {
-            logger.view('category dialog');
-            Loader.addTemplate(template);
+            logger.view(this.loggerName);
             this.incomeTab = new CategoryTab({
                 categories: options.incomeCategories
             });
@@ -20,8 +21,8 @@ function(_, Backbone, Bootbox, Tree, logger, Loader,
         },
 
         render: function() {
-            logger.render('category dialog');
-            this.setElement(ich.chooseCategoriesTemplate());
+            logger.render(this.loggerName);
+            this.setElement(this.template());
             this.incomeTab.setElement(this.$('#incomeCategoryTree')).render();
             this.outcomeTab.setElement(this.$('#outcomeCategoryTree')).render();
 
@@ -29,6 +30,7 @@ function(_, Backbone, Bootbox, Tree, logger, Loader,
                 'placement': 'bottom'
             });
             this.bindBehaviors();
+            return this;
         },
 
         bindBehaviors: function() {
@@ -52,10 +54,11 @@ function(_, Backbone, Bootbox, Tree, logger, Loader,
             this.$(".action-delete").bind('click', function() {
                 self.getActiveTree().jstree("remove");
             });
-
+/*
             this.$("a").live("dblclick", function(e) {
                 self.$.jstree._reference(self.getActiveId()).rename(e.currentTarget);
             });
+*/
         },
 
         getActiveTab: function() {

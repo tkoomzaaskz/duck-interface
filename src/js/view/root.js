@@ -1,15 +1,19 @@
-define(['backbone', 'tools/logger', 'tools/auth', 'icanhaz', 'tools/loader',
-    'text!template/root.ich', 'text!template/errorTemplate.ich',
+define([
+    'backbone', 'tools/logger', 'tools/auth',
     'view/languages', 'view/homepage', 'view/grid/incomes', 'view/grid/outcomes',
-    'view/chart/monthly_balance', 'view/chart/category_total'],
-function(Backbone, logger, Auth, ich, Loader,
-    template, templateError,
+    'view/chart/monthly_balance', 'view/chart/category_total',
+    'text!templates/root.html', 'text!templates/partials/error.html'
+], function(Backbone, logger, Auth,
     LanguagesView, HomepageView, IncomesView, OutcomesView,
-    MonthlyBalanceChartView, CategoryTotalChartView) {
+    MonthlyBalanceChartView, CategoryTotalChartView,
+    tpl, tplError) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        templateError: _.template(tplError), // FIXME: is this needed here?
+        loggerName: 'root',
 
         events: {
             'click #menu_homepage': 'openHomepage',
@@ -21,14 +25,12 @@ function(Backbone, logger, Auth, ich, Loader,
         },
 
         initialize: function(options) {
-            logger.view('root');
-            Loader.addTemplate(template);
-            Loader.addTemplate(templateError);
+            logger.view(this.loggerName);
         },
 
         render: function() {
-            logger.render('root');
-            this.$el.html(ich.rootTemplate());
+            logger.render(this.loggerName);
+            this.$el.html(this.template());
 //            var languagesView = new LanguagesView();
 //            languagesView.setElement(this.$('.container#header')).render();
             this.openHomepage();
@@ -64,12 +66,6 @@ function(Backbone, logger, Auth, ich, Loader,
         logout: function() {
             Auth.logout();
             this.trigger('logout');
-        },
-
-        renderMainContainerTemplate: function (templateName, options) {
-            if (typeof(options) === 'undefined') options = {};
-            var html = ich[templateName](options);
-            this.$('.container#main').html(html);
         }
     });
 });

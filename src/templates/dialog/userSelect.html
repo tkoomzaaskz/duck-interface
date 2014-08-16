@@ -1,0 +1,6 @@
+<select id="username" name="username" class="required">
+    <option value="">choose user</option>
+    <% _.each(users, function(item) { %>
+    <option value="<%= item.username %>"><%= item.first_name %> <%= item.last_name %></option>
+    <% }) %>
+</select>

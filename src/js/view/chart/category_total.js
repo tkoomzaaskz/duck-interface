@@ -1,11 +1,13 @@
-define(['backbone', 'icanhaz', 'tools/loader', 'tools/logger', 'text!template/categoryTotal.ich',
-    'chart/category_total'],
-function(Backbone, ich, Loader, logger, template,
-    CategoryTotalChart) {
+define([
+    'backbone', 'tools/logger', 'chart/category_total',
+    'text!templates/chart/categoryTotal.html'
+], function(Backbone, logger, CategoryTotalChart, tpl) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        loggerName: 'root',
         tagName: 'div',
         el: '.container#main',
 
@@ -17,19 +19,19 @@ function(Backbone, ich, Loader, logger, template,
 
         initialize: function(options) {
             this.options = _.extend({}, this.defaults, this.options);
-            logger.view('category total chart');
-            Loader.addTemplate(template);
+            logger.view(this.loggerName);
         },
 
         render: function() {
-            logger.render('category total chart');
-            this.$el.html(ich.categoryTotalTemplate({}));
+            logger.render(this.loggerName);
+            this.$el.html(this.template(this.options));
             this.chart = new CategoryTotalChart({
                 context: this.$(this.options.elementId).get(0).getContext('2d'),
                 users: [1,2,4],
                 from: '2013-11',
                 to: '2014-03'
             });
+            return this;
         }
     });
 });

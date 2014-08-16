@@ -1,31 +1,34 @@
-define(['underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants', 'tools/loader',
-    'text!template/formTemplate.ich', 'text!template/userSelect.ich', 'text!template/categorySelect.ich'],
-function(_, Backbone, Bootbox, logger, Constants, Loader,
-    template, templateUserSelect, templateCategorySelect) {
+define([
+    'underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants',
+    'text!templates/dialog/formTemplate.html', 'text!templates/dialog/userSelect.html', 'text!templates/dialog/categorySelect.html'
+], function(_, Backbone, Bootbox, logger, Constants,
+    tpl, tplUserSelect, tplCategorySelect) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        templateUserSelect: _.template(tplUserSelect),
+        templateCategorySelect: _.template(tplCategorySelect),
+        loggerName: 'form dialog',
 
         initialize: function(options) {
-            logger.view('form dialog');
-            Loader.addTemplate(template);
-            Loader.addTemplate(templateUserSelect);
-            Loader.addTemplate(templateCategorySelect);
+            logger.view(this.loggerName);
             this.options = options;
-
-            this.render();
-            this.bindBehaviors();
+            this.render().bindBehaviors();
         },
 
         render: function() {
-            logger.render('form dialog');
-            this.setElement(ich['formTemplate']({
-                'currency': Constants.currency,
-                'users': this.options.users.getFullnames(),
-                'categories': this.options.categories.getData(),
-                'type': this.options.type
+            logger.render(this.loggerName);
+            this.setElement(this.template({
+                currency: Constants.currency,
+                users: this.options.users.toJSON(),
+                categories: this.options.categories.toJSON(),
+                type: this.options.type,
+                templateUserSelect: this.templateUserSelect,
+                templateCategorySelect: this.templateCategorySelect
             }));
+            return this;
         },
 
         clearFormInputs: function() {
@@ -42,8 +45,7 @@ function(_, Backbone, Bootbox, logger, Constants, Loader,
         },
 
         bindBehaviors: function() {
-            var
-                self = this,
+            var self = this,
                 mainElement = this.$el,
                 formElement = this.$('form');
 

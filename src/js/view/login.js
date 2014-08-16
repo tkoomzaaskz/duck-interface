@@ -1,24 +1,25 @@
-define(['underscore', 'backbone',
-    'tools/logger', 'tools/auth', 'icanhaz', 'tools/loader', 'text!template/login.ich'],
-function(_, Backbone,
-    logger, Auth, ich, Loader, template) {
+define([
+    'underscore', 'backbone', 'tools/logger', 'tools/auth',
+    'text!templates/login.html'
+], function(_, Backbone, logger, Auth, tpl) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        loggerName: 'login',
 
         events: {
             'click #loginButton': 'processLogin'
         },
 
         initialize: function() {
-            logger.view('login');
-            Loader.addTemplate(template);
+            logger.view(this.loggerName);
         },
 
         render: function() {
-            logger.render('login');
-            this.$el.html(ich.loginTemplate());
+            logger.render(this.loggerName);
+            this.$el.html(this.template());
             return this;
         },
 

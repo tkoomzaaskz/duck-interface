@@ -1,0 +1,10 @@
+<p>
+    Choose from the following users:
+    <ul>
+    <% _.each(users, function(item) { %>
+        <label class="checkbox">
+            <input type="checkbox"<% if (item.chosen) { %> checked="checked"<% } %> name="user" value="<%= item.username %>" /> <%= item.first_name %> <%= item.last_name %>
+        </label>
+    <% }) %>
+    </ul>
+</p>

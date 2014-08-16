@@ -1,8 +1,0 @@
-<script id="userSelectTemplate" type="text/html">
-    <select id="username" name="username" class="required">
-        <option value="">choose user</option>
-        {{#users}}
-        <option value="{{ username }}">{{ first_name }} {{ last_name }}</option>
-        {{/users}}
-    </select>
-</script>

@@ -1,5 +1,0 @@
-<script id="errorTemplate" type="text/html">
-    <p class="text-error">
-        <strong>Following {{ type }} error occured</strong>: {{ message }}
-    </p>
-</script>

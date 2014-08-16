@@ -1,27 +1,29 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'tools/constants', 'tools/loader',
-    'text!template/chooseUsers.ich', 'text!template/userCheckbox.ich', 'text!template/errorTemplate.ich'],
-function(Backbone, ich, logger, Constants, Loader,
-    template, templateCheckbox, templateError) {
+define([
+    'backbone', 'tools/logger', 'tools/constants',
+    'text!templates/dialog/chooseUsers.html', 'text!templates/dialog/userCheckbox.html', 'text!templates/partials/error.html'
+], function(Backbone, logger, Constants, tpl, tplCheckbox, tplError) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        templateCheckbox: _.template(tplCheckbox),
+        templateError: _.template(tplError),
+        loggerName: 'user dialog',
 
         initialize: function(options) {
-            logger.view('user dialog');
-            Loader.addTemplate(template);
-            Loader.addTemplate(templateCheckbox);
-            Loader.addTemplate(templateError);
+            logger.view(this.loggerName);
             this.render();
         },
 
         render: function() {
-            logger.render('user dialog');
-            this.setElement(ich.chooseUsersTemplate());
+            logger.render(this.loggerName);
+            this.setElement(this.template());
             this.$('a.btn-info').popover({
                 'placement': 'bottom'
             });
             this.bindBehaviors();
+            return this;
         },
 
         getChecked: function() {
@@ -37,8 +39,10 @@ function(Backbone, ich, logger, Constants, Loader,
             // FIXME: show or shown?
             this.$el.on('show.bs.modal', function () {
                 var content = collection.length == 0
-                    ? ich.errorTemplate(Constants.ajaxError)
-                    : ich.userCheckboxTemplate({ 'users': collection.models });
+                    ? self.templateError(Constants.ajaxError)
+                    : self.templateCheckbox({
+                        users: collection.toJSON()
+                    });
                 self.$('.modal-body').html(content);
             });
 

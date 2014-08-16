@@ -1,10 +1,13 @@
-define(['backbone', 'icanhaz', 'tools/logger', 'tools/loader',
-    'text!template/languages.ich'],
-function(Backbone, ich, logger, Loader, template) {
+define([
+    'backbone', 'tools/logger',
+    'text!templates/languages.html'
+], function(Backbone, logger, tpl) {
 
     'use strict';
 
     return Backbone.View.extend({
+        template: _.template(tpl),
+        loggerName: 'root',
         tagName: 'div',
 
         events: {
@@ -12,13 +15,13 @@ function(Backbone, ich, logger, Loader, template) {
         },
 
         initialize: function(options) {
-            logger.view('languages');
-            Loader.addTemplate(template);
+            logger.view(this.loggerName);
         },
 
         render: function() {
-            logger.render('languages');
-            this.$el.append(ich.languagesTemplate());
+            logger.render(this.loggerName);
+            this.$el.append(this.template());
+            return this;
         },
 
         switchLanguage: function(event) {

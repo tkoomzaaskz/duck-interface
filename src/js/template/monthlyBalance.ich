@@ -1,6 +1,0 @@
-<script id="monthlyBalanceTemplate" type="text/html">
-    <h1>Monthly Balance</h1>
-    <div style="width: 50%">
-        <canvas id="{{ elementId }}" height="{{ height }}" width="{{ width }}"></canvas>
-    </div>
-</script>

@@ -1,0 +1,6 @@
+<select id="category_id" name="category_id" class="required">
+    <option value="">choose category</option>
+    <% _.each(categories, function(item) { %>
+    <option value="<%= item.id %>"><%= item.name %></option>
+    <% }) %>
+</select>

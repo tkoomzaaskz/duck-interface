@@ -1,5 +1,6 @@
-define(['backbone', 'config', 'model/user', 'tools/logger'],
-function(Backbone, config, UserModel, logger) {
+define([
+    'backbone', 'config', 'model/user', 'tools/logger'
+], function(Backbone, config, UserModel, logger) {
 
     'use strict';
 
@@ -28,12 +29,6 @@ function(Backbone, config, UserModel, logger) {
             return response.objects;
         },
 
-        getFullnames: function(chosen) {
-            return this.map(function(model) {
-                return model.getFullName();
-            });
-        },
-
         setAll: function(chosen) {
             this.each(function(model) {
                 model.set('chosen', chosen);
@@ -41,7 +36,7 @@ function(Backbone, config, UserModel, logger) {
         },
 
         setChosen: function(username_list) {
-            this.map(function(model) {
+            this.each(function(model) {
                 model.set('chosen', _.contains(username_list, model.get('username')));
             });
         },

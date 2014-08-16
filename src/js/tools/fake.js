@@ -1,5 +1,6 @@
-define(['config', 'tools/logger', 'sinon'],
-function(config, logger) {
+define([
+    'config', 'tools/logger', 'sinon'
+], function(config, logger) {
 
     var users = {"objects": [
         {"username": "pmc", "first_name": "Paul", "last_name": "McCartney", "id": 1, "email": "paul.mccartney@beatles.com"},

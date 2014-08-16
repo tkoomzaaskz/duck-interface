@@ -1,9 +1,10 @@
-define(['jquery', 'backbone', 'marionette',
+define([
+    'jquery', 'backbone', 'marionette',
     'config', 'tools/logger', 'tools/fake', 'tools/auth',
     'collection/users', 'collection/categories',
     'view/root', 'view/login', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
-    'jqueryValidate', 'jstree'],
-function($, Backbone, Marionette,
+    'jqueryValidate', 'jstree'
+], function($, Backbone, Marionette,
     config, logger, Fake, Auth,
     Users, Categories,
     RootView, LoginView, UserView, CategoryView, FormView) {
@@ -45,8 +46,10 @@ function($, Backbone, Marionette,
                 this.users.fetchHandle(),
                 this.incomes.fetchHandle(),
                 this.outcomes.fetchHandle()
-            ).done(function(){
+            ).done(function() {
                 self.trigger('app:ready');
+                self.open();
+                self.attachModals();
                 logger.log('READY NOW!');
             });
         },
@@ -103,9 +106,7 @@ function($, Backbone, Marionette,
 
     application.addInitializer(function(options) {
         logger.log('APPLICATION', 'start');
-        this.open();
         this.createCollections();
-        this.attachModals();
     });
 
     application.listenTo(application.loginView, 'login:success', application.open);

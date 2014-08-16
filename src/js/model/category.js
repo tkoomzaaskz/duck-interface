@@ -1,5 +1,6 @@
-define(['backbone', 'config', 'tools/logger'],
-function(Backbone, config, logger) {
+define([
+    'backbone', 'config', 'tools/logger'
+], function(Backbone, config, logger) {
 
     'use strict';
 
@@ -10,6 +11,18 @@ function(Backbone, config, logger) {
 
         initialize: function(options) {
             logger.model('category', 'created', this);
+        },
+
+        getJsTreeNode: function() {
+            return {
+                data: {
+                    title: this.get('name')
+                },
+                attr: {
+                    id: this.id
+                },
+                state: undefined
+            };
         }
     });
 });
