@@ -1,11 +1,11 @@
 define([
     'jquery', 'backbone', 'marionette',
-    'config', 'tools/logger', 'tools/fake', 'tools/auth',
+    'component/auth', 'config', 'tools/logger', 'tools/fake',
     'collection/users', 'collection/categories',
     'view/root', 'view/login', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'
 ], function($, Backbone, Marionette,
-    config, logger, Fake, Auth,
+    Auth, config, logger, Fake,
     Users, Categories,
     RootView, LoginView, UserView, CategoryView, FormView) {
 

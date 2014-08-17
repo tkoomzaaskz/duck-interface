@@ -1,7 +1,8 @@
 define([
-    'backbone', 'tools/logger', 'tools/auth',
+    'backbone', 'tools/logger', 'component/auth',
     'view/languages', 'view/homepage', 'view/grid/incomes', 'view/grid/outcomes',
     'view/chart/monthly_balance', 'view/chart/category_total',
+    // pre-loaded only:
     'text!templates/root.html', 'text!templates/partials/error.html'
 ], function(Backbone, logger, Auth,
     LanguagesView, HomepageView, IncomesView, OutcomesView,

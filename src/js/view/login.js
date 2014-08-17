@@ -1,5 +1,5 @@
 define([
-    'underscore', 'backbone', 'tools/logger', 'tools/auth',
+    'underscore', 'backbone', 'tools/logger', 'component/auth',
     'text!templates/login.html'
 ], function(_, Backbone, logger, Auth, tpl) {
 
