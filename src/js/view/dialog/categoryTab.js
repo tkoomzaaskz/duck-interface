@@ -18,6 +18,7 @@ define([
                 var tree = this.options.categories.getJsTree();
                 this.bindBehaviors(tree);
             } catch (error) {
+                console.error(error);
                 this.$el.html(this.templateError(Constants.treeError));
             }
             return this;
@@ -38,11 +39,11 @@ define([
             })
             .bind("move_node.jstree", function (event, data) {
                 var id = data.rslt.o.attr("id");
-                var parent_id = data.rslt.np.attr("id");
+                var parentId = data.rslt.np.attr("id");
                 // data.rslt.op.attr("id") - old parent
                 // data.rslt.np.attr("id") - new parent
                 // data.rslt.cp - current posision
-                logger.log("jstree-test-log", id, parent_id, event, data);
+                logger.log("jstree-test-log", id, parentId, event, data);
             })
             .bind("rename_node.jstree", function (event, data) {
                 var id = data.rslt.obj.attr("id");
@@ -63,8 +64,8 @@ define([
                 });
             })
             .bind("create_node.jstree", function (event, data) {
-                var parent_id = data.rslt.parent;
-                if (parent_id == -1) { parent_id = null }
+                var parentId = data.rslt.parent;
+                if (parentId == -1) { parentId = null }
                 var name = "some-name";
                 $.ajax({
                     type: "POST",
@@ -72,7 +73,7 @@ define([
                     url: "I-dont-know", // FIXME: remove manual AJAX call and use backbone mechanisms
                     data: {
                         action: "createNode",
-                        parent_id: parent_id,
+                        parentId: parentId,
                         name: name,
                         type: self.categories.options.type
                     }
@@ -80,7 +81,7 @@ define([
                     new_id = response;
                     // update tree component
                     data.rslt.obj.attr("id", new_id);
-                    self.categories.addNode(new_id, "some name", parent_id);
+                    self.categories.addNode(new_id, "some name", parentId);
                 }).fail(function(response) {
                     Bootbox.alert("create node failed.");
                 });

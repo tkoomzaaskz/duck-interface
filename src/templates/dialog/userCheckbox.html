@@ -3,7 +3,7 @@
     <ul>
     <% _.each(users, function(item) { %>
         <label class="checkbox">
-            <input type="checkbox"<% if (item.chosen) { %> checked="checked"<% } %> name="user" value="<%= item.username %>" /> <%= item.first_name %> <%= item.last_name %>
+            <input type="checkbox"<% if (item.chosen) { %> checked="checked"<% } %> name="user" value="<%= item.username %>" /> <%= item.firstName %> <%= item.lastName %>
         </label>
     <% }) %>
     </ul>

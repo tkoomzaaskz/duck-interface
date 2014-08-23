@@ -1,6 +1,7 @@
 Bugs
 ====
 
+ * wipe out race condition
  * post-login view load ignores modals
 
 Todos
@@ -13,8 +14,14 @@ Todos
  * replace Backbone Views with Marionette Views
  * Backbone View removal (when usuned)
  * use built-in Backbone fetch instead of raw jQuery ajax calls
- * provide grunt automation
+ * provide API login/logout methods and remove hardcoded credentials
  * check for `FIXME` tags inside the code
+
+Grunt automation
+================
+
+ * jshint/jslint
+ * build process
 
 Less important
 ==============

@@ -17,8 +17,8 @@ define([
         },
 
         comparator: function(a, b) {
-            var a_p_undef = a.get('parent_id') === null,
-                b_p_undef = b.get('parent_id') === null;
+            var a_p_undef = a.get('parentId') === null,
+                b_p_undef = b.get('parentId') === null;
             if (a_p_undef === b_p_undef) return a.get('id') - b.get('id');
             if (a_p_undef && !b_p_undef) return -1;
             return 1;
@@ -30,12 +30,12 @@ define([
             this.data = null; // FIXME: 2 b removed
         },
 
-        addNode: function(id, name, parent_id) {
-            if (parent_id == -1) parent_id = null;
+        addNode: function(id, name, parentId) {
+            if (parentId == -1) parentId = null;
             var node = {
                 id: id,
                 name: name,
-                parent_id: parent_id
+                parentId: parentId
             };
             this.data.push(node);
         },
@@ -48,7 +48,7 @@ define([
         setState: function(id, value) {
             var node = this.get(id);
             if (node) {
-                node('state', value);
+                node.set('state', value);
                 return true;
             } else {
                 return false;
@@ -59,17 +59,17 @@ define([
             if (!this.length)
                 throw new Error('Tree is empty');
 
-            var node, children, parent_id,
+            var node, children, parentId,
                 nodeMap = {},
                 tree = new Tree();
 
             this.each(function(node) {
-                parent_id = node.get('parent_id');
+                parentId = node.get('parentId');
                 nodeMap[node.id] = node;
-                if (parent_id === null) {
+                if (!parentId) {
                     tree.push(node.id);
                 } else {
-                    tree.children[parent_id].push(node.id);
+                    tree.children[parentId].push(node.id);
                 }
             });
 

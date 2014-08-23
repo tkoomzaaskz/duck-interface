@@ -1,7 +1,8 @@
 define([
     'marionette', 'tools/logger', 'tools/constants',
     'text!templates/dialog/chooseUsers.html', 'text!templates/dialog/userCheckbox.html', 'text!templates/partials/error.html'
-], function(Marionette, logger, Constants, tpl, tplCheckbox, tplError) {
+], function(Marionette, logger, Constants,
+    tpl, tplCheckbox, tplError) {
 
     'use strict';
 
@@ -48,6 +49,7 @@ define([
 
             this.$('.btn-primary').bind('click', function() {
                 self.options.users.setChosen(self.getChecked());
+                self.trigger('user:chosen');
                 self.$el.modal('hide');
             });
         }

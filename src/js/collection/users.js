@@ -24,15 +24,15 @@ define([
             });
         },
 
-        setChosen: function(username_list) {
+        setChosen: function(usernameList) {
             this.each(function(model) {
-                model.set('chosen', _.contains(username_list, model.get('username')));
+                model.set('chosen', _.contains(usernameList, model.get('username')));
             });
         },
 
         getChosen: function() {
             return this.map(function(model) {
-                return model.get('first_name');
+                return model.get('username');
             });
         }
     });
