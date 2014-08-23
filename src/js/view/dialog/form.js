@@ -1,15 +1,15 @@
 define([
     'underscore', 'marionette', 'bootbox', 'tools/logger', 'tools/constants',
-    'text!templates/dialog/formTemplate.html', 'text!templates/dialog/userSelect.html', 'text!templates/dialog/categorySelect.html'
+    'text!templates/dialog/formTemplate.html', 'text!templates/select/user.html', 'text!templates/select/category.html'
 ], function(_, Marionette, Bootbox, logger, Constants,
-    tpl, tplUserSelect, tplCategorySelect) {
+    tpl, tplSelectUser, tplSelectCategory) {
 
     'use strict';
 
     return Marionette.View.extend({
         template: _.template(tpl),
-        templateUserSelect: _.template(tplUserSelect),
-        templateCategorySelect: _.template(tplCategorySelect),
+        templateSelectUser: _.template(tplSelectUser),
+        templateSelectCategory: _.template(tplSelectCategory),
         loggerName: 'form dialog',
 
         initialize: function(options) {
@@ -25,8 +25,8 @@ define([
                 users: this.options.users.toJSON(),
                 categories: this.options.categories.toJSON(),
                 type: this.options.type,
-                templateUserSelect: this.templateUserSelect,
-                templateCategorySelect: this.templateCategorySelect
+                templateSelectUser: this.templateSelectUser,
+                templateSelectCategory: this.templateSelectCategory
             }));
             return this;
         },
