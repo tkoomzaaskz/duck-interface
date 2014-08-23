@@ -42,11 +42,13 @@ define([
             this.incomes = new Categories([], {type: "income"});
             this.outcomes = new Categories([], {type: "outcome"});
 
-            var self = this;
+            var self = this, fallback = function(collection, response, options) {
+                logger.error('Fetching data failed', response);
+            };
             $.when(
-                this.users.fetchHandle(),
-                this.incomes.fetchHandle(),
-                this.outcomes.fetchHandle()
+                this.users.fetch({ error: fallback }),
+                this.incomes.fetch({ error: fallback }),
+                this.outcomes.fetch({ error: fallback })
             ).done(function() {
                 self.trigger('app:ready');
                 self.open();

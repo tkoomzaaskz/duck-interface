@@ -1,13 +1,13 @@
 define([
     'sinon', 'config',
     // mock data:
-    'json!mock/users.json',
-    'json!mock/income_categories.json',
-    'json!mock/outcome_categories.json',
-    'json!mock/incomes.json',
-    'json!mock/outcomes.json'
+    'json!mock/user.json',
+    'json!mock/income_category.json',
+    'json!mock/outcome_category.json',
+    'json!mock/income.json',
+    'json!mock/outcome.json'
 ], function(Sinon, config,
-    usersMock, incomeCategoriesMock, outcomeCategoriesMock, incomesMock, outcomesMock) {
+    userMock, incomeCategoryMock, outcomeCategoryMock, incomeMock, outcomeMock) {
 
     var mockServer = {
 
@@ -24,26 +24,31 @@ define([
                 }
             });
 
-            this.configureModelResponses('user', usersMock);
-            this.configureModelResponses('income_category', incomeCategoriesMock);
-            this.configureModelResponses('outcome_category', outcomeCategoriesMock);
+            this.configureModelResponses('user', userMock);
+            this.configureModelResponses('income_category', incomeCategoryMock);
+            this.configureModelResponses('outcome_category', outcomeCategoryMock);
             this.fs.autoRespond = true;
             if (config.fakeServerDelay) {
                 this.fs.autoRespondAfter = config.fakeServerDelay;
             }
         },
 
-        configureModelResponses: function(resource, data) {
+        configureModelResponses: function(resource, mockData) {
             // configure model list resource
             this.fs.respondWith("GET", this.urlRoot + '/' + resource + '/',
-                [200, { "Content-Type": "application/json" },
-                JSON.stringify(data) ]);
+                function(xhr) {
+                    xhr.respond(200, { "Content-Type": "application/json" },
+                        JSON.stringify(mockData));
+                });
 
             // configure single model item resource
-            this.fs.respondWith("GET", new RegExp(this.urlRoot + '/' + resource + '/(\d+)', 'i'),
+            var url = _.escapeRegExp(this.urlRoot + '/' + resource + '/') + '(\\d+)';
+            this.fs.respondWith("GET", new RegExp(url, 'i'),
                 function (xhr, id) {
-                    xhr.respond(200, { "Content-Type": "application/json" },
-                    JSON.stringify(data.objects[id - 1]));
+                    xhr.respond(200,
+                        { "Content-Type": "application/json" },
+                        JSON.stringify(mockData.objects[id - 1])
+                    );
             });
         }
     }

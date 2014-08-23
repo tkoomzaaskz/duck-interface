@@ -30,18 +30,6 @@ define([
             this.data = null; // FIXME: 2 b removed
         },
 
-        // FIXME: move fetchHandle out from here
-        fetchHandle: function() {
-            return this.fetch({
-                success: function(collection, response, options) {
-                    // debugger;
-                },
-                error: function(collection, response, options) {
-                    logger.error('Fetching category data failed', response);
-                }
-            });
-        },
-
         addNode: function(id, name, parent_id) {
             if (parent_id == -1) parent_id = null;
             var node = {

@@ -14,17 +14,6 @@ define([
             logger.collection('users', 'created', this);
         },
 
-        fetchHandle: function() {
-            return this.fetch({
-                success: function(collection, response, options) {
-                    collection.setAll(true);
-                },
-                error: function(collection, response, options) {
-                    logger.error('Fetching user data failed', response);
-                }
-            });
-        },
-
         parse: function(response) {
             return response.objects;
         },

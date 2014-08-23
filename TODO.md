@@ -1,6 +1,14 @@
+Bugs
+====
+
+ * post-login view load ignores modals
+
 Todos
 =====
 
+ * rebuild bootstrap modals as backbone views
+ * dynamic mock load
+ * dynamic views load
  * provide Backbone History/Router
  * replace Backbone Views with Marionette Views
  * Backbone View removal (when usuned)

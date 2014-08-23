@@ -90,6 +90,11 @@
         'underscoreString', 'jqueryCookie', 'jqueryValidate'
     ], function(Application, _) {
         _.mixin(_.str.exports());
+        _.mixin({
+            escapeRegExp: function(string) {
+                return string.replace(/([.*+?^${}()|\[\]\/\\])/g, "\\$1");
+            }
+        });
         Application.start();
     });
 
