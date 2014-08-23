@@ -20,7 +20,7 @@ define([
             logger.render(this.loggerName);
             this.$el.html(this.template());
             this.$('#outcomes').dataTable( {
-               "ajax": "data/outcomes.json"
+               "ajax": "js/mock/outcomes.json"
             });
             return this;
         }

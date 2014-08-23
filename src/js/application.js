@@ -1,11 +1,11 @@
 define([
     'jquery', 'backbone', 'marionette',
-    'component/auth', 'config', 'router', 'tools/logger', 'tools/fake',
+    'component/auth', 'config', 'router', 'tools/logger', 'mock/server',
     'collection/users', 'collection/categories',
     'view/root', 'view/login', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'
 ], function($, Backbone, Marionette,
-    Auth, config, Router, logger, Fake,
+    Auth, config, Router, logger, MockServer,
     Users, Categories,
     RootView, LoginView, UserView, CategoryView, FormView) {
 
@@ -114,7 +114,7 @@ define([
     application.listenTo(application.rootView, 'logout', application.open);
 
     application.on('initialize:before', function(options) {
-        Fake.init();
+        MockServer.init();
     });
 
     application.on('initialize:after', function(options) {
