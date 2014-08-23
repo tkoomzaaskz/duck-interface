@@ -1,8 +1,8 @@
 {
   "name": "duck-interface",
-  "version": "0.1.0",
+  "version": "2.0.0-ALPHA",
   "description": "Wealthy Laughing Duck Interface",
-  "main": "public/index.html",
+  "main": "src/index.html",
   "directories": {
     "test": "test"
   },
@@ -14,6 +14,7 @@
     "url": "https://github.com/wealthy-laughing-duck/duck-interface"
   },
   "keywords": [
+    "duck",
     "backbone",
     "marionette",
     "javascript"

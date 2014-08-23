@@ -6,7 +6,7 @@
     "Tomasz Ducin <tomasz.ducin@gmail.com>"
   ],
   "description": "Browser interface for Wealthy Laughing Duck project",
-  "main": "public/index.html",
+  "main": "src/index.html",
   "keywords": [
     "duck",
     "interface",
@@ -19,8 +19,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "test"
   ],
   "dependencies": {
     "requirejs": "~2.1.8",
@@ -39,7 +38,7 @@
     "jstree": "v.pre1.0",
     "chartjs": "v1.0.1-beta.2",
     "datatables": "~1.10.1",
-    "tree": "~0.1.0",
+    "tree": "~0.1.2",
     "sinon": "http://sinonjs.org/releases/sinon-1.10.3.js"
   }
 }
