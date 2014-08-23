@@ -1,12 +1,12 @@
 define([
-    'underscore', 'backbone', 'bootbox', 'tools/logger', 'tools/constants',
+    'underscore', 'marionette', 'bootbox', 'tools/logger', 'tools/constants',
     'text!templates/dialog/formTemplate.html', 'text!templates/dialog/userSelect.html', 'text!templates/dialog/categorySelect.html'
-], function(_, Backbone, Bootbox, logger, Constants,
+], function(_, Marionette, Bootbox, logger, Constants,
     tpl, tplUserSelect, tplCategorySelect) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         templateUserSelect: _.template(tplUserSelect),
         templateCategorySelect: _.template(tplCategorySelect),

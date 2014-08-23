@@ -1,15 +1,15 @@
 define([
-    'backbone', 'tools/logger', 'component/auth',
+    'marionette', 'tools/logger', 'component/auth',
     'view/languages', 'view/homepage',
     // pre-loaded only:
     'text!templates/root.html', 'text!templates/partials/error.html'
-], function(Backbone, logger, Auth,
+], function(Marionette, logger, Auth,
     LanguagesView, HomepageView,
     tpl, tplError) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         templateError: _.template(tplError), // FIXME: is this needed here?
         loggerName: 'root',

@@ -24,6 +24,5 @@ define([
         template: function() {
             this.view.$el.find('ul').append('<li>' + this.getFullName() + '</li>');
         }
-
     });
 });

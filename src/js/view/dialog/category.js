@@ -1,11 +1,11 @@
 define([
-    'underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'view/dialog/categoryTab',
+    'underscore', 'marionette', 'bootbox', 'tree', 'tools/logger', 'view/dialog/categoryTab',
     'text!templates/dialog/chooseCategories.html'
-], function(_, Backbone, Bootbox, Tree, logger, CategoryTab, tpl) {
+], function(_, Marionette, Bootbox, Tree, logger, CategoryTab, tpl) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         loggerName: 'category dialog',
 

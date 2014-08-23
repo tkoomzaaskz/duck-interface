@@ -1,12 +1,12 @@
 define([
-    'underscore', 'backbone', 'bootbox', 'tree', 'tools/logger', 'tools/constants',
+    'underscore', 'marionette', 'bootbox', 'tree', 'tools/logger', 'tools/constants',
     'text!templates/partials/error.html'
-], function(_, Backbone, Bootbox, Tree, logger, Constants, tplErrorPartial) {
+], function(_, Marionette, Bootbox, Tree, logger, Constants, tplErrorPartial) {
 
     'use strict';
 
     // see more about jstree at http://luban.danse.us/jazzclub/javascripts/jquery/jsTree/reference/
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         templateError: _.template(tplErrorPartial),
 
         initialize: function(options) {

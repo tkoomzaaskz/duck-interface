@@ -1,12 +1,12 @@
 define([
-    'backbone', 'tools/logger', 'text!templates/grid/incomes.html',
+    'marionette', 'tools/logger', 'text!templates/grid/incomes.html',
     // pre-loaded only:
     'datatables'
-], function(Backbone, logger, tpl) {
+], function(Marionette, logger, tpl) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         loggerName: 'incomes grid',
         tagName: 'div',

@@ -1,11 +1,11 @@
 define([
-    'backbone', 'tools/logger', 'chart/random', 'chart/monthly_balance',
+    'marionette', 'tools/logger', 'chart/random', 'chart/monthly_balance',
     'text!templates/chart/monthlyBalance.html'
-], function(Backbone, logger, RandomChart, MonthlyBalanceChart, tpl) {
+], function(Marionette, logger, RandomChart, MonthlyBalanceChart, tpl) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         loggerName: 'monthly balance chart',
         tagName: 'div',

@@ -1,16 +1,21 @@
 define([
-    'underscore', 'backbone', 'tools/logger', 'component/auth',
+    'underscore', 'marionette', 'tools/logger', 'component/auth',
     'text!templates/login.html'
-], function(_, Backbone, logger, Auth, tpl) {
+], function(_, Marionette, logger, Auth, tpl) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         loggerName: 'login',
 
         events: {
             'click #loginButton': 'processLogin'
+        },
+
+        ui: {
+            login: 'input#inputLogin',
+            password: 'input#inputPassword'
         },
 
         initialize: function() {
@@ -20,19 +25,20 @@ define([
         render: function() {
             logger.render(this.loggerName);
             this.$el.html(this.template());
+            this.bindUIElements();
             return this;
         },
 
         setCursor: function(type) {
-            Backbone.$('body').css('cursor', type);
+            Marionette.$('body').css('cursor', type);
         },
 
         processLogin: function(e) {
             e.preventDefault();
             this.setCursor('progress');
             var self = this,
-                login = this.$('input#inputLogin').val(),
-                password = this.$('input#inputPassword').val();
+                login = this.ui.login.val(),
+                password = this.ui.password.val();
             if (Auth.login(login, password)) {
                 setTimeout(function() {
                     self.trigger('login:success');

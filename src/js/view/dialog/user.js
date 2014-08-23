@@ -1,11 +1,11 @@
 define([
-    'backbone', 'tools/logger', 'tools/constants',
+    'marionette', 'tools/logger', 'tools/constants',
     'text!templates/dialog/chooseUsers.html', 'text!templates/dialog/userCheckbox.html', 'text!templates/partials/error.html'
-], function(Backbone, logger, Constants, tpl, tplCheckbox, tplError) {
+], function(Marionette, logger, Constants, tpl, tplCheckbox, tplError) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         templateCheckbox: _.template(tplCheckbox),
         templateError: _.template(tplError),

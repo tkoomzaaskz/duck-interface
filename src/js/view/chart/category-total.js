@@ -1,11 +1,11 @@
 define([
-    'backbone', 'tools/logger', 'chart/category_total',
+    'marionette', 'tools/logger', 'chart/category_total',
     'text!templates/chart/categoryTotal.html'
-], function(Backbone, logger, CategoryTotalChart, tpl) {
+], function(Marionette, logger, CategoryTotalChart, tpl) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         loggerName: 'root',
         tagName: 'div',

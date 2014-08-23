@@ -1,11 +1,11 @@
 define([
-    'backbone', 'tools/logger',
+    'marionette', 'tools/logger',
     'text!templates/homepage.html'
-], function(Backbone, logger, tpl) {
+], function(Marionette, logger, tpl) {
 
     'use strict';
 
-    return Backbone.View.extend({
+    return Marionette.View.extend({
         template: _.template(tpl),
         loggerName: 'root',
         tagName: 'div',
