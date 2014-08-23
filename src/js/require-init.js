@@ -4,6 +4,7 @@
         baseUrl: 'js/',
         paths: {
             text: '../vendor/requirejs-text/text',
+            json: '../vendor/requirejs-plugins/src/json',
             jquery: '../vendor/jquery/dist/jquery',
             jqueryCookie: '../vendor/jquery.cookie/jquery.cookie',
             jqueryValidate: '../vendor/jquery.validation/jquery.validate',

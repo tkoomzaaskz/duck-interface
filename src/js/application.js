@@ -113,9 +113,12 @@ define([
     application.listenTo(application.loginView, 'login:success', application.open);
     application.listenTo(application.rootView, 'logout', application.open);
 
-    application.on('initialize:before', function(options) {
-        MockServer.init();
-    });
+    // initialize fake server if enabled in configuration
+    if (config.useFakeServer) {
+        application.on('initialize:before', function(options) {
+            MockServer.init();
+        });
+    }
 
     application.on('initialize:after', function(options) {
         logger.log('initialization finished');
