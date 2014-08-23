@@ -3,6 +3,7 @@
     requirejs.config({
         baseUrl: 'js/',
         paths: {
+            text: '../vendor/requirejs-text/text',
             jquery: '../vendor/jquery/dist/jquery',
             jqueryCookie: '../vendor/jquery.cookie/jquery.cookie',
             jqueryValidate: '../vendor/jquery.validation/jquery.validate',
@@ -12,12 +13,10 @@
             underscoreString: '../vendor/underscore.string/lib/underscore.string',
             backbone: '../vendor/backbone/backbone',
             marionette: '../vendor/backbone.marionette/lib/backbone.marionette',
-//            bootstrap: '../vendor/bootstrap/docs/assets/js/bootstrap',
             bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
             bootbox: '../vendor/bootbox/bootbox',
             bootstrapModal: '../vendor/backbone.bootstrap-modal/src/backbone.bootstrap-modal',
             tree: '../vendor/tree/src/tree',
-            text: '../vendor/requirejs-text/text',
             chartjs: '../vendor/chartjs/Chart',
             sinon: '../vendor/sinon/index',
 
@@ -25,13 +24,11 @@
             templates: '../templates',
             chart: 'chart',
             collection: 'collection',
+            mock: 'mock',
             model: 'model',
             template: 'template',
             tools: 'tools',
-            view: 'view',
-
-            application: 'application',
-            config: 'config',
+            view: 'view'
         },
         shim: {
             jquery: {
@@ -87,9 +84,10 @@
     });
 
     define([
-        'require', 'application', 'underscore', 'underscoreString',
-        'jqueryCookie', 'jqueryValidate'
-    ], function(require, Application, _) {
+        'application', 'underscore',
+        // pre-loaded only:
+        'underscoreString', 'jqueryCookie', 'jqueryValidate'
+    ], function(Application, _) {
         _.mixin(_.str.exports());
         Application.start();
     });
