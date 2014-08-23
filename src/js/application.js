@@ -1,11 +1,11 @@
 define([
     'jquery', 'backbone', 'marionette',
-    'component/auth', 'config', 'tools/logger', 'tools/fake',
+    'component/auth', 'config', 'router', 'tools/logger', 'tools/fake',
     'collection/users', 'collection/categories',
     'view/root', 'view/login', 'view/dialog/user', 'view/dialog/category', 'view/dialog/form',
     'jqueryValidate', 'jstree'
 ], function($, Backbone, Marionette,
-    Auth, config, logger, Fake,
+    Auth, config, Router, logger, Fake,
     Users, Categories,
     RootView, LoginView, UserView, CategoryView, FormView) {
 
@@ -26,6 +26,7 @@ define([
         },
 
         open: function() {
+            console.error('There is a race condition in the duck app. By default the homepage is being opened. Initially, the homepage is being opened (if the router doesn\'t point anything else. The root view may or may not be created by this time. Hence the homepage view may not be attached to root view DOM. Fix this!');
             if (Auth.verify()) {
                 this.openRootView();
             } else {
@@ -114,11 +115,12 @@ define([
 
     application.on('initialize:before', function(options) {
         Fake.init();
-        Backbone.history.start();
     });
 
     application.on('initialize:after', function(options) {
         logger.log('initialization finished');
+        new Router;
+        Backbone.history.start();
     });
 
     return application;
