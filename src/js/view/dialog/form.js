@@ -84,7 +84,7 @@ define([
                 if (form.validate().checkForm()) {
                     $.ajax({
                         type: form.attr('method'),
-                        url: "../php/client/json.php",
+                        url: "I-dont-know", // FIXME: remove manual AJAX call and use backbone mechanisms
                         data: form.serialize(),
                         success: function(data, status) {
                             mainElement.modal('hide');

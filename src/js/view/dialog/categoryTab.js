@@ -50,7 +50,7 @@ define([
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: "../php/client/json.php",
+                    url: "I-dont-know", // FIXME: remove manual AJAX call and use backbone mechanisms
                     data: {
                         action: "renameNode",
                         id: id,
@@ -69,7 +69,7 @@ define([
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: "../php/client/json.php",
+                    url: "I-dont-know", // FIXME: remove manual AJAX call and use backbone mechanisms
                     data: {
                         action: "createNode",
                         parent_id: parent_id,
